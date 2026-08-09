@@ -1,0 +1,173 @@
+/* ============================================================
+   Direction A — tour detail page
+   The distinguishing move: Rodrigo walks you through the decision
+   in prose — the permit process, whether the trek fits you, and
+   his own note — before the booking rail ever asks for a date.
+   Extends styles.css — same tokens, same @layer order.
+   Prototype only. Not production code.
+   ============================================================ */
+
+@layer components {
+
+  /* ---------- Breadcrumb ---------- */
+  .crumbs { margin-bottom: 1.5rem; }
+  .crumbs ol { list-style: none; display: flex; flex-wrap: wrap; align-items: center; gap: .4rem; padding: 0; font-size: var(--t-xs); color: color-mix(in oklab, #fff 62%, transparent); }
+  .crumbs li:not(:last-child)::after { content: "/"; margin-left: .4rem; color: color-mix(in oklab, #fff 30%, transparent); }
+  .crumbs a { color: inherit; display: inline-flex; align-items: center; min-height: 44px; text-decoration: none; }
+  .crumbs a:hover { color: var(--amber); }
+  .crumbs li[aria-current] { color: #fff; }
+
+  /* ---------- Hero: full-bleed photo, same gradient idiom as .feature ---------- */
+  .thero { position: relative; min-height: 62svh; display: grid; align-items: end; overflow: clip; color: #fff; }
+  .thero__bg { position: absolute; inset: 0; }
+  .thero__bg img { width: 100%; height: 100%; object-fit: cover; }
+  .thero__bg::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(to top, var(--teal-900) 10%, rgb(11 36 34 / .68) 52%, rgb(11 36 34 / .2) 100%);
+  }
+  .thero__inner { position: relative; padding-block: clamp(2.5rem, 6vw, 4.5rem); }
+  .thero__kicker { color: var(--amber); }
+  .thero h1 {
+    font-family: var(--font-display); font-weight: 400;
+    font-size: var(--t-4xl); line-height: .98; letter-spacing: -.02em;
+    margin-block: .875rem 1rem; max-width: 20ch;
+  }
+  .thero h1 em { font-style: italic; color: var(--amber); }
+  .thero__lede { font-size: var(--t-lg); color: color-mix(in oklab, #fff 84%, transparent); max-width: 46ch; }
+  .thero__facts {
+    list-style: none; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem 2rem; margin-top: 2.25rem; padding-top: 1.75rem;
+    border-top: 1px solid color-mix(in oklab, #fff 20%, transparent);
+    max-width: 34rem;
+  }
+  @media (width >= 40rem) { .thero__facts { grid-template-columns: repeat(4, 1fr); } }
+  .thero__facts li { display: grid; gap: .25rem; }
+  .thero__facts span { font-size: var(--t-xs); letter-spacing: .08em; text-transform: uppercase; color: color-mix(in oklab, #fff 62%, transparent); }
+  .thero__facts strong { font-size: var(--t-base); font-weight: 600; }
+
+  /* ---------- Two-column layout ---------- */
+  .cols { display: grid; gap: clamp(2.5rem, 5vw, 4rem); padding-block: clamp(3rem, 6vw, 5rem); }
+  @media (width >= 68rem) { .cols { grid-template-columns: 1.5fr 1fr; align-items: start; } }
+  /* Same fix learned on direction B: grid items default to min-width:auto,
+     so wide content inside .cols__main (nothing here yet, but future edits
+     may add one) could otherwise force the whole column past the viewport. */
+  .cols__main { min-width: 0; }
+
+  .sec { padding-block: clamp(2.5rem, 5vw, 3.5rem); border-top: 1px solid var(--line); }
+  .sec:first-child { padding-top: 0; border-top: 0; }
+  .sec h2 { font-family: var(--font-display); font-weight: 400; font-size: var(--t-2xl); line-height: 1.06; letter-spacing: -.01em; margin-block: .75rem 1rem; max-width: 20ch; }
+  .sec__lead { color: var(--ink-2); font-size: var(--t-base); max-width: 58ch; margin-bottom: 1.75rem; }
+  .fine { margin-top: 1.5rem; font-size: var(--t-xs); color: var(--ink-3); max-width: 60ch; }
+
+  /* ---------- Fit / difficulty ---------- */
+  .scale { margin-bottom: 2rem; max-width: 30rem; }
+  .scale__track { display: flex; gap: .4rem; }
+  .scale__step { flex: 1; height: 8px; border-radius: 99px; background: var(--sand-2); }
+  .scale__step.on { background: var(--amber); }
+  .scale__labels { display: flex; justify-content: space-between; margin-top: .6rem; font-size: var(--t-xs); color: var(--ink-3); }
+  .checks { list-style: none; padding: 0; display: grid; gap: .75rem; max-width: 50ch; }
+  .checks li { padding-left: 1.75rem; position: relative; font-size: var(--t-sm); color: var(--ink-2); }
+  .checks li::before { position: absolute; left: 0; top: .05em; font-weight: 700; }
+  .checks__yes::before { content: "✓"; color: var(--teal-500); }
+  .checks__no::before { content: "✕"; color: var(--ink-3); }
+
+  /* ---------- Permit ---------- */
+  .permit__photo { border-radius: var(--radius); overflow: clip; margin-bottom: 1.75rem; }
+  .permit__photo img { width: 100%; aspect-ratio: 16/9; object-fit: cover; height: auto; }
+  .plist { list-style: none; padding: 0; display: grid; }
+  .plist li { display: grid; gap: .3rem 1.5rem; padding-block: 1.4rem; border-top: 1px solid var(--line); }
+  .plist li:last-child { border-bottom: 1px solid var(--line); }
+  @media (width >= 34rem) { .plist li { grid-template-columns: 3rem 1fr; } }
+  .plist b { font-family: var(--font-display); font-size: var(--t-lg); color: var(--amber-600); }
+  .plist h3 { font-size: var(--t-base); font-weight: 600; }
+  .plist p { color: var(--ink-3); font-size: var(--t-sm); margin-top: .2rem; }
+
+  /* ---------- Practical facts ---------- */
+  .facts { display: grid; }
+  .facts > div { display: grid; grid-template-columns: 9rem 1fr; gap: 1.5rem; padding-block: 1.1rem; border-top: 1px solid var(--line); font-size: var(--t-sm); }
+  .facts > div:last-child { border-bottom: 1px solid var(--line); }
+  .facts dt { font-weight: 600; color: var(--ink); }
+  .facts dd { color: var(--ink-2); }
+  @media (width < 34rem) { .facts > div { grid-template-columns: 1fr; gap: .3rem; } }
+
+  /* Reusable "to verify" flag — the same honesty mechanic the homepage uses
+     on .creds li[data-pending], generalised so any placeholder fact on this
+     page can carry it, not just Rodrigo's credentials. */
+  [data-pending]::after { content: "· to verify"; color: var(--amber-600); font-weight: 600; margin-left: .35rem; }
+
+  /* ---------- Included / not included ---------- */
+  .two { display: grid; gap: 2rem; margin-bottom: 2rem; }
+  @media (width >= 34rem) { .two { grid-template-columns: 1fr 1fr; } }
+  .col-h { font-size: var(--t-xs); font-weight: 700; letter-spacing: .12em; text-transform: uppercase; margin-bottom: .875rem; }
+  .col-h--in { color: var(--teal-500); }
+  .col-h--out { color: var(--ink-3); }
+  .dots { list-style: none; padding: 0; display: grid; gap: .65rem; font-size: var(--t-sm); color: var(--ink-2); }
+  .dots li { padding-left: 1.4rem; position: relative; }
+  .dots--in li::before { content: "✓"; position: absolute; left: 0; color: var(--teal-500); font-weight: 700; }
+  .dots--out li::before { content: "–"; position: absolute; left: 0; color: var(--ink-3); }
+  .bring { padding: 1.5rem; background: var(--sand); border-radius: var(--radius); }
+  .bring h3 { font-size: var(--t-sm); font-weight: 600; margin-bottom: .875rem; }
+  .bring .creds { margin-top: 0; }
+
+  /* ---------- Compare: reuses the light/dark card contrast of .card--feature ---------- */
+  .cf { display: grid; gap: 1.25rem; margin-top: 1.75rem; }
+  @media (width >= 34rem) { .cf { grid-template-columns: 1fr 1fr; } }
+  .cf__item { border: 1px solid var(--line); border-radius: var(--radius); padding: 1.5rem; background: var(--paper); }
+  .cf__item.is-current { background: var(--teal-900); color: #fff; border-color: transparent; }
+  .cf__tag { font-size: var(--t-xs); letter-spacing: .1em; text-transform: uppercase; font-weight: 700; color: var(--ink-3); }
+  .cf__item.is-current .cf__tag { color: color-mix(in oklab, #fff 65%, transparent); }
+  .cf__item h3 { font-family: var(--font-display); font-weight: 400; font-size: var(--t-lg); margin-block: .5rem .5rem; }
+  .cf__item h3 a { color: inherit; text-decoration-color: var(--line); }
+  .cf__item p { font-size: var(--t-sm); color: var(--ink-3); margin-bottom: 1rem; }
+  .cf__item.is-current p { color: color-mix(in oklab, #fff 74%, transparent); }
+  .cf__item strong { font-family: var(--font-display); font-weight: 400; font-size: var(--t-xl); color: var(--amber-600); }
+  .cf__item.is-current strong { color: var(--amber); }
+  .cf__item strong span { font-family: var(--font-sans); font-size: var(--t-xs); font-weight: 400; color: var(--ink-3); margin-left: .3rem; }
+  .cf__item.is-current strong span { color: color-mix(in oklab, #fff 60%, transparent); }
+
+  /* ---------- Rodrigo's note ---------- */
+  .note { display: grid; gap: 1.75rem; align-items: center; }
+  @media (width >= 34rem) { .note { grid-template-columns: 11rem 1fr; } }
+  .note img { width: 100%; aspect-ratio: 4/5; object-fit: cover; height: auto; border-radius: var(--radius); }
+  .note blockquote {
+    font-family: var(--font-display); font-style: italic; font-size: var(--t-lg); line-height: 1.4;
+    border-left: 3px solid var(--amber); padding-left: 1.25rem; margin-block: .5rem 1.25rem; color: var(--ink-2);
+  }
+
+  /* ---------- Booking rail ---------- */
+  .cols__aside { position: sticky; top: 5.5rem; }
+  .book { border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); box-shadow: var(--shadow); overflow: clip; }
+  .book__head { background: var(--teal-900); color: #fff; padding: clamp(1.5rem, 3vw, 2rem); }
+  .book__label { font-size: var(--t-xs); letter-spacing: .1em; text-transform: uppercase; color: color-mix(in oklab, #fff 68%, transparent); }
+  .book__price { font-family: var(--font-display); font-weight: 400; font-size: var(--t-2xl); margin-block: .3rem .2rem; }
+  .book__price span { font-family: var(--font-sans); font-size: var(--t-sm); font-weight: 400; color: color-mix(in oklab, #fff 72%, transparent); }
+  .book__sub { font-size: var(--t-xs); color: var(--amber); }
+  .book__body { padding: clamp(1.5rem, 3vw, 2rem); }
+  .book .f { display: grid; gap: .4rem; margin-bottom: 1.125rem; }
+  .book .f label { font-size: var(--t-sm); font-weight: 600; }
+  .book .f input {
+    min-height: 44px; font-size: 16px; padding: .65rem .85rem;
+    border: 1px solid var(--line); border-radius: 10px; background: var(--paper); color: var(--ink);
+  }
+  .book .f input:focus { border-color: var(--amber); }
+  .book .f__hint { font-size: var(--t-xs); color: var(--ink-3); margin-top: .2rem; }
+  .book .f2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .book .f2 span { font-weight: 400; color: var(--ink-3); }
+  .book__total {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding-block: 1rem; margin-block: .25rem 1.25rem;
+    border-block: 1px solid var(--line); font-size: var(--t-sm); color: var(--ink-3);
+  }
+  .book__total strong { font-family: var(--font-display); font-weight: 400; font-size: var(--t-xl); color: var(--ink); }
+  .book .btn { width: 100%; }
+  .book__note { margin-top: 1rem; font-size: var(--t-xs); color: var(--ink-3); text-align: center; }
+  .book__alt { margin-top: .75rem; text-align: center; }
+  .book__alt a { font-size: var(--t-xs); color: var(--teal-500); display: inline-flex; align-items: center; justify-content: center; min-height: 44px; }
+
+  /* ---------- Related tours band ---------- */
+  .related__head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 1rem; }
+  .arrow { font-size: var(--t-sm); font-weight: 600; color: var(--teal-500); display: inline-flex; align-items: center; gap: .3rem; min-height: 44px; white-space: nowrap; }
+  .arrow:hover { color: var(--amber-600); }
+  /* .tour__link / .tour__cta now live in styles.css — the homepage catalogue
+     reuses the same fix, so the rule belongs in the shared sheet. */
+}

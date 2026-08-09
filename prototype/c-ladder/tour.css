@@ -1,0 +1,121 @@
+/* ============================================================
+   Direction C — tour detail page
+   The booking card lives inside the hero: reserve and pay in one
+   step is the whole thesis of this direction, so the page proves
+   it at the point of maximum attention, not below the fold.
+   Extends styles.css — same tokens, same @layer order.
+   Prototype only. Not production code.
+   ============================================================ */
+
+@layer components {
+
+  /* ---------- Breadcrumb ---------- */
+  .crumbs ol { list-style: none; display: flex; flex-wrap: wrap; align-items: center; gap: .4rem; padding: 0; font-size: var(--t-xs); color: var(--ink-3); }
+  .crumbs li:not(:last-child)::after { content: "/"; margin-left: .4rem; color: var(--line-2); }
+  /* Text stays small; the tap area does not — same trick as .foot li a */
+  .crumbs a { color: var(--ink-3); display: inline-flex; align-items: center; min-height: 44px; }
+  .crumbs a:hover { color: var(--forest); }
+  .crumbs li[aria-current] { color: var(--ink); font-weight: 550; }
+
+  /* ---------- Hero with embedded booking card ---------- */
+  .thero { padding-block: clamp(2rem, 4vw, 3.5rem) clamp(2.5rem, 5vw, 4rem); }
+  .thero__grid { display: grid; gap: clamp(2rem, 5vw, 3rem); align-items: start; }
+  @media (width >= 64rem) { .thero__grid { grid-template-columns: 1.15fr .85fr; } }
+  .thero__copy h1 {
+    font-family: var(--font-head); font-size: var(--t-3xl); line-height: 1.03;
+    letter-spacing: -.026em; font-weight: 680; margin-block: .875rem 1rem; max-width: 16ch;
+  }
+  .thero__lede { font-size: var(--t-lg); color: var(--ink-2); max-width: 46ch; }
+  .thero__facts { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem 1.5rem; margin-top: 2rem; max-width: 34rem; }
+  .thero__facts li { display: grid; gap: .2rem; }
+  .thero__facts span { font-size: var(--t-xs); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
+  .thero__facts strong { font-size: var(--t-base); font-weight: 620; }
+
+  /* The booking card — same visual family as .rung/.form, but self-contained */
+  .tcard {
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg);
+    box-shadow: var(--sh-2); overflow: clip; position: sticky; top: 5.5rem;
+  }
+  .tcard__top { background: var(--forest); color: #fff; padding: clamp(1.5rem, 3vw, 2rem); }
+  .tcard__label { font-size: var(--t-xs); letter-spacing: .1em; text-transform: uppercase; color: rgb(255 255 255 / .72); }
+  .tcard__price { font-size: var(--t-3xl); font-weight: 700; letter-spacing: -.03em; line-height: 1; margin-block: .4rem .25rem; }
+  .tcard__price small { font-size: var(--t-sm); font-weight: 500; margin-left: .35rem; color: rgb(255 255 255 / .75); }
+  .tcard__sub { font-size: var(--t-xs); color: rgb(255 255 255 / .78); }
+  .tcard__body { padding: clamp(1.5rem, 3vw, 2rem); }
+  .tcard .f { display: grid; gap: .4rem; margin-bottom: 1.125rem; }
+  .tcard .f label { font-size: var(--t-sm); font-weight: 600; }
+  .tcard .f input {
+    min-height: 44px; font-size: 16px; padding: .65rem .85rem;
+    border: 1px solid var(--line-2); border-radius: var(--r-sm); background: var(--bg);
+  }
+  .tcard .f input:focus { border-color: var(--leaf); }
+  .tcard .f__hint { font-size: var(--t-xs); color: var(--ink-3); margin-top: .2rem; }
+  .tcard .f2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .tcard .f2 span { font-weight: 400; color: var(--ink-3); }
+  .tcard__sum { display: flex; align-items: baseline; justify-content: space-between; padding-block: 1rem; margin-block: .25rem 1.25rem; border-block: 1px solid var(--line); font-size: var(--t-sm); }
+  .tcard__sum strong { font-size: var(--t-xl); font-weight: 700; letter-spacing: -.02em; color: var(--forest); }
+  .tcard__after { margin-top: 1rem; font-size: var(--t-xs); color: var(--ink-3); text-align: center; }
+  .tcard__alt { margin-top: .75rem; font-size: var(--t-xs); text-align: center; }
+  .tcard__alt a { font-weight: 600; color: var(--forest); display: inline-flex; align-items: center; min-height: 44px; padding-inline: .25rem; }
+  /* On-request state: swaps copy and CTA without moving layout — set via [data-mode] */
+  .tcard[data-mode="request"] .tcard__sub::after { content: " · confirmed with the operator first"; }
+
+  /* ---------- Trust strip ---------- */
+  .tstrip { background: var(--sky); border-block: 1px solid var(--line); }
+  .tstrip__grid { display: grid; gap: 1.5rem 2rem; }
+  @media (width >= 48rem) { .tstrip__grid { grid-template-columns: repeat(4, 1fr); } }
+  .tstrip__grid div { display: grid; gap: .3rem; }
+  .tstrip__grid strong { font-family: var(--font-head); font-size: var(--t-xl); font-weight: 680; letter-spacing: -.02em; color: var(--forest); }
+  .tstrip__grid span { font-size: var(--t-sm); color: var(--ink-2); }
+
+  /* ---------- Content wrap ---------- */
+  .twrap { display: grid; gap: 0; max-width: 52rem; }
+  .sec { padding-block: clamp(2.5rem, 5vw, 4rem); border-top: 1px solid var(--line); }
+  .sec:first-child { border-top: 0; }
+  .kicker { font-size: var(--t-xs); font-weight: 650; letter-spacing: .14em; text-transform: uppercase; color: var(--forest); }
+  .sec h2 { font-family: var(--font-head); font-size: var(--t-2xl); font-weight: 680; letter-spacing: -.02em; margin-block: .625rem 1.5rem; max-width: 22ch; }
+
+  /* Fit / difficulty meter */
+  .fit { display: grid; gap: 2rem; }
+  @media (width >= 40rem) { .fit { grid-template-columns: 15rem 1fr; } }
+  .fit__label { font-size: var(--t-xs); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); }
+  .fit__value { font-size: var(--t-xl); font-weight: 650; margin-block: .3rem .75rem; }
+  .fit__value em { font-style: normal; color: var(--ink-3); font-size: var(--t-sm); font-weight: 500; margin-left: .4rem; }
+  .meter { display: flex; gap: .35rem; }
+  .meter span { flex: 1; height: 8px; border-radius: 99px; background: var(--line); }
+  .meter span.on { background: var(--leaf); }
+  .fit__note { margin-top: .875rem; font-size: var(--t-sm); color: var(--ink-3); }
+  .fit__list { list-style: none; padding: 0; display: grid; gap: .75rem; align-content: start; }
+  .fit__list li { padding-left: 1.75rem; position: relative; font-size: var(--t-sm); color: var(--ink-2); }
+  .fit__list li::before { position: absolute; left: 0; top: .05em; font-weight: 700; }
+  .fit__list li.yes::before { content: "✓"; color: var(--leaf); }
+  .fit__list li.no::before { content: "✕"; color: var(--citrus); }
+
+  /* Facts */
+  .facts { display: grid; gap: 0; }
+  .facts > div { display: grid; grid-template-columns: 9rem 1fr; gap: 1.5rem; padding-block: 1rem; border-top: 1px solid var(--line); font-size: var(--t-sm); }
+  .facts > div:last-child { border-bottom: 1px solid var(--line); }
+  .facts dt { font-weight: 620; color: var(--ink); }
+  .facts dd { color: var(--ink-2); }
+  .pending { display: block; margin-top: .3rem; color: var(--citrus); font-size: var(--t-xs); font-weight: 600; }
+
+  .cols2 { display: grid; gap: 2rem; margin-top: 2rem; }
+  @media (width >= 34rem) { .cols2 { grid-template-columns: 1fr 1fr; } }
+  .h-in, .h-out { font-size: var(--t-sm); font-weight: 650; letter-spacing: .06em; text-transform: uppercase; margin-bottom: .875rem; }
+  .h-in { color: var(--leaf); } .h-out { color: var(--ink-3); }
+  .ticks { list-style: none; padding: 0; display: grid; gap: .6rem; font-size: var(--t-sm); color: var(--ink-2); }
+  .ticks li { padding-left: 1.5rem; position: relative; }
+  .ticks li::before { content: "✓"; position: absolute; left: 0; color: var(--leaf); font-weight: 700; }
+  .ticks--out li::before { content: "–"; color: var(--ink-3); }
+
+  .bring { margin-top: 2rem; padding: 1.5rem; background: var(--bg); border-radius: var(--r); }
+  .bring h3 { font-size: var(--t-sm); font-weight: 650; margin-bottom: .75rem; }
+  .bring ul { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: .5rem; }
+  .bring li { font-size: var(--t-xs); background: var(--surface); border: 1px solid var(--line-2); border-radius: var(--r-pill); padding: .35rem .75rem; }
+
+  .fine { margin-top: 1.5rem; font-size: var(--t-xs); color: var(--ink-3); }
+
+  /* Related tours head row */
+  .tours__head-row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 1rem; }
+  .arrow { font-size: var(--t-sm); font-weight: 620; color: var(--forest); white-space: nowrap; display: inline-flex; align-items: center; min-height: 44px; }
+}

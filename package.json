@@ -1,0 +1,13 @@
+{
+  "name": "exploretikizia-prototipos",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Public design prototypes for the Explore Tikizia redesign. Research and commercial documents are not part of this repository.",
+  "type": "module",
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "scripts": {
+    "build:pages": "node scripts/build-pages.mjs"
+  }
+}

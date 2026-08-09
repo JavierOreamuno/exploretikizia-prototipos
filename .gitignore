@@ -1,0 +1,42 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# This repository publishes ONLY the prototypes.
+# The audit, its evidence, the findings ledger and the commercial documents stay
+# local. scripts/build-pages.mjs additionally refuses to publish private or
+# production data, so a mistake here cannot leak through the build.
+# ─────────────────────────────────────────────────────────────────────────────
+
+# Research, evidence and commercial documents — never published
+docs/
+.atl/
+
+# Audit instruments stay local; only the Pages build script is committed
+scripts/*
+!scripts/build-pages.mjs
+
+# Internal QA screenshots of the prototypes
+prototype/_review/
+
+# Generated output — built by CI from prototype/
+dist/
+
+# Dependencies
+node_modules/
+.npm/
+
+# Tooling caches and logs
+.cache/
+coverage/
+*.log
+npm-debug.log*
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# Local environment
+.env
+.env.*
+!.env.example

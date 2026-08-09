@@ -1,0 +1,536 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="Design prototype C for Explore Tikizia — the commitment ladder, with a live multi-step intake demo.">
+<title>C · The Commitment Ladder — Explore Tikizia prototype</title>
+<link rel="icon" href="../assets/favicon.png">
+<link rel="stylesheet" href="../assets/fonts/fonts.css">
+<link rel="stylesheet" href="styles.css">
+<script src="script.js" defer></script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to main content</a>
+
+<p class="ribbon">Prototype C · “The Commitment Ladder” — design direction only. <a href="../index.html">Compare directions</a></p>
+
+<header class="nav" data-nav>
+  <div class="shell nav__inner">
+    <a class="nav__logo" href="#top" aria-label="Explore Tikizia — home">
+      <img src="../assets/logo.png" alt="Explore Tikizia" width="200" height="60">
+    </a>
+    <nav class="nav__links" aria-label="Main">
+      <a href="#ladder">Services</a>
+      <a href="#tours">Tours</a>
+      <a href="#plan">Plan your trip</a>
+      <a href="#rodrigo">About</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="btn nav__cta" href="#ladder">Get started <span class="btn__arrow" aria-hidden="true">→</span></a>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero" id="top">
+    <div class="shell hero__grid">
+      <div>
+        <span class="pill">Costa Rica travel consulting</span>
+        <h1>Five ways in.<br><em>Start wherever you are.</em></h1>
+        <p class="hero__lede">
+          A $10 guide tonight, a day tour this week, a 60-minute call, or a trip planned end to end.
+          You choose the level of help — and you always know what it costs before you commit.
+        </p>
+        <div class="hero__actions">
+          <a class="btn btn--lg" href="#ladder">See the five options <span class="btn__arrow" aria-hidden="true">→</span></a>
+          <a class="btn btn--soft btn--lg" href="#plan">Plan my trip</a>
+        </div>
+        <div class="hero__trust">
+          <span><b>15+ years</b> guiding &amp; planning</span>
+          <span><b>5.0</b> Google rating</span>
+          <span><b>San Ramón</b> de Alajuela, CR</span>
+        </div>
+      </div>
+
+      <div class="hero__visual" data-reveal>
+        <img src="../assets/chirripo-summit.jpg"
+             alt="A hiker at the summit of Cerro Chirripó, Costa Rica's highest peak."
+             width="900" height="1125" fetchpriority="high">
+        <div class="float float--a">
+          <span class="float__dot">$10</span>
+          <span><b>Lowest step</b><strong>Chirripó guide</strong></span>
+        </div>
+        <div class="float float--b">
+          <span class="float__dot">1:1</span>
+          <span><b>Most booked</b><strong>60-min call · $100</strong></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= LADDER ================= -->
+  <section id="ladder">
+    <div class="shell">
+      <div class="head head--center" data-reveal>
+        <span class="pill">The ladder</span>
+        <h2>Every step is a real product, with a real price</h2>
+        <p>No “contact us for a quote” before you know whether we’re a fit.</p>
+      </div>
+
+      <div class="ladder">
+        <article class="rung" data-reveal>
+          <span class="rung__step">1</span>
+          <h3>Free travel tips</h3>
+          <p class="rung__price">$0</p>
+          <p class="rung__meta">Journal + email guide</p>
+          <ul>
+            <li>Destination guides written on the ground</li>
+            <li>Permit and logistics explainers</li>
+            <li>One email, no noise</li>
+          </ul>
+          <a class="btn btn--soft btn--block" href="#">Get the free guide</a>
+        </article>
+
+        <article class="rung" data-reveal>
+          <span class="rung__step">2</span>
+          <h3>Chirripó Valley Guide</h3>
+          <p class="rung__price">$10 <small>USD</small></p>
+          <p class="rung__meta">Digital · instant download</p>
+          <ul>
+            <li>Explore the valley without a climbing permit</li>
+            <li>Where to stay, eat and hike</li>
+            <li>Bonus itineraries</li>
+          </ul>
+          <a class="btn btn--soft btn--block" href="#">Buy the guide</a>
+        </article>
+
+        <article class="rung rung--hero" data-reveal>
+          <span class="rung__tag">Most booked</span>
+          <span class="rung__step">3</span>
+          <h3>Travel consultation</h3>
+          <p class="rung__price">$100 <small>USD</small></p>
+          <p class="rung__meta">60-minute 1:1 video call</p>
+          <ul>
+            <li>Honest feedback on your itinerary</li>
+            <li>Logistics: weather, safety, routes</li>
+            <li>Written recap after the call</li>
+            <li>Book and pay in one step</li>
+          </ul>
+          <a class="btn btn--citrus btn--block" href="#">Book a call <span class="btn__arrow" aria-hidden="true">→</span></a>
+        </article>
+
+        <article class="rung" data-reveal>
+          <span class="rung__step">4</span>
+          <h3>Tours &amp; day trips</h3>
+          <p class="rung__price">From $75 <small>USD</small></p>
+          <p class="rung__meta">Per adult · own &amp; partner tours</p>
+          <ul>
+            <li>Book a single day, not a whole trip</li>
+            <li>Adult and child pricing</li>
+            <li>Hotel pick-up in San José</li>
+          </ul>
+          <a class="btn btn--soft btn--block" href="#tours">Browse tours</a>
+        </article>
+
+        <article class="rung" data-reveal>
+          <span class="rung__step">5</span>
+          <h3>Full itinerary planning</h3>
+          <p class="rung__price">Custom</p>
+          <p class="rung__meta">Quote after a short call</p>
+          <ul>
+            <li>Everything planned and coordinated</li>
+            <li>Transport, guides, lodging</li>
+            <li>Built around your pace</li>
+          </ul>
+          <a class="btn btn--soft btn--block" href="#plan">Start with 10 questions</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================= TOURS ================= -->
+  <section class="tours" id="tours">
+    <div class="shell">
+      <div class="head" data-reveal>
+        <span class="pill">Tours &amp; day trips</span>
+        <h2>Book a day, not the whole trip</h2>
+        <p>Our own departures and hand-picked tours from operators we work with. Every card tells you
+          which is which, and what it costs per person.</p>
+      </div>
+
+      <div class="filters" role="group" aria-label="Filter tours">
+        <button type="button" aria-pressed="true" data-filter="all">All tours</button>
+        <button type="button" aria-pressed="false" data-filter="chirripo">Chirripó</button>
+        <button type="button" aria-pressed="false" data-filter="volcano">Volcanoes</button>
+        <button type="button" aria-pressed="false" data-filter="water">Waterfalls</button>
+        <button type="button" aria-pressed="false" data-filter="culture">Culture</button>
+      </div>
+
+      <div class="tour-grid" data-tour-grid>
+        <article class="tour" data-cat="chirripo" data-reveal>
+          <div class="tour__media">
+            <img src="../assets/chirripo-summit.jpg" alt="Hiker at the summit of Cerro Chirripó." loading="lazy">
+            <span class="tour__place">San Gerardo de Rivas</span>
+          </div>
+          <div class="tour__body">
+            <span class="tour__mode tour__mode--req">On request · reply within 24 h</span>
+            <h3>Cerro Chirripó summit · 3 days</h3>
+            <p class="tour__meta"><span>3 days</span><span>Demanding</span><span>Permit handled</span></p>
+            <div class="tour__foot">
+              <span class="tour__price"><b>$395</b><span>per adult · $310 child</span></span>
+              <a class="btn btn--soft" href="../a-local-expert/tour.html">Check dates</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="tour" data-cat="volcano" data-reveal>
+          <div class="tour__media">
+            <img src="../assets/chirripo-cerro-terbi.jpg" alt="Volcanic landscape in the Costa Rican highlands." loading="lazy">
+            <span class="tour__place">Poás &amp; Bajos del Toro</span>
+          </div>
+          <div class="tour__body">
+            <span class="tour__mode tour__mode--now">Instant confirmation</span>
+            <h3>Poás Volcano &amp; Río Agrio waterfall</h3>
+            <p class="tour__meta"><span>Full day</span><span>Easy</span><span>Hotel pick-up</span></p>
+            <div class="tour__foot">
+              <span class="tour__price"><b>$110</b><span>per adult · $85 child</span></span>
+              <a class="btn" href="tour.html">Book now</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="tour" data-cat="water" data-reveal>
+          <div class="tour__media">
+            <img src="../assets/chirripo-llano-bonito.jpg" alt="Cloud forest lodge in Costa Rica." loading="lazy">
+            <span class="tour__place">San Ramón de Alajuela</span>
+          </div>
+          <div class="tour__body">
+            <span class="tour__mode tour__mode--now">Instant confirmation</span>
+            <h3>Danta waterfall &amp; cloud forest walk</h3>
+            <p class="tour__meta"><span>Half day</span><span>Moderate</span><span>Local guide</span></p>
+            <div class="tour__foot">
+              <span class="tour__price"><b>$75</b><span>per adult · $55 child</span></span>
+              <a class="btn" href="index.html#tours">Book now</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="tour" data-cat="chirripo" data-reveal>
+          <div class="tour__media">
+            <img src="../assets/chirripo-basecamp.jpg" alt="Crestones Base Camp in Chirripó National Park." loading="lazy">
+            <span class="tour__place">Chirripó Valley</span>
+          </div>
+          <div class="tour__body">
+            <span class="tour__mode tour__mode--now">Instant confirmation</span>
+            <h3>Chirripó Valley without the permit</h3>
+            <p class="tour__meta"><span>Full day</span><span>Easy</span><span>Hot springs</span></p>
+            <div class="tour__foot">
+              <span class="tour__price"><b>$95</b><span>per adult · $70 child</span></span>
+              <a class="btn" href="../b-chirripo/tour.html">Book now</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="tour" data-cat="culture" data-reveal>
+          <div class="tour__media">
+            <img src="../assets/chirripo-km14.jpg" alt="Rural trail in the Costa Rican highlands." loading="lazy">
+            <span class="tour__place">Nacientes Palmichal</span>
+          </div>
+          <div class="tour__body">
+            <span class="tour__mode tour__mode--req">On request · reply within 24 h</span>
+            <h3>Rural community &amp; coffee day</h3>
+            <p class="tour__meta"><span>Full day</span><span>Easy</span><span>Community-run</span></p>
+            <div class="tour__foot">
+              <span class="tour__price"><b>$88</b><span>per adult · $60 child</span></span>
+              <a class="btn btn--soft" href="index.html#tours">Check dates</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="tour" data-cat="water" data-reveal>
+          <div class="tour__media">
+            <img src="../assets/chirripo-panoramic.jpg" alt="Panoramic highland view in Costa Rica." loading="lazy">
+            <span class="tour__place">Pérez Zeledón</span>
+          </div>
+          <div class="tour__body">
+            <span class="tour__mode tour__mode--req">On request · reply within 24 h</span>
+            <h3>Nauyaca waterfalls &amp; river day</h3>
+            <p class="tour__meta"><span>Full day</span><span>Moderate</span><span>Swimming</span></p>
+            <div class="tour__foot">
+              <span class="tour__price"><b>$120</b><span>per adult · $90 child</span></span>
+              <a class="btn btn--soft" href="index.html#tours">Check dates</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="tours__note" data-reveal>
+        <h3>Two kinds of tour, told apart on purpose</h3>
+        <p>
+          <b>Instant confirmation</b> means it is our own departure: you book and pay in one step and
+          the seat is yours. <b>On request</b> means the tour is run by a partner operator: you send
+          the request, we confirm the space with them, and only then do we send you the payment link.
+          <b>You never pay before a seat is confirmed.</b>
+        </p>
+        <p style="font-size:var(--t-xs);color:var(--ink-3)">
+          Prototype note: tours, prices and photographs are placeholders to show the pattern. Real
+          catalogue, pricing and cancellation policy come from the client.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= INTAKE DEMO ================= -->
+  <section class="demo" id="plan">
+    <div class="shell">
+      <div class="head" data-reveal>
+        <span class="pill" style="background:rgb(255 255 255 / .14);color:#fff">Live demo</span>
+        <h2>The intake form, rebuilt</h2>
+        <p>The current form asks 108 questions on one screen. This one asks ten, across five steps — and it works right now. Try it.</p>
+      </div>
+
+      <div class="demo__wrap">
+        <div class="compare" data-reveal>
+          <div class="compare__row compare__row--bad">
+            <b>108</b><span>Fields on the current form, on a single screen — 90 of them checkboxes</span>
+          </div>
+          <div class="compare__row compare__row--bad">
+            <b>23</b><span>Submissions received in 4 years and 7 months</span>
+          </div>
+          <div class="compare__row compare__row--good">
+            <b>10</b><span>Fields in this version, across five steps with visible progress</span>
+          </div>
+          <p style="font-size:var(--t-xs);color:rgb(255 255 255 / .6);margin-top:.5rem">
+            Figures from the audit of 2026-08-08. Submission counts read from the staging WordPress panel.
+          </p>
+        </div>
+
+        <form class="form" data-form novalidate>
+          <div class="form__bar">
+            <div class="form__track"><div class="form__fill" data-fill></div></div>
+            <span class="form__count" data-count aria-live="polite">Step 1 of 5</span>
+          </div>
+
+          <fieldset class="form__step" data-step data-active="true">
+            <h3>When are you travelling?</h3>
+            <p>So we can check seasons, road conditions and park quotas.</p>
+            <div class="field__row">
+              <div class="field">
+                <label for="from">Arrival date</label>
+                <input type="date" id="from" name="from">
+              </div>
+              <div class="field">
+                <label for="to">Departure date</label>
+                <input type="date" id="to" name="to">
+              </div>
+            </div>
+            <div class="field">
+              <label for="people">How many travellers?</label>
+              <select id="people" name="people">
+                <option>1</option><option selected>2</option><option>3–4</option>
+                <option>5–8</option><option>9 or more</option>
+              </select>
+            </div>
+          </fieldset>
+
+          <fieldset class="form__step" data-step>
+            <h3>What kind of trip is it?</h3>
+            <p>Pick the one that fits best.</p>
+            <div class="chips">
+              <label class="chip"><input type="radio" name="kind" checked><span>First time in Costa Rica</span></label>
+              <label class="chip"><input type="radio" name="kind"><span>Returning traveller</span></label>
+              <label class="chip"><input type="radio" name="kind"><span>Family with kids</span></label>
+              <label class="chip"><input type="radio" name="kind"><span>Hiking / Chirripó</span></label>
+              <label class="chip"><input type="radio" name="kind"><span>Group or event</span></label>
+            </div>
+          </fieldset>
+
+          <fieldset class="form__step" data-step>
+            <h3>What’s your budget range?</h3>
+            <p>Per person, land only, excluding flights. This is what lets us give a real answer.</p>
+            <div class="chips">
+              <label class="chip"><input type="radio" name="budget"><span>Under $1,000</span></label>
+              <label class="chip"><input type="radio" name="budget" checked><span>$1,000 – $2,000</span></label>
+              <label class="chip"><input type="radio" name="budget"><span>$2,000 – $3,000</span></label>
+              <label class="chip"><input type="radio" name="budget"><span>$3,000+</span></label>
+            </div>
+          </fieldset>
+
+          <fieldset class="form__step" data-step>
+            <h3>What do you most want to do?</h3>
+            <p>Choose up to three. The other 87 checkboxes can wait until we talk.</p>
+            <div class="chips">
+              <label class="chip"><input type="checkbox" name="int"><span>Hiking &amp; nature</span></label>
+              <label class="chip"><input type="checkbox" name="int"><span>Wildlife</span></label>
+              <label class="chip"><input type="checkbox" name="int"><span>Beaches</span></label>
+              <label class="chip"><input type="checkbox" name="int"><span>Waterfalls</span></label>
+              <label class="chip"><input type="checkbox" name="int"><span>Volcanoes</span></label>
+              <label class="chip"><input type="checkbox" name="int"><span>Culture &amp; food</span></label>
+              <label class="chip"><input type="checkbox" name="int"><span>Hot springs</span></label>
+              <label class="chip"><input type="checkbox" name="int"><span>Rural tourism</span></label>
+            </div>
+          </fieldset>
+
+          <fieldset class="form__step" data-step>
+            <h3>Where do we send your plan?</h3>
+            <p>Contact details last — once you’ve already told us the useful part.</p>
+            <div class="field">
+              <label for="name">Your name</label>
+              <input type="text" id="name" name="name" autocomplete="name" placeholder="Jane Doe">
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" autocomplete="email" inputmode="email" placeholder="jane@example.com">
+            </div>
+          </fieldset>
+
+          <div class="form__step form__done" data-step data-done>
+            <div class="tick" aria-hidden="true">✓</div>
+            <h3>That’s all we need for now</h3>
+            <p style="color:var(--ink-3);font-size:var(--t-sm);margin-top:.5rem">
+              In the real build you’d get an immediate confirmation on screen and by email, with what
+              happens next and when to expect a reply.
+            </p>
+          </div>
+
+          <div class="form__nav">
+            <button class="btn btn--soft" type="button" data-back disabled>Back</button>
+            <button class="btn" type="button" data-next>Continue <span class="btn__arrow" aria-hidden="true">→</span></button>
+            <button class="btn btn--soft" type="button" data-restart hidden>Start over</button>
+          </div>
+          <p class="form__note">Demo only — nothing is submitted or stored.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PROOF ================= -->
+  <section>
+    <div class="shell">
+      <div class="head head--center" data-reveal>
+        <span class="pill">Verified on Google</span>
+        <h2>Real reviews from real clients</h2>
+      </div>
+      <div class="proof__grid">
+        <figure class="quote--lead" data-reveal>
+          <span class="quote__stars" aria-label="5 out of 5 stars">★★★★★</span>
+          <blockquote><p>The service could not have been better. I recommend Explore Tikizia, and our
+          planner, coordinator and driver, Rodrigo Santamaria, without reservation.</p></blockquote>
+          <footer><b>Dave Faulders</b> Google review · March 2025</footer>
+        </figure>
+        <div class="proof__side">
+          <figure class="quote" data-reveal>
+            <blockquote><p>Rodrigo was beyond amazing. Knowledgeable, patient, and he made every part of the trip feel effortless.</p></blockquote>
+            <footer><b>Sofia Gonzales</b> Google review · February 2025</footer>
+          </figure>
+          <figure class="quote" data-reveal>
+            <blockquote><p>From arrival to departure every event proceeded smoothly — pickups on time and knowledgeable guides throughout.</p></blockquote>
+            <footer><b>Google Business Profile</b> date shown per review</footer>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= EXPERT ================= -->
+  <section class="expert" id="rodrigo">
+    <div class="shell expert__grid">
+      <div data-reveal>
+        <img src="../assets/rodrigo-portrait.jpg" alt="Rodrigo Santamaria, founder of Explore Tikizia." loading="lazy">
+      </div>
+      <div data-reveal>
+        <span class="pill" style="background:#fff">Who you’ll talk to</span>
+        <blockquote>“I believe travel planning should be honest, personal, and stress-free.”</blockquote>
+        <p>
+          Hi, I’m Rodrigo Santamaria — founder of Explore Tikizia, a nature lover, certified tour
+          guide and Costa Rica travel agent with over 15 years of experience. I guided travellers
+          across the country, from solo hikers to 50-person bus tours.
+        </p>
+        <ul class="badges">
+          <li>15+ years guiding</li><li>Certified tour guide *</li>
+          <li>ICT registration *</li><li>Liability insurance *</li>
+        </ul>
+        <p style="margin-top:1rem;font-size:var(--t-xs);color:var(--ink-3)">
+          * Placeholder in this prototype. Credentials are published only with documentation from the client.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FAQ ================= -->
+  <section id="faq">
+    <div class="shell shell--tight">
+      <div class="head" data-reveal>
+        <span class="pill">Common questions</span>
+        <h2>Answered before you pay, not after</h2>
+      </div>
+      <div class="faq">
+        <details open>
+          <summary>Is this a full itinerary planning service?</summary>
+          <p>No. The $100 consultation is a Q&amp;A-style session, ideal for DIY travellers who want expert insight without hiring a full planner. Full planning is a separate service, quoted after a short call.</p>
+        </details>
+        <details>
+          <summary>Can I reschedule if something comes up?</summary>
+          <p>Yes — just let us know at least 24 hours in advance. The full cancellation and refund policy is shown at checkout, before you pay.</p>
+        </details>
+        <details>
+          <summary>Do I need to prepare anything?</summary>
+          <p>Yes, please fill out the short intake form with your draft itinerary or your questions. It takes about two minutes.</p>
+        </details>
+        <details>
+          <summary>Can you guarantee a Chirripó permit?</summary>
+          <p>No. Permits are issued by SINAC with a limited daily quota released quarterly. We help you understand and navigate the process; we don’t control availability.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FINAL ================= -->
+  <section class="final">
+    <div class="shell shell--tight" data-reveal>
+      <h2>Pick your step and start today</h2>
+      <p>Ten dollars, one hour, or the whole trip. Every option has a price you can see and a next step you can take right now.</p>
+      <div class="final__actions">
+        <a class="btn btn--citrus btn--lg" href="#ladder">Book a consultation · $100 <span class="btn__arrow" aria-hidden="true">→</span></a>
+        <a class="btn btn--soft btn--lg" href="#ladder">Buy the guide · $10</a>
+      </div>
+      <small>Booking and payment complete in one step · Cancellation policy shown before you pay</small>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="shell foot__grid">
+    <div>
+      <img src="../assets/logo.png" alt="Explore Tikizia" width="180" height="54">
+      <p style="margin-top:1rem;max-width:32ch;color:var(--ink-3)">Travel consulting and local expertise from San Ramón de Alajuela, Costa Rica.</p>
+    </div>
+    <div><h4>Services</h4><ul>
+      <li><a href="#ladder">Consultation</a></li><li><a href="#ladder">Chirripó guide</a></li>
+      <li><a href="#plan">Itinerary planning</a></li><li><a href="#">Partnerships</a></li></ul></div>
+    <div><h4>Explore</h4><ul>
+      <li><a href="#">Journal</a></li><li><a href="#">Chirripó</a></li>
+      <li><a href="#">Destinations map</a></li><li><a href="#rodrigo">About</a></li></ul></div>
+    <div><h4>Connect</h4><ul>
+      <li><a href="#">Instagram</a></li><li><a href="#">Facebook</a></li>
+      <li><a href="#">YouTube</a></li><li><a href="#">Newsletter</a></li></ul></div>
+  </div>
+  <div class="shell foot__bar">
+    <span>© Explore Tikizia — design prototype, not a live site</span>
+    <span>Privacy · Terms · Cancellation policy</span>
+  </div>
+</footer>
+
+<div class="dock" data-dock>
+  <span class="dock__txt"><b>Travel consultation</b>60 min · $100 USD</span>
+  <a class="btn btn--citrus" href="#ladder">Book</a>
+</div>
+
+</body>
+</html>

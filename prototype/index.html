@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="es-CR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="Tres direcciones de diseño para Explore Tikizia, derivadas de la auditoría del 2026-08-08.">
+<title>Direcciones de diseño · Explore Tikizia</title>
+<link rel="icon" href="assets/favicon.png">
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<style>
+  *,*::before,*::after{box-sizing:border-box}*{margin:0}
+  img{display:block;max-width:100%}
+  :root{
+    --ink:#0E1C1B;--ink-2:#3B524E;--ink-3:#6E827E;
+    --paper:#FBFAF7;--surface:#fff;--line:#E4E0D7;
+    --teal:#17514A;--amber:#E8871E;
+    --font:"Instrument Sans",ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --display:"Fraunces",Georgia,serif;
+    --ease:cubic-bezier(.32,.72,0,1);
+  }
+  body{background:var(--paper);color:var(--ink);font-family:var(--font);line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  :where(a,button):focus-visible{outline:2.5px solid var(--amber);outline-offset:3px;border-radius:6px}
+  .shell{width:min(100% - 2.5rem,1180px);margin-inline:auto}
+  header{padding-block:clamp(3rem,8vw,5.5rem) clamp(2rem,5vw,3rem)}
+  .eyebrow{font-size:.8125rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--ink-3)}
+  h1{font-family:var(--display);font-weight:400;font-size:clamp(2.25rem,1.6rem+3vw,4rem);line-height:1.04;letter-spacing:-.02em;margin-block:1rem 1.25rem}
+  .lede{font-size:clamp(1.0625rem,1rem+.4vw,1.3125rem);color:var(--ink-2);max-width:62ch}
+  .meta{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.75rem}
+  .tag{font-size:.75rem;border:1px solid var(--line);border-radius:99px;padding:.4rem .85rem;color:var(--ink-2);background:var(--surface)}
+
+  .grid{display:grid;gap:1.25rem;padding-bottom:clamp(3rem,7vw,5rem)}
+  @media(width>=56rem){.grid{grid-template-columns:repeat(3,1fr)}}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:20px;overflow:clip;display:flex;flex-direction:column;
+        transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+  .card:hover{transform:translateY(-4px);box-shadow:0 2px 6px rgb(16 32 29/.06),0 24px 50px -26px rgb(16 32 29/.4)}
+  .card__thumb{aspect-ratio:16/10;position:relative;overflow:clip}
+  .card__thumb img{width:100%;height:100%;object-fit:cover}
+  .card__letter{position:absolute;top:.875rem;left:.875rem;width:34px;height:34px;border-radius:50%;
+    display:grid;place-items:center;font-weight:700;font-size:.875rem;background:var(--paper);color:var(--ink)}
+  .card__body{padding:1.5rem;display:flex;flex-direction:column;gap:.75rem;flex:1}
+  .card h2{font-size:1.3125rem;font-weight:650;letter-spacing:-.015em}
+  .card__bet{font-size:.9375rem;color:var(--ink-2)}
+  .card dl{display:grid;gap:.5rem;font-size:.8125rem;margin-top:.25rem}
+  .card dt{font-weight:650;color:var(--ink)}
+  .card dd{color:var(--ink-3);margin:0}
+  .card__links{margin-top:auto;padding-top:1rem;display:flex;flex-wrap:wrap;align-items:center;gap:.5rem 1.25rem}
+  .card .go{display:inline-flex;align-items:center;gap:.5rem;min-height:44px;
+    font-weight:650;font-size:.9375rem;text-decoration:none;color:var(--teal)}
+  .card .go--alt{font-weight:600;font-size:.8125rem;color:var(--ink-3)}
+  .card .go--alt:hover{color:var(--teal)}
+  .card .go span{transition:transform .25s var(--ease)}
+  .card:hover .go span{transform:translateX(4px)}
+
+  .note{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:clamp(1.5rem,3vw,2.25rem);margin-bottom:clamp(3rem,7vw,5rem)}
+  .note h3{font-family:var(--display);font-weight:400;font-size:1.5rem;margin-bottom:.75rem}
+  .note p{color:var(--ink-2);max-width:76ch;font-size:.9375rem}
+  .note p + p{margin-top:.75rem}
+  .note ul{margin:.75rem 0 0;padding-left:1.1rem;color:var(--ink-2);font-size:.9375rem;display:grid;gap:.35rem}
+
+  table{width:100%;border-collapse:collapse;font-size:.875rem;margin-top:1.25rem}
+  th,td{text-align:left;padding:.7rem .6rem;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);font-weight:600}
+  td:first-child{font-weight:600}
+
+  footer{border-top:1px solid var(--line);padding-block:2rem;font-size:.8125rem;color:var(--ink-3)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="shell">
+    <p class="eyebrow">Explore Tikizia · Fase de prototipos</p>
+    <h1>Tres direcciones de diseño</h1>
+    <p class="lede">
+      Cada dirección apuesta por un cliente distinto y por una jerarquía distinta. No son tres
+      estéticas del mismo sitio: son tres decisiones de negocio hechas visibles. Todas usan copy
+      e imágenes reales del sitio actual, y todas incluyen el <strong>catálogo de tours</strong>
+      con la distinción entre confirmación inmediata y reserva bajo solicitud.
+    </p>
+    <div class="meta">
+      <span class="tag">Corte 2026-08-08</span>
+      <span class="tag">Copy real del sitio</span>
+      <span class="tag">Imágenes propias del cliente</span>
+      <span class="tag">Prototipos · no producción</span>
+    </div>
+  </div>
+</header>
+
+<main class="shell">
+
+  <div class="grid">
+    <article class="card">
+      <div class="card__thumb">
+        <img src="assets/chirripo-panoramic.jpg" alt="Vista panorámica desde la cima del Cerro Chirripó.">
+        <span class="card__letter">A</span>
+      </div>
+      <div class="card__body">
+        <h2>El experto que valida tu plan</h2>
+        <p class="card__bet">Editorial, cálida, serif. Apuesta por el cliente que el negocio <strong>ya cobra hoy</strong>: el viajero independiente que armó su itinerario y quiere que un local lo revise.</p>
+        <dl>
+          <dt>Jerarquía</dt><dd>Problema → proceso de 5 pasos → servicios → Rodrigo → prueba social</dd>
+          <dt>Riesgo</dt><dd>Nicho estrecho; deja fuera a quien quiere delegar todo</dd>
+          <dt>Depende de</dt><dd>Que la consulta de $100 sea la fuente de ingreso #1</dd>
+        </dl>
+        <div class="card__links">
+          <a class="go" href="a-local-expert/index.html">Ver dirección A <span aria-hidden="true">→</span></a>
+          <a class="go go--alt" href="a-local-expert/tour.html">Ficha de tour (bajo solicitud) →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card__thumb">
+        <img src="assets/chirripo-trail.jpg" alt="Señal de sendero hacia Cerro Chirripó y Valle de las Morenas.">
+        <span class="card__letter">B</span>
+      </div>
+      <div class="card__body">
+        <h2>El especialista de Chirripó</h2>
+        <p class="card__bet">Expedición, oscura, tipografía condensada y datos. Apuesta por el <strong>diferenciador defendible</strong> y por el espacio en blanco del mercado: el permiso de SINAC.</p>
+        <dl>
+          <dt>Jerarquía</dt><dd>El permiso → rutas → guía de $10 → consulta → quiénes somos</dd>
+          <dt>Riesgo</dt><dd>Estrecha la marca a una montaña; exige resolver antes lo legal del cupo</dd>
+          <dt>Depende de</dt><dd>Decisión sobre qué garantiza Explore Tikizia y qué depende de SINAC</dd>
+        </dl>
+        <div class="card__links">
+          <a class="go" href="b-chirripo/index.html">Ver dirección B <span aria-hidden="true">→</span></a>
+          <a class="go go--alt" href="b-chirripo/tour.html">Ficha de tour (instantáneo) →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card__thumb">
+        <img src="assets/chirripo-summit.jpg" alt="Excursionista en la cumbre del Cerro Chirripó.">
+        <span class="card__letter">C</span>
+      </div>
+      <div class="card__body">
+        <h2>La escalera de compromiso</h2>
+        <p class="card__bet">Clara, luminosa, orientada a producto. Presenta <strong>cinco escalones con precio visible</strong>, un <strong>catálogo de tours con filtros funcionales</strong> y un <strong>demo funcional</strong> del formulario de itinerario rediseñado.</p>
+        <dl>
+          <dt>Jerarquía</dt><dd>Escalera de 5 niveles → catálogo de tours con filtros → demo del formulario → prueba social → FAQ</dd>
+          <dt>Riesgo</dt><dd>Más complejo de comunicar; exige que los cinco escalones existan de verdad</dd>
+          <dt>Depende de</dt><dd>Recuperar la guía de $10 y definir el escalón gratuito</dd>
+        </dl>
+        <div class="card__links">
+          <a class="go" href="c-ladder/index.html">Ver dirección C <span aria-hidden="true">→</span></a>
+          <a class="go go--alt" href="c-ladder/tour.html">Ficha de tour (instantáneo) →</a>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <section class="note">
+    <h3>Qué resuelven las tres, sin excepción</h3>
+    <p>
+      Las tres direcciones corrigen los hallazgos de severidad 4 de la auditoría. Eso no es
+      negociable entre direcciones; es el piso.
+    </p>
+    <ul>
+      <li><strong>Ningún CTA sin destino.</strong> Hoy fallan 21 de 26 botones en las páginas clave.</li>
+      <li><strong>La guía de $10 se compra en el dominio propio</strong>, no en una plataforma externa caída.</li>
+      <li><strong>Reservar y pagar es un solo acto</strong>, con confirmación inmediata.</li>
+      <li><strong>El precio se ve antes de comprometerse</strong>, junto con la política de cancelación.</li>
+      <li><strong>Campos de formulario</strong> de 44px de alto y 16px de fuente, con etiqueta persistente.</li>
+      <li><strong>El header móvil no se superpone al contenido</strong> entre 320 y 430 px.</li>
+      <li><strong>Las reseñas muestran fecha.</strong> Hoy se muestran sin fechar.</li>
+      <li><strong>Cada tour declara si confirma al instante o va bajo solicitud</strong>, con precio por adulto y por niño.</li>
+      <li><strong>Ninguna credencial se publica sin respaldo documental</strong> — aparecen marcadas como pendientes.</li>
+    </ul>
+  </section>
+
+  <section class="note">
+    <h3>Cómo elegir</h3>
+    <p>
+      La elección no es estética. Depende de una respuesta que solo puede dar el cliente: cuál es la
+      fuente de ingreso prioritaria para los próximos 12 meses.
+    </p>
+    <table>
+      <thead>
+        <tr><th>Si la prioridad es…</th><th>Dirección</th><th>Por qué</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Consultas de $100 por volumen</td><td>A</td><td>Todo el sitio empuja hacia la llamada; el copy actual ya declara «ideal for DIY travelers»</td></tr>
+        <tr><td>Ser el referente de Chirripó</td><td>B</td><td>Es el único espacio en blanco real del benchmark y el activo más difícil de copiar</td></tr>
+        <tr><td>Ingreso diversificado y escalable</td><td>C</td><td>Cinco productos con precio visible; captura al que no está listo para pagar $100</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:1rem">
+      También es viable una síntesis: la estructura de C con el tono editorial de A y el bloque de
+      Chirripó de B. Eso se define después de elegir, no antes.
+    </p>
+  </section>
+
+  <section class="note">
+    <h3>Límites de estos prototipos</h3>
+    <p>
+      Son <strong>demostraciones de dirección de diseño</strong>, no código de producción ni diseño
+      final. No están optimizados, no cubren todas las plantillas del sitio y no reemplazan la fase
+      de diseño detallado.
+    </p>
+    <p>
+      El copy proviene del sitio real. Las imágenes son del cliente y conservan sus marcas de agua
+      originales. Las credenciales marcadas con asterisco o «to verify» son <strong>marcadores de
+      posición</strong>: nada se publica sin documentación. Los textos legales y la política de
+      cancelación son ejemplos y requieren revisión jurídica.
+    </p>
+  </section>
+
+</main>
+
+<footer class="shell">
+  <p>Explore Tikizia · Prototipos de dirección de diseño · Documentación completa en <code>docs/</code></p>
+</footer>
+
+</body>
+</html>
