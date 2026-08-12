@@ -1,0 +1,488 @@
+/* ============================================================
+   Direction A-light — tour detail
+   Layout after the OTA product page (GetYourGuide / TripAdvisor):
+   gallery mosaic, title with rating, then two columns where the
+   entire booking flow lives in one sticky rail — date, party,
+   extras, total and a single pay CTA, all visible at once.
+
+   The wizard is gone on purpose. On a product page every hidden
+   step is a place to leave; an OTA rail converts because the
+   traveller can see the date, the party, the extras and the final
+   number without a single navigation.
+
+   Design language unchanged: Inter, hairline grid, brand colour.
+   Extends styles.css. Prototype only.
+   ============================================================ */
+
+@layer components {
+
+  /* The sticky nav's height, shared by the tab bar's offset and by every
+     section's scroll-margin. Declared once so the three can never drift —
+     when they do, anchors land under the header and the active tab lies. */
+  :root { --nav-h: 72px; --tabs-h: 53px; }
+
+  /* ================= SECTION TABS =================
+     Sticks directly under the nav and tracks the reader. The underline is a
+     single sliding bar rather than a border per tab: one element that moves
+     reads as one control, and it animates where four borders cannot. */
+  .tabs {
+    position: sticky; top: var(--nav-h); z-index: 40;
+    background: color-mix(in oklab, var(--bg) 92%, transparent);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--hair);
+    margin-top: clamp(1.25rem, 2.5vw, 1.75rem);
+    /* The bar lives inside `.shell`, so without this its frosted background
+       stops at the gutter and content scrolls past unpainted in the strip on
+       either side. Pull out by one gutter, pad back in by one. */
+    margin-inline: calc(-1 * var(--gutter));
+    padding-inline: var(--gutter);
+  }
+  /* Inside the left column the bleed would run under the rail gap. */
+  @media (width >= 66rem) { .tabs { margin-inline: 0; padding-inline: 0; } }
+  .tabs__inner { position: relative; display: flex; gap: clamp(1.25rem, 3vw, 2.5rem); overflow-x: auto; scrollbar-width: none; }
+  .tabs__inner::-webkit-scrollbar { display: none; }
+  .tabs a {
+    padding-block: .95rem; white-space: nowrap;
+    font-size: var(--t-base); font-weight: 600; letter-spacing: -.015em;
+    color: var(--ink-3); transition: color .25s var(--ease);
+  }
+  .tabs a:hover { color: var(--ink-2); }
+  .tabs a[aria-current="true"] { color: var(--ink); }
+  .tabs__bar {
+    position: absolute; bottom: -1px; left: 0; height: 2px; width: 0;
+    background: var(--ink); border-radius: 2px;
+    transform: translateX(0);
+    transition: transform .38s var(--ease), width .38s var(--ease);
+  }
+  /* Without JS the bar never moves, so it stays hidden and the active tab is
+     still legible from its colour alone. */
+  .no-js .tabs__bar { display: none; }
+  @media (prefers-reduced-motion: reduce) { .tabs__bar { transition: none; } }
+
+  /* ---------- Breadcrumb ---------- */
+  .crumbs ol { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem; font-size: var(--t-xs); color: var(--ink-3); }
+  .crumbs li:not(:last-child)::after { content: "/"; margin-left: .4rem; opacity: .6; }
+  /* Text stays small; the tap target does not. */
+  .crumbs a { display: inline-flex; align-items: center; min-height: 44px; }
+  .crumbs a:hover { color: var(--accent-ink); }
+  .crumbs li[aria-current] { color: var(--ink-2); }
+  /* M-11 · At 390px the trail wrapped and left the separator hanging alone on
+     the first line. OTA product pages drop the middle rungs instead. */
+  @media (width < 34rem) {
+    .crumbs li:not(:first-child):not(:last-child) { display: none; }
+    .crumbs li:first-child::after { content: "/"; margin-left: .4rem; opacity: .6; }
+  }
+
+  /* ================= PRODUCT HEAD ================= */
+  .phead { padding-top: clamp(.5rem, 1.5vw, 1rem); }
+  .phead h1 {
+    font-size: clamp(1.75rem, 1.15rem + 2.4vw, 3rem); font-weight: 700;
+    line-height: 1.06; letter-spacing: -.035em; max-width: 24ch; margin-top: .5rem;
+  }
+  .phead__row { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem 1.25rem; margin-top: .875rem; }
+  .rating { display: inline-flex; align-items: center; gap: .5rem; font-size: var(--t-sm); }
+  .rating a { display: inline-flex; align-items: center; min-height: 32px; }
+  .rating__score { font-weight: 700; }
+  .rating__stars { color: var(--accent-ink); letter-spacing: .08em; }
+  .rating a { color: var(--ink-2); text-decoration: underline; text-underline-offset: .2em; }
+  .phead__meta { font-size: var(--t-sm); color: var(--ink-3); }
+  .phead__acts { display: flex; gap: .5rem; margin-left: auto; }
+  .iconbtn {
+    display: inline-flex; align-items: center; gap: .45rem; min-height: 40px; padding: .4rem .9rem;
+    border: 1px solid var(--hair-2); border-radius: 999px; font-size: var(--t-sm); color: var(--ink-2);
+    transition: border-color .25s var(--ease), color .25s var(--ease);
+  }
+  .iconbtn:hover { border-color: var(--ink); color: var(--ink); }
+
+  /* ================= GALLERY MOSAIC =================
+     One lead image and a 2×2 of supporting shots, as the OTAs set it. */
+  .gallery { display: grid; gap: 6px; margin-top: clamp(1.25rem, 2.5vw, 1.75rem); }
+  /* minmax(0, 1fr), not 1fr. A bare `1fr` is `minmax(auto, 1fr)`, and the auto
+     minimum is the image's intrinsic size — with a portrait shot in the grid the
+     rows resolved to 604px + 226px inside a 480px box and the mosaic overflowed
+     by 350px. The explicit zero minimum is what lets the tracks shrink. */
+  @media (width >= 52rem) {
+    .gallery {
+      grid-template-columns: 1.35fr minmax(0, 1fr) minmax(0, 1fr);
+      grid-template-rows: repeat(2, minmax(0, 1fr));
+      /* A-01 · At 1440×900 this ran to 30rem and pushed the price 23px, the
+         calendar 249px and the pay button 662px below the fold. Wider and
+         shorter puts price and calendar back on the first screen without
+         losing the mosaic. */
+      height: clamp(17rem, 26vw, 21.5rem);
+    }
+  }
+  .gallery figure { position: relative; overflow: clip; background: var(--surface); }
+  /* M-03 · It shipped as one column with the extra frames hidden: five stacked
+     images, 444px each, pushing the booking rail thousands of pixels down.
+     A swipe rail keeps every frame reachable and costs one screen. */
+  @media (width < 52rem) {
+    .gallery {
+      grid-auto-flow: column; grid-auto-columns: 86%;
+      overflow-x: auto; scroll-snap-type: x mandatory;
+      margin-inline: calc(-1 * var(--gutter)); padding-inline: var(--gutter);
+      scrollbar-width: none; overscroll-behavior-x: contain;
+    }
+    .gallery::-webkit-scrollbar { display: none; }
+    .gallery figure { aspect-ratio: 4 / 3; scroll-snap-align: center; }
+    .gallery__hint { display: flex; }
+  }
+  .gallery__hint {
+    display: none; align-items: center; gap: .4rem; margin-top: .5rem;
+    font-size: var(--t-xs); color: var(--ink-3);
+  }
+  @media (width >= 52rem) { .gallery figure:first-child { grid-row: span 2; } }
+  .gallery img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s var(--ease); }
+  .gallery figure:hover img { transform: scale(1.03); }
+  .gallery__todo {
+    width: 100%; height: 100%; display: grid; place-items: center; text-align: center; padding: 1rem;
+    font-size: var(--t-xs); color: var(--ink-2); line-height: 1.4;
+    background: repeating-linear-gradient(135deg, transparent 0 10px, var(--stripe) 10px 20px), var(--surface);
+  }
+  .gallery__all {
+    position: absolute; right: .75rem; bottom: .75rem;
+    display: inline-flex; align-items: center; gap: .5rem; min-height: 40px; padding: .45rem 1rem;
+    background: var(--bg); color: var(--ink); border-radius: 999px;
+    font-size: var(--t-sm); font-weight: 600; box-shadow: 0 6px 20px -8px rgb(var(--scrim) / .6);
+  }
+
+  /* ================= PAGE GRID =================
+     A-01 · The rail used to start below the gallery and the tabs, which put the
+     price 23px, the calendar 249px and the pay button 662px under the fold at
+     1440×900. Gallery, tabs and body now share the left column and the rail
+     owns the right one from the first photograph down — the layout every OTA
+     product page uses, and the reason all three land on the first screen. */
+  .pgrid { display: grid; align-items: start; }
+  @media (width >= 66rem) {
+    .pgrid {
+      grid-template-columns: minmax(0, 1fr) 23rem;
+      gap: clamp(2rem, 4vw, 3.5rem);
+    }
+  }
+  .pgrid__main { min-width: 0; }
+
+  .pbody { display: grid; align-items: start; padding-block: clamp(1.5rem, 3vw, 2.25rem); }
+  .pbody__main { min-width: 0; }
+
+  /* Highlight strip — the four promises that decide the click. */
+  .promises { display: grid; gap: 1px; background: var(--hair); border: 1px solid var(--hair); border-radius: 8px; overflow: clip; }
+  @media (width >= 34rem) { .promises { grid-template-columns: repeat(2, 1fr); } }
+  .promises li { display: flex; gap: .75rem; padding: 1rem 1.1rem; background: var(--bg-2); }
+  .promises svg { flex: none; margin-top: .15rem; color: var(--accent-ink); }
+  .promises b { display: block; font-size: var(--t-sm); font-weight: 600; }
+  .promises span { font-size: var(--t-xs); color: var(--ink-3); }
+
+  .sec { padding-block: clamp(1.75rem, 3.5vw, 2.75rem); border-top: 1px solid var(--hair); scroll-margin-top: calc(var(--nav-h) + var(--tabs-h) + 1rem); }
+  .sec:first-of-type { border-top: 0; padding-top: clamp(1.5rem, 3vw, 2rem); }
+  .sec h2 { font-size: var(--t-2xl); font-weight: 700; letter-spacing: -.035em; line-height: 1.08; margin-block: .75rem 1rem; max-width: 22ch; }
+  .sec p { color: var(--ink-2); max-width: 64ch; }
+
+  .timeline { margin-top: 1.25rem; }
+  .timeline li { display: grid; grid-template-columns: 4.25rem 1fr; gap: 1.25rem; padding-block: 1rem; border-top: 1px solid var(--hair); }
+  .timeline li:last-child { border-bottom: 1px solid var(--hair); }
+  .timeline time { font-size: var(--t-sm); font-variant-numeric: tabular-nums; font-weight: 600; color: var(--accent-ink); }
+  .timeline h3 { font-weight: 600; margin-bottom: .2rem; }
+  .timeline p { font-size: var(--t-sm); color: var(--ink-3); }
+
+  .cols2 { display: grid; gap: 1.75rem; margin-top: 1.25rem; }
+  @media (width >= 34rem) { .cols2 { grid-template-columns: 1fr 1fr; } }
+  .col-h { font-size: var(--t-xs); font-weight: 600; color: var(--ink-3); margin-bottom: .75rem; }
+  .dots { display: grid; gap: .55rem; font-size: var(--t-sm); color: var(--ink-2); }
+  .dots li { padding-left: 1.4rem; position: relative; }
+  .dots--in li::before { content: "✓"; position: absolute; left: 0; color: var(--accent-ink); }
+  .dots--out li::before { content: "–"; position: absolute; left: 0; color: var(--ink-3); }
+
+  .fit { display: grid; gap: .65rem; margin-top: 1rem; }
+  .fit li { padding-left: 1.75rem; position: relative; font-size: var(--t-sm); color: var(--ink-2); }
+  .fit li::before { position: absolute; left: 0; font-weight: 700; }
+  .fit li.yes::before { content: "✓"; color: var(--accent-ink); }
+  .fit li.no::before { content: "✕"; color: var(--ink-3); }
+
+  .revcards { display: grid; gap: 1rem; margin-top: 1.25rem; }
+  @media (width >= 40rem) { .revcards { grid-template-columns: 1fr 1fr; } }
+  .revcard { border: 1px solid var(--hair); border-radius: 8px; padding: 1.25rem; }
+  .revcard__top { display: flex; align-items: center; gap: .75rem; margin-bottom: .75rem; }
+  .revcard__av { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: var(--surface); font-weight: 700; font-size: var(--t-sm); flex: none; }
+  .revcard b { font-size: var(--t-sm); font-weight: 600; display: block; }
+  .revcard time { font-size: var(--t-xs); color: var(--ink-3); }
+  .revcard p { font-size: var(--t-sm); color: var(--ink-2); }
+  .revcard .rating__stars { font-size: var(--t-xs); }
+
+  .pending { color: var(--accent-ink); font-size: var(--t-xs); }
+
+  /* ================= OPERATOR =================
+     Who actually runs the day. Both reference OTAs surface the provider on the
+     product page, and for a direct-booking site it is the strongest trust block
+     available: a named person beats a logo. */
+  .op { display: grid; gap: clamp(1.25rem, 3vw, 2rem); margin-top: 1.25rem; }
+  @media (width >= 40rem) { .op { grid-template-columns: 10rem minmax(0, 1fr); align-items: start; } }
+  /* `height: auto` is required, not optional. The HTML width/height
+     attributes map to presentational hints for the CSS width and height
+     properties; setting only `width` in CSS leaves the height hint in place,
+     and `aspect-ratio` is ignored whenever height is not auto. Without it
+     this image rendered 160×600 instead of 160×160. */
+  .op__fig img { width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 10px; }
+  .op__name { font-size: var(--t-lg); font-weight: 700; letter-spacing: -.02em; }
+  .op__role { font-size: var(--t-sm); color: var(--ink-3); margin-top: .1rem; }
+  .op blockquote { font-size: var(--t-base); color: var(--ink-2); margin-top: .9rem; max-width: 58ch; }
+  .op__facts { display: grid; gap: 1px; background: var(--hair); border: 1px solid var(--hair); border-radius: 8px; overflow: clip; margin-top: 1.25rem; }
+  @media (width >= 30rem) { .op__facts { grid-template-columns: repeat(3, 1fr); } }
+  .op__facts div { background: var(--bg-2); padding: .85rem 1rem; }
+  .op__facts dt { font-size: var(--t-xs); color: var(--ink-3); }
+  .op__facts dd { font-size: var(--t-lg); font-weight: 700; letter-spacing: -.025em; margin-top: .1rem; }
+  .op__creds { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: 1rem; }
+  .op__creds li {
+    font-size: var(--t-xs); padding: .25rem .7rem; border-radius: 999px;
+    border: 1px solid var(--hair-2); color: var(--ink-2);
+  }
+  .op__creds li[data-pending] { border-color: color-mix(in oklab, var(--accent) 45%, transparent); color: var(--accent-ink); }
+  .op__creds li[data-pending]::after { content: " · to verify"; }
+
+  /* ================= BOOKING RAIL =================
+     The whole flow, visible at once. Nothing here is behind a step. */
+  .rail { position: static; }
+  /* The tabs stick inside the left column now, so the rail clears only the nav. */
+  @media (width >= 66rem) { .rail { position: sticky; top: calc(var(--nav-h) + 1rem); padding-top: clamp(1.25rem, 2.5vw, 1.75rem); } }
+  /* The rail is taller than a laptop viewport — 1509px against 900px measured —
+     so a plain sticky block leaves the pay button 600px below the fold, which
+     is the whole conversion path hidden. The card becomes a column: the price
+     and the total stay pinned, and only the middle scrolls. */
+  .rail__card {
+    background: var(--bg-2); border: 1px solid var(--hair); border-radius: 10px;
+    box-shadow: 0 1px 2px rgb(var(--scrim) / .04), 0 18px 40px -28px rgb(var(--scrim) / .5);
+    overflow: clip;
+  }
+  /* A-01 · Even trimmed, a rail carrying an inline calendar runs ~1000px and a
+     laptop viewport is 900. Rather than cap the card and hide the form behind
+     an inner scrollbar — the mistake the audit caught — the total and the pay
+     button stick to the bottom of the viewport for as long as the card crosses
+     it. The whole form stays reachable by normal page scrolling and the CTA is
+     never off screen. `overflow: clip` has to go on desktop: it makes the card
+     a scroll container and a clipped ancestor kills a sticky descendant. */
+  @media (width >= 66rem) {
+    .rail__card { overflow: visible; }
+    .rail__sum {
+      position: sticky; bottom: 0; z-index: 2;
+      background: var(--bg-2); border-top: 1px solid var(--hair);
+      border-radius: 0 0 10px 10px;
+      box-shadow: 0 -14px 22px -14px rgb(var(--scrim) / .14);
+    }
+    .rail__price { border-radius: 10px 10px 0 0; }
+  }
+  /* A-02 · The cap-and-inner-scroll version of this rule kept the CTA on screen
+     but hid 630px of the form behind a scroll container with no affordance —
+     at 1440×900 none of the three fields were in view. Progressive disclosure
+     in tour.js replaces it: one step is open at a time, so the card fits the
+     viewport on its own and nothing needs a second scrollbar. */
+  .rail__price { padding: .85rem clamp(1.1rem, 2vw, 1.4rem) .95rem; border-bottom: 1px solid var(--hair); }
+  .rail__from { font-size: var(--t-sm); color: var(--ink-3); }
+  /* The anchor price: a struck-through list price next to the live one is the
+     single most-copied conversion device on every OTA product page. */
+  .rail__was { text-decoration: line-through; margin-left: .35rem; }
+  .rail__now { display: flex; align-items: baseline; gap: .5rem; margin-top: .15rem; }
+  .rail__now strong { font-size: var(--t-2xl); font-weight: 700; letter-spacing: -.04em; }
+  .rail__now span { font-size: var(--t-sm); color: var(--ink-3); }
+  .rail__save {
+    display: inline-block; margin-top: .35rem; padding: .15rem .5rem; border-radius: 999px;
+    background: var(--accent); color: var(--on-accent); font-size: var(--t-xs); font-weight: 700;
+  }
+
+  .rail__body { padding: .95rem clamp(1.1rem, 2vw, 1.4rem); display: grid; gap: .9rem; }
+  .field { display: grid; gap: .45rem; }
+  .field__label { display: flex; align-items: center; justify-content: space-between; gap: .75rem; font-size: var(--t-sm); font-weight: 600; }
+  .field__label span { font-weight: 500; color: var(--ink-3); font-size: var(--t-xs); }
+
+  /* ---------- Inline calendar ----------
+     Inline rather than behind a dropdown: the date is the field most likely to
+     stop a booking, and an OTA that hides it behind a click loses the people
+     whose dates do not work. Sold-out days stay struck through. */
+  .cal { border: 1px solid var(--hair); border-radius: 8px; padding: .6rem; background: var(--bg); }
+  .cal__head { display: flex; align-items: center; justify-content: space-between; gap: .5rem; margin-bottom: .5rem; }
+  .cal__month { font-size: var(--t-sm); font-weight: 600; }
+  .cal__nav { display: flex; gap: .25rem; }
+  .cal__nav button {
+    width: 32px; height: 32px; display: grid; place-items: center; border-radius: 50%;
+    border: 1px solid transparent; color: var(--ink-2);
+    transition: background .2s var(--ease), color .2s var(--ease);
+  }
+  .cal__nav button:hover:not(:disabled) { background: var(--surface); color: var(--ink); }
+  .cal__nav button:disabled { opacity: .28; cursor: not-allowed; }
+  .cal__dow, .cal__grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; }
+  .cal__dow span { text-align: center; font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); padding-bottom: .35rem; }
+  .cal__grid button {
+    position: relative; aspect-ratio: 1; min-height: 44px; display: grid; place-items: center;
+    font-size: var(--t-xs); font-variant-numeric: tabular-nums; border-radius: 6px;
+    border: 1px solid transparent;
+    transition: background .18s var(--ease), color .18s var(--ease), border-color .18s var(--ease);
+  }
+  .cal__grid button[data-s="open"] { color: var(--ink); }
+  .cal__grid button[data-s="open"]:hover { background: var(--surface); border-color: var(--hair-2); }
+  .cal__grid button[data-s="few"] { color: var(--ink); background: color-mix(in oklab, var(--accent) 12%, transparent); }
+  .cal__grid button[data-s="few"]:hover { border-color: var(--accent); }
+  .cal__grid button[data-s="out"], .cal__grid button[data-s="closed"] { color: var(--ink-3); text-decoration: line-through; cursor: not-allowed; opacity: .5; }
+  .cal__grid button[data-s="empty"] { visibility: hidden; }
+  .cal__grid button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--on-accent); font-weight: 700; }
+  /* A dot as well as a tint: colour alone excludes anyone who cannot separate
+     the amber wash from the panel. */
+  .cal__grid button[data-s="few"]::after { content: ""; position: absolute; bottom: 4px; width: 3px; height: 3px; border-radius: 50%; background: var(--accent-ink); }
+  .cal__grid button[aria-pressed="true"]::after { background: var(--on-accent); }
+  .cal__legend { display: flex; flex-wrap: wrap; gap: .3rem .9rem; margin-top: .6rem; font-size: 10px; color: var(--ink-3); }
+  .cal__legend span { display: inline-flex; align-items: center; gap: .3rem; }
+  .cal__legend i { width: 8px; height: 8px; border-radius: 2px; border: 1px solid var(--hair-2); }
+  .cal__legend i.few { background: color-mix(in oklab, var(--accent) 12%, transparent); border-color: var(--accent); }
+  .cal__legend i.out { background: var(--surface); }
+  .cal__pick { margin-top: .6rem; font-size: var(--t-xs); color: var(--ink-2); }
+  .cal__pick b { color: var(--ink); }
+
+  /* ---------- Party steppers ---------- */
+  .party { display: grid; gap: 1px; background: var(--hair); border: 1px solid var(--hair); border-radius: 8px; overflow: clip; }
+  .party__row { display: flex; align-items: center; gap: .75rem; background: var(--bg-2); padding: .7rem .85rem; }
+  .party__label b { display: block; font-size: var(--t-sm); font-weight: 600; }
+  .party__label span { font-size: var(--t-xs); color: var(--ink-3); }
+  .stepper { display: flex; align-items: center; gap: .15rem; margin-left: auto; }
+  .stepper button {
+    width: 44px; height: 44px; display: grid; place-items: center; border-radius: 50%;
+    border: 1px solid var(--hair-2); font-size: var(--t-base); line-height: 1;
+    transition: background .2s var(--ease), color .2s var(--ease), border-color .2s var(--ease);
+  }
+  .stepper button:hover:not(:disabled) { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+  .stepper button:disabled { opacity: .3; cursor: not-allowed; }
+  .stepper output { min-width: 2rem; text-align: center; font-size: var(--t-sm); font-weight: 600; font-variant-numeric: tabular-nums; }
+
+  /* ---------- A-02 · Progressive disclosure ----------
+     Capping the card and scrolling its middle kept the CTA visible but hid
+     630px of the form behind an inner scroll — all three fields off screen at
+     1440×900. Showing one step at a time removes the inner scroll entirely:
+     the date collapses to an editable line and hands its space to the rest. */
+  .step[hidden] { display: none; }
+  .picked {
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    width: 100%; min-height: 52px; padding: .6rem .85rem;
+    border: 1px solid var(--accent); border-radius: 10px;
+    background: color-mix(in oklab, var(--accent) 8%, transparent);
+    font: inherit; text-align: left; cursor: pointer;
+  }
+  .picked__txt { display: grid; gap: .1rem; }
+  .picked__txt b { font-size: var(--t-sm); font-weight: 700; color: var(--ink); }
+  .picked__txt span { font-size: var(--t-xs); color: var(--ink-3); }
+  .picked__edit { font-size: var(--t-xs); font-weight: 600; color: var(--accent-ink); text-decoration: underline; text-underline-offset: 3px; }
+
+  /* A-03 · the only channel to ask a question before paying */
+  .rail__ask {
+    display: flex; align-items: center; justify-content: center; gap: .5rem;
+    min-height: 48px; margin-top: .75rem; padding: .5rem;
+    border: 1px solid var(--hair); border-radius: 8px; background: var(--bg-2);
+    font-size: var(--t-sm); font-weight: 600; color: var(--accent-ink);
+  }
+  .rail__ask svg { flex: none; }
+  .rail__ask small { display: block; font-weight: 400; color: var(--ink-3); }
+
+  /* M-01 · Paying with an empty name only moved focus and tinted a border,
+     which reads as focus rather than as an error, and announced nothing. */
+  .err { margin-top: .35rem; font-size: var(--t-xs); font-weight: 600; color: #B3261E; }
+  .err[hidden] { display: none; }
+  .checkout input[aria-invalid="true"] { border-color: #B3261E; }
+
+  /* ---------- Extras ---------- */
+  .extras { display: grid; gap: .4rem; }
+  .extra {
+    display: flex; align-items: flex-start; gap: .7rem; cursor: pointer;
+    border: 1px solid var(--hair); border-radius: 8px; padding: .7rem .8rem;
+    transition: border-color .2s var(--ease), background .2s var(--ease);
+  }
+  .extra:hover { border-color: var(--hair-2); background: var(--surface); }
+  .extra:has(input:checked) { border-color: var(--accent); background: var(--surface); }
+  .extra input { flex: none; width: 17px; height: 17px; margin-top: .1rem; accent-color: var(--accent); }
+  .extra__txt { flex: 1; min-width: 0; }
+  .extra__txt b { display: block; font-size: var(--t-sm); font-weight: 600; }
+  .extra__txt span { font-size: var(--t-xs); color: var(--ink-3); }
+  .extra__price { font-size: var(--t-sm); font-weight: 700; white-space: nowrap; }
+
+  /* ---------- Total + CTA ---------- */
+  .rail__sum { border-top: 1px solid var(--hair); padding: clamp(1.1rem, 2vw, 1.4rem); display: grid; gap: .5rem; }
+  .rail__lines { display: grid; gap: .35rem; font-size: var(--t-sm); }
+  .rail__lines div { display: flex; justify-content: space-between; gap: 1rem; }
+  /* `display: flex` above outranks the user-agent `[hidden] { display: none }`. */
+  .rail__lines div[hidden] { display: none; }
+  .rail__lines dt { color: var(--ink-3); }
+  .rail__lines dd { font-variant-numeric: tabular-nums; }
+  .rail__total { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; padding-top: .6rem; border-top: 1px solid var(--hair); }
+  .rail__total span { font-size: var(--t-sm); font-weight: 600; }
+  .rail__total strong { font-size: var(--t-xl); font-weight: 700; letter-spacing: -.03em; }
+  .rail__cta { margin-top: .35rem; }
+  /* A greyed-out accent button reads as broken, not as blocked. While there is
+     no date the CTA drops to a neutral outline and says what is missing, so the
+     dead end names its own exit. */
+  .rail__cta:disabled {
+    background: transparent; border-color: var(--hair-2); color: var(--ink-3);
+    cursor: not-allowed; opacity: 1;
+  }
+  .rail__cta:disabled::after { background: var(--ink-3); }
+  .rail__note { font-size: var(--t-xs); color: var(--ink-3); text-align: center; }
+
+  .rail__trust { display: grid; gap: .7rem; margin-top: 1rem; padding-inline: .25rem; }
+  .rail__trust li { display: flex; gap: .6rem; font-size: var(--t-xs); }
+  .rail__trust svg { flex: none; margin-top: .1rem; color: var(--accent-ink); }
+  .rail__trust b { display: block; font-size: var(--t-sm); font-weight: 600; color: var(--ink); }
+  .rail__trust span { color: var(--ink-3); }
+
+  /* ================= CHECKOUT DIALOG =================
+     A native <dialog>, so focus trapping, Esc and the backdrop come from the
+     platform rather than from hand-written key handling. */
+  .checkout {
+    width: min(100% - 2rem, 34rem); max-height: 88svh; padding: 0; border: 0; border-radius: 12px;
+    background: var(--bg-2); color: var(--ink); overflow: auto;
+    box-shadow: 0 40px 90px -40px rgb(var(--scrim) / .8);
+  }
+  .checkout::backdrop { background: rgb(var(--scrim) / .62); backdrop-filter: blur(3px); }
+  .checkout__head { display: flex; align-items: flex-start; gap: 1rem; padding: clamp(1.25rem, 2.5vw, 1.75rem); border-bottom: 1px solid var(--hair); }
+  .checkout__head h2 { font-size: var(--t-xl); font-weight: 700; letter-spacing: -.03em; }
+  .checkout__head p { font-size: var(--t-sm); color: var(--ink-3); margin-top: .3rem; }
+  .checkout__close { margin-left: auto; width: 36px; height: 36px; flex: none; display: grid; place-items: center; border-radius: 50%; border: 1px solid var(--hair-2); }
+  .checkout__close:hover { background: var(--surface); }
+  .checkout__body { padding: clamp(1.25rem, 2.5vw, 1.75rem); display: grid; gap: 1.1rem; }
+  .checkout__recap { background: var(--surface); border-radius: 8px; padding: 1rem; display: grid; gap: .4rem; font-size: var(--t-sm); }
+  .checkout__recap div { display: flex; justify-content: space-between; gap: 1rem; }
+  .checkout__recap div[hidden] { display: none; }
+  .checkout__recap dt { color: var(--ink-3); }
+  .checkout__recap dd { font-variant-numeric: tabular-nums; }
+  .checkout__recap .grand { border-top: 1px solid var(--hair-2); padding-top: .5rem; margin-top: .2rem; font-weight: 700; }
+  .checkout input {
+    width: 100%; min-height: 46px; padding: .6rem .9rem; font-size: 16px; border-radius: 8px;
+    background: var(--bg); color: var(--ink); border: 1px solid var(--hair-2);
+  }
+  .checkout input::placeholder { color: var(--ink-3); }
+  .checkout input:focus { border-color: var(--accent); }
+  .checkout label { display: block; font-size: var(--t-sm); font-weight: 600; margin-bottom: .35rem; }
+  .checkout__split { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
+  .checkout__hint { font-size: var(--t-xs); color: var(--ink-3); margin-top: .3rem; }
+  .checkout__foot { padding: 0 clamp(1.25rem, 2.5vw, 1.75rem) clamp(1.25rem, 2.5vw, 1.75rem); display: grid; gap: .6rem; }
+  .checkout__warn { background: var(--surface); border-radius: 8px; padding: .8rem 1rem; font-size: var(--t-xs); color: var(--ink-2); }
+  .checkout__warn b { color: var(--accent-ink); }
+
+  .done { text-align: center; padding: clamp(1.5rem, 3vw, 2.5rem); }
+  .done__mark { width: 56px; height: 56px; margin-inline: auto; border-radius: 50%; display: grid; place-items: center; background: var(--accent); font-size: 1.5rem; }
+  .done h2 { font-size: var(--t-xl); font-weight: 700; letter-spacing: -.03em; margin-top: 1.25rem; }
+  .done p { margin-top: .7rem; color: var(--ink-2); font-size: var(--t-sm); }
+  /* Scoped: `.done p` above is one class plus one type and outranks a bare
+     `.done__mark`, which would leave the tick invisible on the amber disc. */
+  .done .done__mark { color: var(--on-accent); margin-top: 0; }
+  .done__ref { display: inline-block; margin-top: 1rem; padding: .5rem 1rem; border: 1px dashed var(--hair-2); border-radius: 999px; font-size: var(--t-sm); font-variant-numeric: tabular-nums; letter-spacing: .05em; }
+
+  /* ================= MOBILE BAR =================
+     Below the rail breakpoint the rail is just a block in the flow, so the bar
+     carries the live total and jumps to it. */
+  .bookbar {
+    position: fixed; inset-inline: 0; bottom: 0; z-index: 90;
+    background: color-mix(in oklab, var(--bg) 94%, transparent);
+    backdrop-filter: blur(18px); border-top: 1px solid var(--hair);
+    padding: .7rem var(--gutter) calc(.7rem + env(safe-area-inset-bottom));
+    display: flex; align-items: center; gap: 1rem;
+    transform: translateY(120%); transition: transform .35s var(--ease);
+  }
+  .bookbar[data-show="true"] { transform: none; }
+  .bookbar__txt { font-size: var(--t-xs); color: var(--ink-3); line-height: 1.25; }
+  .bookbar__txt b { display: block; font-size: var(--t-lg); font-weight: 700; letter-spacing: -.03em; color: var(--ink); }
+  .bookbar .btn { margin-left: auto; flex: none; }
+  @media (width >= 66rem) { .bookbar { display: none; } }
+}
