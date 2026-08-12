@@ -121,55 +121,6 @@
     addEventListener('scroll', () => { if (!menu.hidden) place(); }, { passive: true });
   }
 
-  /* ---------- A-05 · Catalogue filters ----------
-     Two facets are the business model (location, experience) and two are what
-     the traveller actually decides on (difficulty, length). Selecting nothing
-     inside a facet means "all of it", so the default view is the full
-     catalogue rather than an empty page. */
-  const filterForm = document.querySelector('[data-filters]');
-
-  if (filterForm) {
-    const cards = [...document.querySelectorAll('.tcard')];
-    const countEl = filterForm.querySelector('[data-count]');
-    const clearBtn = filterForm.querySelector('[data-clear]');
-    const emptyEl = document.querySelector('[data-empty]');
-    const opts = [...filterForm.querySelectorAll('[data-f]')];
-
-    const apply = () => {
-      // Values are grouped per facet: OR within a facet, AND across facets.
-      const on = {};
-      for (const b of opts) {
-        if (b.getAttribute('aria-pressed') !== 'true') continue;
-        (on[b.dataset.f] ||= []).push(...b.dataset.v.split(','));
-      }
-      let shown = 0;
-      for (const card of cards) {
-        const ok = Object.entries(on).every(([facet, values]) =>
-          values.includes(card.dataset[{ loc: 'loc', exp: 'exp', grade: 'grade', len: 'len' }[facet]]));
-        card.hidden = !ok;
-        if (ok) shown++;
-      }
-      countEl.textContent = shown === cards.length
-        ? `${shown} tours`
-        : `${shown} of ${cards.length} tours`;
-      const any = Object.keys(on).length > 0;
-      clearBtn.hidden = !any;
-      if (emptyEl) emptyEl.hidden = shown !== 0;
-    };
-
-    for (const b of opts) {
-      b.addEventListener('click', () => {
-        b.setAttribute('aria-pressed', String(b.getAttribute('aria-pressed') !== 'true'));
-        apply();
-      });
-    }
-    clearBtn.addEventListener('click', () => {
-      opts.forEach(b => b.setAttribute('aria-pressed', 'false'));
-      apply();
-    });
-    apply();
-  }
-
   /* ---------- Free-guide capture ----------
      Nothing is sent anywhere. The form swaps itself for its own confirmation so
      the interaction reads as finished instead of reloading the page, which is

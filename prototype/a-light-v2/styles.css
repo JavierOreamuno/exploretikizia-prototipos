@@ -354,43 +354,6 @@
   .tours { border-top: 1px solid var(--hair); }
   .tours__grid { display: grid; }
   @media (width >= 64rem) { .tours__grid { grid-template-columns: 1fr 1fr; } }
-  /* ---------- A-05 · Catalogue filters ----------
-     The catalogue shipped with zero filter controls while the whole strategy
-     rests on location × experience. Both axes are shown even though each has
-     one live value today: the disabled options are how the phased rollout
-     becomes legible instead of being explained in prose. */
-  .filters { padding: 0 var(--gutter) 1.5rem; display: grid; gap: 1.25rem; }
-  @media (width >= 60rem) { .filters { grid-template-columns: repeat(4, 1fr) auto; align-items: start; gap: 1.75rem; } }
-  .filters fieldset { border: 0; margin: 0; padding: 0; display: grid; gap: .55rem; align-content: start; }
-  .filters legend {
-    padding: 0; font-size: var(--t-xs); font-weight: 700; letter-spacing: .12em;
-    text-transform: uppercase; color: var(--ink-3);
-  }
-  .filters__opts { display: flex; flex-wrap: wrap; gap: .4rem; }
-  .filters__opts button {
-    min-height: 44px; padding: .4rem .9rem; cursor: pointer;
-    border: 1px solid var(--hair-2); border-radius: 999px; background: transparent;
-    font: inherit; font-size: var(--t-sm); font-weight: 500; color: var(--ink-2);
-    transition: background .2s var(--ease), color .2s var(--ease), border-color .2s var(--ease);
-  }
-  .filters__opts button:hover:not(:disabled) { border-color: var(--ink); color: var(--ink); }
-  .filters__opts button[aria-pressed="true"] {
-    background: var(--ink); border-color: var(--ink); color: var(--bg);
-  }
-  .filters__opts button:disabled { opacity: .45; cursor: not-allowed; }
-  .filters__foot { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem; }
-  .filters__count { font-size: var(--t-sm); font-weight: 600; color: var(--ink); }
-  .filters__clear {
-    min-height: 44px; padding: 0 .25rem; border: 0; background: none; cursor: pointer;
-    font: inherit; font-size: var(--t-sm); color: var(--accent-ink); text-decoration: underline;
-    text-underline-offset: 3px;
-  }
-  .filters__clear[hidden] { display: none; }
-  .tours__empty { padding: 3rem var(--gutter); border-bottom: 1px solid var(--hair); }
-  .tours__empty[hidden] { display: none; }
-  .tours__empty p { max-width: 46ch; color: var(--ink-2); }
-  .tcard[hidden] { display: none; }
-
   .tcard {
     display: grid; gap: clamp(1.25rem, 2.5vw, 2rem);
     grid-template-columns: minmax(0, 1fr);

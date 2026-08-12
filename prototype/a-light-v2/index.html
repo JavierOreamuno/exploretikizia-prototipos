@@ -128,47 +128,20 @@
       </div>
     </div>
 
-    <!-- A-05 · The catalogue shipped without a single filter control while the
-         whole strategy rests on location × experience. Both axes appear even
-         though each has one live value today: the disabled options are how the
-         phased rollout becomes navigable instead of merely described. -->
-    <form class="filters" data-filters aria-label="Filter the catalogue">
-      <fieldset>
-        <legend>Destination</legend>
-        <div class="filters__opts">
-          <button type="button" data-f="loc" data-v="la-fortuna" aria-pressed="false">La Fortuna</button>
-          <button type="button" disabled>Monteverde</button>
-          <button type="button" disabled>Chirrip&oacute;</button>
-        </div>
-      </fieldset>
-      <fieldset>
-        <legend>Experience</legend>
-        <div class="filters__opts">
-          <button type="button" data-f="exp" data-v="hiking" aria-pressed="false">Hiking &amp; Trekking</button>
-          <button type="button" disabled>Nature &amp; Wildlife</button>
-        </div>
-      </fieldset>
-      <fieldset>
-        <legend>Difficulty</legend>
-        <div class="filters__opts">
-          <button type="button" data-f="grade" data-v="1,2" aria-pressed="false">Easy</button>
-          <button type="button" data-f="grade" data-v="3,4" aria-pressed="false">Moderate</button>
-          <button type="button" data-f="grade" data-v="5" aria-pressed="false">Demanding</button>
-        </div>
-      </fieldset>
-      <fieldset>
-        <legend>Length</legend>
-        <div class="filters__opts">
-          <button type="button" data-f="len" data-v="half" aria-pressed="false">Half day</button>
-          <button type="button" data-f="len" data-v="full" aria-pressed="false">Full day</button>
-        </div>
-      </fieldset>
-      <div class="filters__foot">
-        <p class="filters__count" data-count role="status">8 tours</p>
-        <button class="filters__clear" type="button" data-clear hidden>Clear filters</button>
-      </div>
-    </form>
+    <!-- A-05 · reconsidered ------------------------------------------------
+         A four-facet filter bar sat here. It was removed after measuring it:
+         of its ten controls, three were disabled and two more returned 8 of 8,
+         because today every product shares one destination and one category —
+         the two facts the H2 directly above already states. Five working
+         controls out of ten, occupying 39% of the distance between the heading
+         and the first product, in front of a set of eight items that fits in
+         two scrolls.
 
+         Filtering earns its interaction cost when scanning stops being viable.
+         That is the /tours/ catalogue at 20–40 products across several
+         destinations and categories, not this page at eight. The facets a
+         traveller actually decides on — difficulty and length — are on the face
+         of every card instead. -->
     <div class="tours__grid">
 
       <article class="tcard" data-loc="la-fortuna" data-exp="hiking" data-grade="1" data-len="half">
@@ -355,11 +328,6 @@
         <div class="tcard__media tcard__media--todo">Photograph needed<br>Fortuna → Monteverde traverse</div>
       </article>
 
-    </div>
-
-    <div class="tours__empty shell" data-empty hidden>
-      <h3>No tour matches those filters yet.</h3>
-      <p>Only Hiking &amp; Trekking in La Fortuna is open today. The other categories are built and waiting on their own photography and trail data.</p>
     </div>
 
     <p class="shell" style="padding-block:1.5rem;font-size:var(--t-xs);color:var(--ink-3);max-width:80ch">
