@@ -99,14 +99,29 @@
     --t-lg:   clamp(1.0625rem, 1rem + .32vw, 1.3125rem);
     --t-xl:   clamp(1.25rem, 1.1rem + .68vw, 1.75rem);
     --t-2xl:  clamp(1.75rem, 1.35rem + 1.8vw, 3rem);
-    /* The two display sizes are capped by viewport HEIGHT as well as width.
-       Scaling on `vw` alone is what put the hero's CTA below the fold on a
-       1366×768 laptop — the commonest screen there is — because a wide, short
-       window still resolved the h1 to its 176px maximum. `min()` inside the
-       clamp leaves large screens untouched (19vh of 900px is already past the
-       cap) and only bites where the window is short. */
-    --t-3xl:  clamp(2.25rem, min(1.5rem + 3.4vw, 8.2vh), 4.75rem);
-    --t-mega: clamp(3.5rem, min(.8rem + 12vw, 19vh), 11rem);
+    /* ---------- Display scale ----------
+       Sized against what the competition actually does, measured on their live
+       homepages at 1440×900 rather than estimated:
+
+         GetYourGuide 36px · Exoticca 48 · Much Better Adventures 48
+         G Adventures 56 · kimkim 64 · TourRadar 72 · Intrepid 72
+
+       Every company that earns its living selling tours sits between 36 and
+       72px. The 176px this file used to carry came from the Vita Webflow
+       template, which measures 190px — but that is a marketplace template whose
+       job is to impress someone shopping for templates, not to convert someone
+       booking a hike. It is a reference for composition, not for scale.
+
+       The cap is 5.5rem/88px: above every measured competitor, so the page
+       keeps the editorial character that makes it look like an operator rather
+       than an aggregator, and half of what it was, so the headline stops
+       displacing the offer. It also drops the h1 from 39% of the hero to 20%.
+
+       Both sizes stay capped by viewport HEIGHT as well as width: scaling on
+       `vw` alone is what pushed the hero CTA below the fold on a 1366×768
+       laptop, since a wide, short window still resolved to the maximum. */
+    --t-3xl:  clamp(1.875rem, min(1.2rem + 2.2vw, 5.5vh), 3.25rem);
+    --t-mega: clamp(2.75rem, min(.8rem + 6vw, 11vh), 5.5rem);
 
     --gutter: clamp(1.25rem, 3vw, 2.5rem);
     --stack:  clamp(4rem, 8vw, 8rem);
