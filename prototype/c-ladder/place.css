@@ -1,0 +1,202 @@
+/* ============================================================
+   Direction C — place templates
+   Two pages share this sheet: the destination hub (/la-fortuna/)
+   and the attraction page (/la-fortuna/arenal-volcano/). They are
+   one content type at two depths, so they are one stylesheet.
+   Extends styles.css — same tokens, same @layer order.
+   Prototype only. Not production code.
+   ============================================================ */
+
+@layer components {
+
+  /* ================= DESTINATION HERO ================= */
+  .phero { position: relative; overflow: clip; color: #fff; isolation: isolate; }
+  .phero__bg { position: absolute; inset: 0; z-index: -1; }
+  .phero__bg img { width: 100%; height: 100%; object-fit: cover; }
+  /* The town aerial is bright and busy; without this the headline sits on sky. */
+  .phero__bg::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgb(10 32 26 / .55) 0%, rgb(10 32 26 / .78) 60%, rgb(10 32 26 / .92) 100%);
+  }
+  .phero__inner { padding-block: clamp(2rem, 5vw, 3rem) clamp(3rem, 7vw, 5rem); }
+  .phero .crumbs ol, .phero .crumbs a { color: rgb(255 255 255 / .72); }
+  .phero .crumbs a:hover, .phero .crumbs li[aria-current] { color: #fff; }
+  .phero .crumbs li:not(:last-child)::after { color: rgb(255 255 255 / .4); }
+  .phero h1 {
+    font-family: var(--font-head); font-size: var(--t-3xl); font-weight: 680;
+    line-height: 1.03; letter-spacing: -.026em; margin-block: 1rem .875rem; max-width: 17ch;
+  }
+  .phero__lede { font-size: var(--t-lg); color: rgb(255 255 255 / .88); max-width: 56ch; }
+  .phero__facts {
+    list-style: none; padding: 0; display: grid; gap: 1.25rem 2rem;
+    grid-template-columns: repeat(2, 1fr); margin-top: 2.5rem; max-width: 40rem;
+  }
+  @media (width >= 48rem) { .phero__facts { grid-template-columns: repeat(4, 1fr); } }
+  .phero__facts li { display: grid; gap: .2rem; }
+  .phero__facts span { font-size: var(--t-xs); letter-spacing: .08em; text-transform: uppercase; color: rgb(255 255 255 / .68); }
+  .phero__facts strong { font-size: var(--t-base); font-weight: 620; }
+  /* .pill is a rule plus small caps, not a filled chip — on dark grounds only the
+     two colours change, never the shape. */
+  .pill--light { color: #fff; }
+  .pill--light::before { background: var(--citrus); }
+
+  /* ================= ORIENTATION ================= */
+  .pintro__grid { display: grid; gap: clamp(2rem, 4vw, 3rem); align-items: start; }
+  @media (width >= 56rem) { .pintro__grid { grid-template-columns: 1.4fr .6fr; } }
+  .pintro h2 { font-family: var(--font-head); font-size: var(--t-2xl); font-weight: 680; letter-spacing: -.02em; margin-bottom: 1rem; max-width: 20ch; }
+  .pintro p { color: var(--ink-2); max-width: 62ch; }
+  .pintro p + p { margin-top: 1rem; }
+  .pintro__box {
+    background: var(--sky); border-radius: var(--r-lg);
+    padding: clamp(1.5rem, 3vw, 2rem); display: grid; gap: .75rem; align-content: start;
+  }
+  .pintro__box h3 { font-size: var(--t-lg); font-weight: 650; }
+  .pintro__box p { font-size: var(--t-sm); }
+
+  /* ================= ATTRACTION CARDS ================= */
+  /* The cluster grid. One card per attraction, each linking to a page that owns its
+     own search intent — the hub never targets the terms its children target. */
+  .places { display: grid; gap: 1.25rem; }
+  @media (width >= 46rem) { .places { grid-template-columns: repeat(2, 1fr); } }
+  @media (width >= 70rem) { .places { grid-template-columns: repeat(3, 1fr); } }
+  .place {
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg);
+    overflow: clip; transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s var(--ease);
+  }
+  .place:hover { transform: translateY(-3px); box-shadow: var(--sh-2); border-color: var(--line-2); }
+  /* The most-visited attraction gets the wide cell — the hub states a hierarchy
+     rather than presenting five equal options and leaving the reader to guess. */
+  @media (width >= 70rem) { .place--wide { grid-column: span 2; } }
+  .place__link { display: flex; flex-direction: column; height: 100%; }
+  .place--wide .place__link { flex-direction: row; }
+  @media (width < 52rem) { .place--wide .place__link { flex-direction: column; } }
+  .place__media { display: block; position: relative; overflow: clip; aspect-ratio: 16 / 10; }
+  /* Fixed share rather than a flexible one: the body column carries a longer
+     heading and needs the room, otherwise the title wraps to three lines. */
+  .place--wide .place__media { flex: 0 0 44%; aspect-ratio: auto; min-height: 16rem; }
+  @media (width < 52rem) { .place--wide .place__media { aspect-ratio: 16 / 10; min-height: 0; } }
+  .place__media img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s var(--ease); }
+  .place:hover .place__media img { transform: scale(1.04); }
+  .place__body { display: flex; flex-direction: column; gap: .6rem; padding: clamp(1.25rem, 2.4vw, 1.75rem); flex: 1; }
+  .place--wide .place__body { justify-content: center; }
+  .place__tag {
+    align-self: flex-start; font-size: var(--t-xs); font-weight: 700;
+    background: var(--forest); color: #fff; border-radius: var(--r-pill); padding: .25rem .7rem;
+  }
+  .place__tag--alt { background: var(--citrus); color: #1c0d02; }
+  .place h3 { font-size: var(--t-lg); font-weight: 650; letter-spacing: -.015em; }
+  .place--wide h3 { font-size: var(--t-lg); }
+  .place p { font-size: var(--t-sm); color: var(--ink-2); }
+  .place__meta { display: flex; flex-wrap: wrap; gap: .4rem .875rem; font-size: var(--t-xs); color: var(--ink-3); }
+  .place__meta span { display: inline-flex; align-items: center; gap: .3rem; }
+  .place__meta span:not(:last-child)::after { content: "·"; margin-left: .5rem; color: var(--line-2); }
+  .place__cta { margin-top: auto; padding-top: .5rem; font-size: var(--t-sm); font-weight: 620; color: var(--forest); }
+  .place:hover .place__cta { text-decoration: underline; text-underline-offset: .2em; }
+
+  /* .place__media--todo, .shot and .shotlist live in styles.css — the homepage
+     catalogue shows missing photographs too, so the empty state is shared. */
+
+  /* ================= HUB GUIDE BLOCK ================= */
+  .pguide { background: var(--forest); color: #fff; }
+  .pguide__grid { display: grid; gap: clamp(2rem, 4vw, 3.5rem); align-items: center; }
+  @media (width >= 58rem) { .pguide__grid { grid-template-columns: 1.35fr .65fr; } }
+  .pguide h2 { font-family: var(--font-head); font-size: var(--t-2xl); font-weight: 680; letter-spacing: -.02em; margin-block: 1rem; max-width: 20ch; }
+  .pguide > .shell > div > p { color: rgb(255 255 255 / .84); max-width: 58ch; }
+  .pguide .pill { color: #fff; }
+  .pguide .pill::before { background: var(--citrus); }
+  .pguide .ticks { color: rgb(255 255 255 / .88); margin-block: 1.5rem; }
+  .pguide .ticks li::before { color: var(--citrus); }
+  .pguide__buy { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.75rem; }
+  .pguide__price { font-size: var(--t-2xl); font-weight: 700; letter-spacing: -.03em; }
+  .pguide__price small { font-size: var(--t-sm); font-weight: 500; color: rgb(255 255 255 / .72); margin-left: .4rem; letter-spacing: 0; }
+  .pguide__free {
+    background: rgb(255 255 255 / .08); border: 1px solid rgb(255 255 255 / .16);
+    border-radius: var(--r-lg); padding: clamp(1.25rem, 2.5vw, 1.75rem); display: grid; gap: .6rem;
+  }
+  .pguide__free h3 { font-size: var(--t-lg); font-weight: 650; }
+  .pguide__free p { font-size: var(--t-sm); color: rgb(255 255 255 / .82); }
+  .pguide__free .capture input { background: rgb(255 255 255 / .95); border-color: transparent; }
+
+  /* ================= FOUR-DAY PLAN ================= */
+  .days { list-style: none; padding: 0; display: grid; gap: 1rem; }
+  @media (width >= 52rem) { .days { grid-template-columns: repeat(2, 1fr); } }
+  @media (width >= 76rem) { .days { grid-template-columns: repeat(4, 1fr); } }
+  .days li {
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg);
+    padding: clamp(1.25rem, 2.4vw, 1.6rem); display: grid; gap: .45rem; align-content: start;
+  }
+  .days b {
+    justify-self: start; font-size: var(--t-xs); font-weight: 700; letter-spacing: .06em;
+    text-transform: uppercase; background: var(--sky); color: var(--forest);
+    border-radius: var(--r-pill); padding: .25rem .7rem;
+  }
+  .days h3 { font-size: var(--t-base); font-weight: 650; margin-top: .3rem; }
+  .days p { font-size: var(--t-sm); color: var(--ink-2); }
+
+  /* ================= READING ================= */
+  .reading { background: var(--bg); }
+
+  /* ================= NEXT DESTINATION ================= */
+  .nextdest { border-top: 1px solid var(--line); }
+  .nextdest__inner { display: grid; gap: clamp(1.75rem, 4vw, 3rem); align-items: center; }
+  @media (width >= 58rem) { .nextdest__inner { grid-template-columns: 1fr 1fr; } }
+  .nextdest h2 { font-family: var(--font-head); font-size: var(--t-xl); font-weight: 680; letter-spacing: -.02em; margin-block: .875rem .75rem; max-width: 22ch; }
+  .nextdest p { font-size: var(--t-sm); color: var(--ink-2); max-width: 52ch; }
+  .nextdest__list { list-style: none; padding: 0; display: grid; gap: .5rem; }
+  .nextdest__list li {
+    display: grid; gap: .15rem; padding: .875rem 1.125rem;
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--r);
+  }
+  .nextdest__list b { font-size: var(--t-sm); font-weight: 650; }
+  .nextdest__list span { font-size: var(--t-xs); color: var(--ink-3); }
+
+  /* ================= ATTRACTION HERO ================= */
+  .ahero { padding-block: clamp(2rem, 4vw, 3rem) clamp(2rem, 4vw, 3rem); }
+  .ahero__grid { display: grid; gap: clamp(2rem, 4vw, 3rem); align-items: center; }
+  @media (width >= 62rem) { .ahero__grid { grid-template-columns: 1fr 1fr; } }
+  .ahero h1 {
+    font-family: var(--font-head); font-size: var(--t-3xl); font-weight: 680;
+    line-height: 1.03; letter-spacing: -.026em; margin-block: .875rem 1rem; max-width: 14ch;
+  }
+  .ahero__lede { font-size: var(--t-lg); color: var(--ink-2); max-width: 50ch; }
+  .ahero__actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 2rem; }
+  .ahero__fig { margin: 0; }
+  .ahero__fig img { width: 100%; height: auto; border-radius: var(--r-lg); box-shadow: var(--sh-2); }
+  .ahero__fig figcaption { margin-top: .75rem; font-size: var(--t-xs); color: var(--ink-3); max-width: 46ch; }
+
+  /* ================= ATTRACTION FACT BAR ================= */
+  .afacts {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px;
+    background: var(--line); border-block: 1px solid var(--line);
+  }
+  @media (width >= 44rem) { .afacts { grid-template-columns: repeat(5, 1fr); } }
+  .afacts > div { background: var(--bg); padding: 1.125rem clamp(1rem, 3vw, 1.5rem); display: grid; gap: .2rem; }
+  .afacts dt { font-size: var(--t-xs); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
+  .afacts dd { font-size: var(--t-lg); font-weight: 680; letter-spacing: -.02em; }
+  .afacts dd small { font-size: var(--t-sm); font-weight: 500; color: var(--ink-3); letter-spacing: 0; margin-left: .2rem; }
+
+  /* ================= ATTRACTION BODY ================= */
+  .awrap { display: grid; gap: clamp(2rem, 4vw, 3.5rem); align-items: start; padding-block: clamp(1rem, 3vw, 2rem); }
+  @media (width >= 66rem) { .awrap { grid-template-columns: minmax(0, 1fr) 20rem; } }
+  .awrap__main { min-width: 0; }
+  .awrap__aside { display: grid; gap: 1rem; position: sticky; top: 5.75rem; }
+
+  .trail { display: grid; gap: clamp(1.5rem, 3vw, 2.5rem); align-items: start; }
+  @media (width >= 46rem) { .trail { grid-template-columns: 13rem 1fr; } }
+  .trail img { width: 100%; height: auto; border-radius: var(--r-lg); box-shadow: var(--sh-1); }
+
+  .rail { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); padding: clamp(1.25rem, 2.4vw, 1.5rem); }
+  .rail__label { font-size: var(--t-xs); font-weight: 650; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); }
+  .rail__list { list-style: none; padding: 0; display: grid; margin-block: .875rem 1.25rem; }
+  .rail__list li { display: grid; gap: .1rem; padding-block: .7rem; border-bottom: 1px solid var(--line); font-size: var(--t-sm); }
+  .rail__list li:last-child { border-bottom: 0; }
+  .rail__list li[aria-current] b { color: var(--forest); font-weight: 680; }
+  .rail__list a { font-weight: 600; }
+  .rail__list a:hover { color: var(--forest); }
+  .rail__list span { font-size: var(--t-xs); color: var(--ink-3); }
+  .rail--guide { background: var(--sky); border-color: transparent; display: grid; gap: .6rem; }
+  .rail--guide h3 { font-size: var(--t-base); font-weight: 650; }
+  .rail--guide p { font-size: var(--t-sm); color: var(--ink-2); }
+  .rail--guide .capture { margin-top: .5rem; }
+  .rail--guide .capture input { background: var(--surface); }
+}

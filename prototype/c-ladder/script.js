@@ -107,4 +107,19 @@
     new IntersectionObserver(([e]) => { pastHero = !e.isIntersecting; sync(); }, { threshold: 0 }).observe(hero);
     if (final) new IntersectionObserver(([e]) => { atFinal = e.isIntersecting; sync(); }, { threshold: 0.15 }).observe(final);
   }
+
+  /* Free-guide capture. Nothing is sent anywhere — the form swaps itself for its
+     own confirmation so the lead-magnet interaction reads as finished rather than
+     reloading the page, which is what an un-wired form would do. */
+  document.querySelectorAll('[data-capture]').forEach((form) => {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (!form.reportValidity()) return;
+      const done = document.createElement('p');
+      done.className = 'capture__done';
+      done.setAttribute('role', 'status');
+      done.textContent = 'On its way. Prototype only — no email is actually sent.';
+      form.replaceWith(done);
+    });
+  });
 })();

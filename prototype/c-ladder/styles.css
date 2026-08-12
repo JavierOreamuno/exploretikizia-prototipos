@@ -1,6 +1,8 @@
 /* ============================================================
-   Direction C — "The Commitment Ladder"
-   Product-led, bright, conversion-first.
+   Direction C — "Destination Hubs"
+   Product-led, bright, conversion-first. Its differentiator is the
+   pillar layer: a hub page per destination and a page per attraction
+   above the tour catalogue, which no other direction has.
    Includes a live multi-step intake demo (10 fields, not 108).
    Prototype only. Not production code.
    ============================================================ */
@@ -27,7 +29,12 @@
     --surface: #FFFFFF;
     --ink:     #10201D;
     --ink-2:   #3C534F;
-    --ink-3:   #708581;
+    /* Was #708581, which measured 3.75:1 on --bg and 3.92:1 on --surface — below
+       AA everywhere it is used, and it is used for every price sub-line, tour
+       meta row and caption in the direction. Darkened along the same hue until
+       it clears 4.5:1 on both grounds (4.64 and 4.84). Fixing the token fixes
+       all four templates at once; fixing the components would not have. */
+    --ink-3:   #607672;
     --forest:  #0F5132;
     --forest-2:#0A3D26;
     --leaf:    #22A06B;
@@ -143,7 +150,7 @@
   .hero__trust b { color: var(--ink); }
 
   .hero__visual { position: relative; }
-  .hero__visual > img { width: 100%; aspect-ratio: 5/6; max-height: 600px; object-fit: cover; border-radius: var(--r-lg); box-shadow: var(--sh-2); }
+  .hero__visual > img { width: 100%; height: auto; aspect-ratio: 5/6; max-height: 600px; object-fit: cover; border-radius: var(--r-lg); box-shadow: var(--sh-2); }
   .float {
     position: absolute; background: var(--surface); border-radius: var(--r);
     box-shadow: var(--sh-2); padding: .9rem 1.1rem; font-size: var(--t-sm);
@@ -165,55 +172,6 @@
   .head p { color: var(--ink-2); font-size: var(--t-lg); }
   .head--center { margin-inline: auto; text-align: center; }
   .head--center h2, .head--center p { margin-inline: auto; }
-
-  /* ---------- Ladder ---------- */
-  .ladder { display: grid; gap: 1rem; position: relative; }
-  @media (width >= 52rem) { .ladder { grid-template-columns: repeat(2, 1fr); } }
-  @media (width >= 78rem) {
-    /* La escalera asciende de verdad: cada peldaño se apoya más alto que el anterior.
-       Es el componente que da nombre a la dirección, no una rejilla de cinco iguales.
-       El desplazamiento se expone como --stagger en vez de aplicarse como transform
-       directo: la capa `motion` escribe `transform` para el revelado y, al ir después
-       en el orden de capas, anularía cualquier transform declarado aquí. */
-    .ladder { grid-template-columns: repeat(5, 1fr); align-items: start; gap: .75rem; padding-top: 8rem; }
-    .ladder .rung:nth-child(1) { --stagger: 0rem; }
-    .ladder .rung:nth-child(2) { --stagger: -2rem; }
-    .ladder .rung:nth-child(3) { --stagger: -4rem; }
-    .ladder .rung:nth-child(4) { --stagger: -6rem; }
-    .ladder .rung:nth-child(5) { --stagger: -8rem; }
-  }
-  .rung {
-    background: var(--surface); border: 1px solid var(--line);
-    border-radius: var(--r-lg); padding: clamp(1.5rem, 2.5vw, 2rem);
-    display: flex; flex-direction: column; gap: .75rem; position: relative;
-    transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s var(--ease);
-  }
-  .rung { transform: translateY(var(--stagger, 0rem)); }
-  .rung:hover { transform: translateY(calc(var(--stagger, 0rem) - 3px)); box-shadow: var(--sh-2); border-color: var(--line-2); }
-  .rung--hero { background: var(--forest); color: #fff; border-color: transparent; }
-  .rung--hero .rung__price, .rung--hero h3 { color: #fff; }
-  .rung--hero .rung__meta, .rung--hero li { color: rgb(255 255 255 / .82); }
-  .rung--hero .rung__step { background: rgb(255 255 255 / .16); color: #fff; }
-  .rung__step {
-    align-self: flex-start; font-size: var(--t-xs); font-weight: 700;
-    background: var(--sky); color: var(--forest);
-    width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center;
-  }
-  .rung h3 { font-size: var(--t-lg); font-weight: 650; letter-spacing: -.01em; }
-  .rung__price { font-size: var(--t-2xl); font-weight: 700; letter-spacing: -.03em; line-height: 1; }
-  .rung__price small { font-size: var(--t-sm); font-weight: 500; color: var(--ink-3); letter-spacing: 0; }
-  .rung--hero .rung__price small { color: rgb(255 255 255 / .7); }
-  .rung__meta { font-size: var(--t-sm); color: var(--ink-3); }
-  .rung ul { list-style: none; padding: 0; display: grid; gap: .5rem; font-size: var(--t-sm); color: var(--ink-2); margin-block: .5rem 1.25rem; }
-  .rung li { display: flex; gap: .55rem; }
-  .rung li::before { content: "✓"; color: var(--leaf); font-weight: 700; flex: none; }
-  .rung--hero li::before { color: var(--citrus); }
-  .rung .btn { margin-top: auto; }
-  .rung__tag {
-    position: absolute; top: -.7rem; inset-inline-end: 1.25rem;
-    background: var(--citrus); color: #1c0d02; font-size: var(--t-xs); font-weight: 700;
-    padding: .3rem .75rem; border-radius: var(--r-pill);
-  }
 
   /* ---------- Intake demo ---------- */
   .demo { background: var(--forest-2); color: #fff; }
@@ -412,6 +370,209 @@
   .dock__txt b { display: block; color: var(--ink); font-size: var(--t-sm); }
   .dock .btn { margin-left: auto; flex: none; }
   @media (width >= 60rem) { .dock { display: none; } }
+
+  /* Anchor targets clear the sticky header (70px). Without this every in-page
+     link lands with its own heading hidden behind the nav. */
+  section[id] { scroll-margin-top: 5.75rem; }
+
+  /* ---------- Shared page primitives ----------
+     Authored for the tour page, now used by the destination hub and the attraction
+     page too. Promoted from tour.css so three templates share one definition rather
+     than three copies. Nothing in this sheet redefines these selectors, so moving
+     them earlier in the cascade cannot lose a tie they previously won. */
+  .crumbs ol { list-style: none; display: flex; flex-wrap: wrap; align-items: center; gap: .4rem; padding: 0; font-size: var(--t-xs); color: var(--ink-3); }
+  .crumbs li:not(:last-child)::after { content: "/"; margin-left: .4rem; color: var(--line-2); }
+  /* Text stays small; the tap area does not — same trick as .foot li a */
+  .crumbs a { color: var(--ink-3); display: inline-flex; align-items: center; min-height: 44px; }
+  .crumbs a:hover { color: var(--forest); }
+  .crumbs li[aria-current] { color: var(--ink); font-weight: 550; }
+
+  .sec { padding-block: clamp(2.5rem, 5vw, 4rem); border-top: 1px solid var(--line); }
+  .sec:first-child { border-top: 0; }
+  .kicker { font-size: var(--t-xs); font-weight: 650; letter-spacing: .14em; text-transform: uppercase; color: var(--forest); }
+  .sec h2 { font-family: var(--font-head); font-size: var(--t-2xl); font-weight: 680; letter-spacing: -.02em; margin-block: .625rem 1.5rem; max-width: 22ch; }
+  .sec__lead { font-size: var(--t-lg); color: var(--ink-2); max-width: 58ch; margin-bottom: 2rem; }
+
+  .fit__list { list-style: none; padding: 0; display: grid; gap: .75rem; align-content: start; }
+  .fit__list li { padding-left: 1.75rem; position: relative; font-size: var(--t-sm); color: var(--ink-2); }
+  .fit__list li::before { position: absolute; left: 0; top: .05em; font-weight: 700; }
+  .fit__list li.yes::before { content: "✓"; color: var(--leaf); }
+  .fit__list li.no::before { content: "✕"; color: var(--citrus); }
+
+  .facts { display: grid; gap: 0; }
+  .facts > div { display: grid; grid-template-columns: 9rem 1fr; gap: 1.5rem; padding-block: 1rem; border-top: 1px solid var(--line); font-size: var(--t-sm); }
+  .facts > div:last-child { border-bottom: 1px solid var(--line); }
+  .facts dt { font-weight: 620; color: var(--ink); }
+  .facts dd { color: var(--ink-2); }
+  @media (width < 34rem) { .facts > div { grid-template-columns: 1fr; gap: .3rem; } }
+  /* --citrus is a fill colour: it carries dark text on buttons and badges. As text
+     on a light ground it measures 2.67:1, so the "to verify" flag uses a darkened
+     version of the same hue (5.01:1) rather than the token itself. */
+  .pending { display: block; margin-top: .3rem; color: #A25E31; font-size: var(--t-xs); font-weight: 600; }
+
+  .ticks { list-style: none; padding: 0; display: grid; gap: .6rem; font-size: var(--t-sm); color: var(--ink-2); }
+  .ticks li { padding-left: 1.5rem; position: relative; }
+  .ticks li::before { content: "✓"; position: absolute; left: 0; color: var(--leaf); font-weight: 700; }
+  .ticks--out li::before { content: "–"; color: var(--ink-3); }
+
+  .fine { margin-top: 1.5rem; font-size: var(--t-xs); color: var(--ink-3); }
+  .arrow { font-size: var(--t-sm); font-weight: 620; color: var(--forest); white-space: nowrap; display: inline-flex; align-items: center; min-height: 44px; }
+
+  /* Numbered step list, shared by the attraction trails and any ordered walkthrough. */
+  .plist { list-style: none; padding: 0; display: grid; gap: 1.5rem; }
+  .plist li { display: grid; grid-template-columns: 2.25rem 1fr; gap: 1rem; align-items: start; }
+  .plist b { font-size: var(--t-sm); font-weight: 700; color: var(--forest); background: var(--sky); border-radius: var(--r-sm); padding: .25rem 0; text-align: center; }
+  .plist h3 { font-size: var(--t-base); font-weight: 650; margin-bottom: .3rem; }
+  .plist p { font-size: var(--t-sm); color: var(--ink-2); }
+
+  /* Journal index rows — the link out to the blog cluster. */
+  .idx { display: grid; border-top: 1px solid var(--line); }
+  .idx__row {
+    display: grid; grid-template-columns: 2.5rem 1fr auto auto; gap: 1rem;
+    align-items: center; padding-block: 1.25rem; border-bottom: 1px solid var(--line);
+    transition: background .25s var(--ease), padding-inline .25s var(--ease);
+  }
+  .idx__row:hover { background: var(--surface); padding-inline: 1rem; }
+  .idx__n { font-size: var(--t-xs); color: var(--ink-3); }
+  .idx__body h3 { font-size: var(--t-base); font-weight: 620; letter-spacing: -.01em; }
+  .idx__meta { font-size: var(--t-sm); color: var(--ink-3); }
+  .idx__cat { font-size: var(--t-xs); font-weight: 620; color: var(--forest); background: var(--sky); border-radius: var(--r-pill); padding: .25rem .7rem; white-space: nowrap; }
+  .idx__arrow { color: var(--ink-3); transition: transform .25s var(--ease); }
+  .idx__row:hover .idx__arrow { transform: translateX(4px); color: var(--forest); }
+  @media (width < 40rem) {
+    .idx__row { grid-template-columns: 1fr auto; row-gap: .5rem; }
+    .idx__n, .idx__arrow { display: none; }
+  }
+
+  /* ---------- Missing photograph ----------
+     An honest empty state, not a grey box. Three of the five La Fortuna attractions
+     have no usable image on the current site, and two of those carry the largest
+     search volume in Phase 1 — so the placeholder names the shot that is missing
+     and doubles as the brief for the photo session. */
+  .place__media--todo {
+    display: grid; place-items: center; padding: 1.25rem; position: relative;
+    background:
+      repeating-linear-gradient(135deg, transparent 0 11px, rgb(15 81 50 / .05) 11px 22px),
+      var(--sky);
+    border-bottom: 1px solid var(--line);
+  }
+  .tour__media.place__media--todo { aspect-ratio: 16 / 10; }
+  .shot {
+    display: grid; gap: .3rem; justify-items: center; text-align: center;
+    border: 1px dashed color-mix(in oklab, var(--forest) 40%, transparent);
+    border-radius: var(--r); padding: 1rem 1.25rem; max-width: 22ch;
+  }
+  .shot b {
+    font-size: var(--t-xs); font-weight: 700; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--forest);
+  }
+  .shot span { font-size: var(--t-xs); color: var(--ink-2); line-height: 1.35; }
+  .shot--sm { padding: .7rem .9rem; max-width: 20ch; }
+  .shot--sm b { font-size: 10px; }
+
+  .shotlist {
+    margin-top: 2rem; padding: 1.25rem 1.5rem; font-size: var(--t-sm); color: var(--ink-2);
+    background: var(--surface); border: 1px dashed var(--line-2); border-radius: var(--r);
+    max-width: 78ch;
+  }
+  .shotlist b { color: var(--ink); font-weight: 650; }
+
+  /* The combo card crosses destinations, so it is marked rather than left to blend
+     in with the single-attraction products around it. */
+  .tour--combo { outline: 2px solid color-mix(in oklab, var(--citrus) 55%, transparent); outline-offset: -2px; }
+
+  /* ---------- Destination cards ----------
+     Only the live destination is a link. The three ahead are stated as phases
+     rather than dressed up as options — the roadmap is the argument. */
+  .dests { display: grid; gap: 1rem; }
+  @media (width >= 46rem) { .dests { grid-template-columns: repeat(2, 1fr); } }
+  @media (width >= 68rem) { .dests { grid-template-columns: 1.6fr 1fr 1fr; } }
+  .dest {
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg);
+    overflow: clip; transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s var(--ease);
+  }
+  @media (width >= 68rem) { .dest--live { grid-row: span 2; } }
+  .dest--live:hover { transform: translateY(-3px); box-shadow: var(--sh-2); border-color: var(--line-2); }
+  .dest__link { display: flex; flex-direction: column; height: 100%; }
+  .dest__media { position: relative; display: block; overflow: clip; aspect-ratio: 16 / 10; }
+  .dest__media img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s var(--ease); }
+  .dest--live:hover .dest__media img { transform: scale(1.04); }
+  .dest__badge {
+    position: absolute; top: .875rem; left: .875rem;
+    font-size: var(--t-xs); font-weight: 700; background: var(--citrus); color: #1c0d02;
+    border-radius: var(--r-pill); padding: .28rem .75rem;
+  }
+  .dest__body { display: flex; flex-direction: column; gap: .55rem; padding: clamp(1.25rem, 2.4vw, 1.75rem); flex: 1; }
+  .dest h3 { font-size: var(--t-lg); font-weight: 650; letter-spacing: -.015em; }
+  .dest p { font-size: var(--t-sm); color: var(--ink-2); }
+  .dest__meta { display: flex; flex-wrap: wrap; gap: .4rem .875rem; font-size: var(--t-xs); color: var(--ink-3); }
+  .dest__cta { margin-top: auto; padding-top: .5rem; font-size: var(--t-sm); font-weight: 650; color: var(--forest); }
+  .dest--live:hover .dest__cta { text-decoration: underline; text-underline-offset: .2em; }
+  .dest--soon { background: transparent; border-style: dashed; }
+  .dest__phase {
+    align-self: flex-start; font-size: var(--t-xs); font-weight: 650;
+    letter-spacing: .06em; text-transform: uppercase;
+    background: var(--sky); color: var(--forest); border-radius: var(--r-pill); padding: .25rem .7rem;
+  }
+
+  /* ---------- Guide shelf ----------
+     Deliberately NOT .rung: the ladder ascends and staggers, the shelf is flat.
+     Four guides at the same price are peers, not steps, and drawing them as
+     steps would break the one idea the ladder is carrying. */
+  .shelf { display: grid; gap: 1rem; }
+  @media (width >= 40rem) { .shelf { grid-template-columns: repeat(2, 1fr); } }
+  @media (width >= 68rem) { .shelf { grid-template-columns: repeat(4, 1fr); } }
+  .gcard {
+    display: flex; flex-direction: column; gap: .6rem;
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg);
+    padding: clamp(1.25rem, 2.2vw, 1.75rem);
+    transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s var(--ease);
+  }
+  .gcard:hover { transform: translateY(-3px); box-shadow: var(--sh-2); border-color: var(--line-2); }
+  .gcard--free { background: var(--sky); border-color: transparent; }
+  .gcard--soon { background: transparent; border-style: dashed; }
+  .gcard--soon:hover { transform: none; box-shadow: none; }
+  .gcard__top { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+  /* A price chip, not a step number. The circled 1–5 belonged to the ladder;
+     what actually distinguishes these cards is free versus paid. */
+  .gcard__step {
+    font-size: var(--t-xs); font-weight: 700; background: var(--sky); color: var(--forest);
+    border-radius: var(--r-pill); padding: .2rem .65rem; white-space: nowrap; flex: none;
+  }
+  .gcard--free .gcard__step { background: var(--forest); color: #fff; }
+  .gcard__price { font-size: var(--t-xl); font-weight: 700; letter-spacing: -.03em; line-height: 1; }
+  .gcard__price small { font-size: var(--t-sm); font-weight: 500; color: var(--ink-3); letter-spacing: 0; }
+  .gcard h3 { font-size: var(--t-base); font-weight: 650; letter-spacing: -.01em; margin-top: .25rem; }
+  .gcard__meta { font-size: var(--t-sm); color: var(--ink-3); }
+  .gcard ul { list-style: none; padding: 0; display: grid; gap: .45rem; font-size: var(--t-sm); color: var(--ink-2); margin-block: .35rem 1.25rem; }
+  .gcard li { display: flex; gap: .5rem; }
+  .gcard li::before { content: "✓"; color: var(--leaf); font-weight: 700; flex: none; }
+  .gcard .btn { margin-top: auto; }
+  .gcard__soon {
+    margin-top: auto; font-size: var(--t-sm); font-weight: 600; color: var(--ink-2);
+    border-top: 1px dashed var(--line-2); padding-top: .875rem;
+  }
+  /* --ink-3 is the sitewide muted tone, but the sky ground of the free card drops
+     it to 3.18:1 — below even the sheet's own baseline. Darkened here only. */
+  .gcard--free .gcard__meta { color: var(--ink-2); }
+
+  .capture { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: auto; }
+  .capture input {
+    flex: 1 1 8rem; min-width: 0; min-height: 44px; padding: .55rem .8rem;
+    font: inherit; font-size: 16px; color: var(--ink);
+    background: var(--surface); border: 1px solid var(--line-2); border-radius: var(--r-sm);
+  }
+  .capture input:focus-visible { outline: 2.5px solid var(--citrus); outline-offset: 2px; }
+  .capture .btn { flex: none; }
+  .capture__done {
+    margin-top: auto; font-size: var(--t-sm); font-weight: 650; color: var(--forest);
+    padding-top: .75rem;
+  }
+
+  .sr-only {
+    position: absolute; width: 1px; height: 1px;
+    overflow: hidden; clip-path: inset(50%); white-space: nowrap;
+  }
 }
 
 @layer motion {

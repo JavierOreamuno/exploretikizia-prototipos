@@ -34,8 +34,8 @@
 
   /* ---- booking calculator: adult + child pricing, live total ---------- */
   const form = document.querySelector('[data-booking]');
-  const ADULT_PRICE = 110;
-  const CHILD_PRICE = 85;
+  const ADULT_PRICE = 66;
+  const CHILD_PRICE = 45;
   const money = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
 
   const adultsField = document.querySelector('[data-adults]');
@@ -93,4 +93,18 @@
     new IntersectionObserver(([e]) => { pastHero = !e.isIntersecting; sync(); }, { threshold: 0 }).observe(heroCopy);
     new IntersectionObserver(([e]) => { panelVisible = e.isIntersecting; sync(); }, { threshold: 0.2 }).observe(form);
   }
+
+  /* Free-guide capture — confirm in place, never navigate away from a tour
+     the visitor is still reading. */
+  document.querySelectorAll('[data-capture]').forEach((f) => {
+    f.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (!f.reportValidity()) return;
+      const done = document.createElement('p');
+      done.className = 'capture__done';
+      done.setAttribute('role', 'status');
+      done.textContent = 'On its way. Prototype only — no email is actually sent.';
+      f.replaceWith(done);
+    });
+  });
 })();

@@ -9,13 +9,9 @@
 
 @layer components {
 
-  /* ---------- Breadcrumb ---------- */
-  .crumbs ol { list-style: none; display: flex; flex-wrap: wrap; align-items: center; gap: .4rem; padding: 0; font-size: var(--t-xs); color: var(--ink-3); }
-  .crumbs li:not(:last-child)::after { content: "/"; margin-left: .4rem; color: var(--line-2); }
-  /* Text stays small; the tap area does not — same trick as .foot li a */
-  .crumbs a { color: var(--ink-3); display: inline-flex; align-items: center; min-height: 44px; }
-  .crumbs a:hover { color: var(--forest); }
-  .crumbs li[aria-current] { color: var(--ink); font-weight: 550; }
+  /* .crumbs, .sec, .kicker, .facts, .ticks, .fit__list, .fine, .arrow and .pending
+     now live in styles.css — the destination hub and the attraction page use them
+     too, so they are shared primitives rather than tour-page furniture. */
 
   /* ---------- Hero with embedded booking card ---------- */
   .thero { padding-block: clamp(2rem, 4vw, 3.5rem) clamp(2.5rem, 5vw, 4rem); }
@@ -70,10 +66,6 @@
 
   /* ---------- Content wrap ---------- */
   .twrap { display: grid; gap: 0; max-width: 52rem; }
-  .sec { padding-block: clamp(2.5rem, 5vw, 4rem); border-top: 1px solid var(--line); }
-  .sec:first-child { border-top: 0; }
-  .kicker { font-size: var(--t-xs); font-weight: 650; letter-spacing: .14em; text-transform: uppercase; color: var(--forest); }
-  .sec h2 { font-family: var(--font-head); font-size: var(--t-2xl); font-weight: 680; letter-spacing: -.02em; margin-block: .625rem 1.5rem; max-width: 22ch; }
 
   /* Fit / difficulty meter */
   .fit { display: grid; gap: 2rem; }
@@ -85,37 +77,64 @@
   .meter span { flex: 1; height: 8px; border-radius: 99px; background: var(--line); }
   .meter span.on { background: var(--leaf); }
   .fit__note { margin-top: .875rem; font-size: var(--t-sm); color: var(--ink-3); }
-  .fit__list { list-style: none; padding: 0; display: grid; gap: .75rem; align-content: start; }
-  .fit__list li { padding-left: 1.75rem; position: relative; font-size: var(--t-sm); color: var(--ink-2); }
-  .fit__list li::before { position: absolute; left: 0; top: .05em; font-weight: 700; }
-  .fit__list li.yes::before { content: "✓"; color: var(--leaf); }
-  .fit__list li.no::before { content: "✕"; color: var(--citrus); }
-
-  /* Facts */
-  .facts { display: grid; gap: 0; }
-  .facts > div { display: grid; grid-template-columns: 9rem 1fr; gap: 1.5rem; padding-block: 1rem; border-top: 1px solid var(--line); font-size: var(--t-sm); }
-  .facts > div:last-child { border-bottom: 1px solid var(--line); }
-  .facts dt { font-weight: 620; color: var(--ink); }
-  .facts dd { color: var(--ink-2); }
-  .pending { display: block; margin-top: .3rem; color: var(--citrus); font-size: var(--t-xs); font-weight: 600; }
 
   .cols2 { display: grid; gap: 2rem; margin-top: 2rem; }
   @media (width >= 34rem) { .cols2 { grid-template-columns: 1fr 1fr; } }
   .h-in, .h-out { font-size: var(--t-sm); font-weight: 650; letter-spacing: .06em; text-transform: uppercase; margin-bottom: .875rem; }
-  .h-in { color: var(--leaf); } .h-out { color: var(--ink-3); }
-  .ticks { list-style: none; padding: 0; display: grid; gap: .6rem; font-size: var(--t-sm); color: var(--ink-2); }
-  .ticks li { padding-left: 1.5rem; position: relative; }
-  .ticks li::before { content: "✓"; position: absolute; left: 0; color: var(--leaf); font-weight: 700; }
-  .ticks--out li::before { content: "–"; color: var(--ink-3); }
-
+  /* --leaf is a fill colour — it reads 3.33:1 as text on white. Darkened along the
+     same hue for this label (4.90:1); the token itself is untouched because tick
+     marks and meter fills still need the brighter green. */
+  .h-in { color: #1A8054; } .h-out { color: var(--ink-3); }
   .bring { margin-top: 2rem; padding: 1.5rem; background: var(--bg); border-radius: var(--r); }
   .bring h3 { font-size: var(--t-sm); font-weight: 650; margin-bottom: .75rem; }
   .bring ul { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: .5rem; }
   .bring li { font-size: var(--t-xs); background: var(--surface); border: 1px solid var(--line-2); border-radius: var(--r-pill); padding: .35rem .75rem; }
 
-  .fine { margin-top: 1.5rem; font-size: var(--t-xs); color: var(--ink-3); }
-
   /* Related tours head row */
   .tours__head-row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 1rem; }
-  .arrow { font-size: var(--t-sm); font-weight: 620; color: var(--forest); white-space: nowrap; display: inline-flex; align-items: center; min-height: 44px; }
+
+  /* ---------- Step down ----------
+     The homepage ladder ascends; this one descends, so the stagger runs the other
+     way. Reusing .rung would have inherited the upward stagger and said the
+     opposite of what this section means. */
+  .steps { list-style: none; padding: 0; display: grid; gap: 1rem; margin-top: 1.75rem; counter-reset: none; }
+  @media (width >= 46rem) { .steps { grid-template-columns: repeat(3, 1fr); align-items: start; } }
+  @media (width >= 62rem) {
+    .steps .step:nth-child(1) { --drop: 0rem; }
+    .steps .step:nth-child(2) { --drop: 1.5rem; }
+    .steps .step:nth-child(3) { --drop: 3rem; }
+    .step { margin-top: var(--drop, 0rem); }
+  }
+  .step {
+    display: flex; flex-direction: column; gap: .5rem; position: relative;
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: var(--r-lg); padding: clamp(1.25rem, 2.4vw, 1.75rem);
+  }
+  .step__rank {
+    align-self: flex-start; font-size: var(--t-xs); font-weight: 700;
+    letter-spacing: .06em; text-transform: uppercase;
+    background: var(--sky); color: var(--forest);
+    padding: .25rem .6rem; border-radius: var(--r-pill);
+  }
+  .step__price { font-size: var(--t-2xl); font-weight: 700; letter-spacing: -.03em; line-height: 1; margin-top: .35rem; }
+  .step__price small { font-size: var(--t-sm); font-weight: 500; color: var(--ink-3); letter-spacing: 0; }
+  .step h3 { font-size: var(--t-base); font-weight: 650; letter-spacing: -.01em; }
+  .step p { font-size: var(--t-sm); color: var(--ink-2); }
+  .step .btn, .step .capture { margin-top: auto; padding-top: .75rem; }
+
+  /* The dark variant is declared AFTER the base rules on purpose. `.step--current p`
+     and `.step p` are both one class plus one type — identical specificity — so the
+     inversion only holds if it comes last. Declared above the base, the body copy
+     silently fell back to --ink-2 on the forest ground: 1.13:1, unreadable. */
+  .step--current { background: var(--forest); color: #fff; border-color: transparent; }
+  .step--current h3, .step--current .step__price { color: #fff; }
+  .step--current p, .step--current .step__price small { color: rgb(255 255 255 / .88); }
+  .step--current .step__rank { background: rgb(255 255 255 / .18); color: #fff; }
+  .step__here {
+    margin-top: auto; padding-top: .875rem; font-size: var(--t-sm); font-weight: 650;
+    /* Pure --citrus reads 3.5:1 on the forest ground. Tinted toward white it keeps
+       the warm "current step" signal and clears AA. */
+    color: color-mix(in oklab, var(--citrus) 55%, #fff);
+    border-top: 1px solid rgb(255 255 255 / .2);
+  }
 }
