@@ -1,10 +1,13 @@
 /* ============================================================
-   Direction A — Explore Tikizia
-   Design language adapted from the Vita Travel reference the
-   client selected: dark teal ground, Inter at heavy weights and
-   tight tracking, a hairline cell grid that runs through the nav
-   and the section heads, asterisk labels, and headings that fill
-   in character by character as you scroll.
+   Direction A-light — Explore Tikizia
+   The light sibling of `a-local-expert`. Same design language from
+   the Vita Travel reference — Inter at heavy weights and tight
+   tracking, a hairline cell grid through the nav and section heads,
+   asterisk labels, headings that fill in as you scroll — on a light
+   ground built from the brand teal instead of a dark one.
+
+   Everything outside the token block below is byte-identical to the
+   dark direction, and a check enforces that.
 
    Business model encoded in the structure, not just the copy:
    tours are sold on TWO axes — location and experience — and the
@@ -31,54 +34,62 @@
 
 @layer tokens {
   :root {
-    /* ---------- Explore Tikizia brand ----------
-       The layout follows the Vita reference; the colour does not. Every value
-       below is derived from the client's own marks:
+    /* ---------- Explore Tikizia brand · LIGHT ----------
+       The light sibling of `a-local-expert`. Every other line in this file and
+       in tour.css is byte-identical to the dark direction — the two are one
+       design system with two token sets, not two designs. Change a component
+       in one and it must be changed in the other; change a colour and only
+       this block moves.
 
-         #207070  logo teal        → the dark ramp
-         #50A080  logo green       → secondary accent
-         #F38315  --ast-global-color-0, the site's primary  → accent
-         #E57200  --ast-global-color-1, its hover state
+       Brand sources, same as the dark theme:
+         #207070  logo teal      → the tint carried through the light ramp
+         #50A080  logo green     → secondary accent
+         #F38315  --ast-global-color-0, the site's primary
+         #E57200  --ast-global-color-1, its hover
 
-       The reference's ground is a blue-leaning teal (#091B20). Ours is the
-       brand teal taken down to the same value, so the page reads as the same
-       kind of design in the client's own colour rather than someone else's. */
-    --bg:       #0A1414;
-    --bg-2:     #0B1818;
-    --surface:  #0D2020;
-    --hair:     #14302E;
-    --hair-2:   rgb(255 255 255 / .10);
-    --ink:      #FFFFFF;
-    --ink-2:    #A9B5B4;
-    /* Muted tone: carries every metadata row, hint and caption. Set so it
-       clears AA on the lightest ground it ever sits on — 4.82 on --surface,
-       5.35 on --bg. */
-    --ink-3:    #818B8B;
-    --accent:   #F38315;   /* brand primary, used as a FILL */
+       The ramp is not neutral grey: every step is the brand teal mixed toward
+       white, so the page reads as warm and related to the mark rather than as
+       a generic light UI.
+
+       Note the inversion of --bg-2 and --surface against the dark theme. Each
+       token keeps its JOB, not its lightness: --bg-2 is a raised panel, which
+       on a tinted light page means white; --surface is a subtle filled control,
+       which here means one step darker than the page. */
+    --bg:       #F5F9F9;   /* page — brand teal at 95.5% white */
+    --bg-2:     #FFFFFF;   /* raised panel */
+    --surface:  #E9F1F1;   /* subtle filled control */
+    --hair:     #DBE8E8;
+    --hair-2:   rgb(10 20 20 / .12);
+    --ink:      #0A1414;   /* 17.6:1 on the page */
+    --ink-2:    #4A5252;   /* 6.99:1 worst case */
+    /* Muted tone: carries every metadata row, hint and caption. The worst case
+       is --surface, the darkest of the three light grounds — 4.89:1 there. */
+    --ink-3:    #626969;
+    --accent:   #F38315;   /* brand primary, used as a FILL — unchanged */
     --accent-2: #E57200;   /* brand hover */
-    --green:    #50A080;   /* logo green — 5.94:1 on --bg */
+    --green:    #50A080;   /* logo green */
     --on-accent: #0A0F0E;  /* 7.42:1 on the brand orange */
 
-    /* The brand orange as TEXT. Kept separate from --accent because a fill and
-       a typeface have different jobs: on this dark ground they can be the same
-       value, but on the light theme the fill must stay bright while the text
-       has to darken to stay legible. Every `color:` use points here. */
-    --accent-ink: #F38315;
+    /* The brand orange as TEXT. This is the one brand colour that cannot
+       survive the flip: #F38315 on white measures 2.60:1. Darkened along the
+       same hue to 4.80:1 at worst. The fill above stays bright. */
+    --accent-ink: #9A5915;
 
     /* ---------- Media surfaces ----------
-       Sections that sit on photography keep a dark scrim and light type in both
-       themes. A photograph does not become legible by inverting the page around
-       it, and the dark band over an image is what carries the drama. */
+       Identical to the dark theme on purpose. Sections that sit on photography
+       keep a dark scrim and light type in both: a photograph does not become
+       legible by inverting the page around it, and the dark band over an image
+       is what keeps the light theme from going flat. */
     --on-media:  #FFFFFF;
     --on-media-2: rgb(255 255 255 / .78);
-    --scrim: 10 20 20;                    /* channels, for rgb(var(--scrim) / a) */
-    --stripe: rgb(255 255 255 / .028);    /* diagonal hatch on empty states */
-    --map-fill: rgb(255 255 255 / .015);
+    --scrim: 10 20 20;                 /* channels, for rgb(var(--scrim) / a) */
+    --stripe: rgb(10 20 20 / .05);     /* diagonal hatch on empty states */
+    --map-fill: rgb(10 20 20 / .022);
 
     /* The mark is green on a transparent ground. On the dark theme it has to be
        knocked out to white; on the light theme its own colour is correct, and
        inverting it would erase it. */
-    --logo-filter: brightness(0) invert(1);
+    --logo-filter: none;
 
     --font: "Inter", ui-sans-serif, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 
