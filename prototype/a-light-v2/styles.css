@@ -99,9 +99,14 @@
     --t-lg:   clamp(1.0625rem, 1rem + .32vw, 1.3125rem);
     --t-xl:   clamp(1.25rem, 1.1rem + .68vw, 1.75rem);
     --t-2xl:  clamp(1.75rem, 1.35rem + 1.8vw, 3rem);
-    --t-3xl:  clamp(2.25rem, 1.5rem + 3.4vw, 4.75rem);
-    /* The reference sets its hero word enormous and tight. */
-    --t-mega: clamp(3.5rem, .8rem + 12vw, 11rem);
+    /* The two display sizes are capped by viewport HEIGHT as well as width.
+       Scaling on `vw` alone is what put the hero's CTA below the fold on a
+       1366×768 laptop — the commonest screen there is — because a wide, short
+       window still resolved the h1 to its 176px maximum. `min()` inside the
+       clamp leaves large screens untouched (19vh of 900px is already past the
+       cap) and only bites where the window is short. */
+    --t-3xl:  clamp(2.25rem, min(1.5rem + 3.4vw, 8.2vh), 4.75rem);
+    --t-mega: clamp(3.5rem, min(.8rem + 12vw, 19vh), 11rem);
 
     --gutter: clamp(1.25rem, 3vw, 2.5rem);
     --stack:  clamp(4rem, 8vw, 8rem);
@@ -300,6 +305,8 @@
     background: linear-gradient(180deg, rgb(var(--scrim) / .45) 0%, rgb(var(--scrim) / .1) 35%, rgb(var(--scrim) / .55) 78%, var(--bg) 100%);
   }
   .hero__inner { text-align: center; padding-block: clamp(3rem, 8vw, 6rem); }
+  /* Below this height the padding is what stands between the CTA and the fold. */
+  @media (height < 820px) { .hero__inner { padding-block: clamp(1.5rem, 3vh, 2.5rem); } }
   /* Explicit --on-media, not --ink: the hero type sits on a photograph, and it
      has to stay light when the rest of the page inverts to the light theme. */
   .hero h1 {
