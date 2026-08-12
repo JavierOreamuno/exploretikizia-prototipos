@@ -128,20 +128,85 @@
       </div>
     </div>
 
-    <!-- A-05 · reconsidered ------------------------------------------------
-         A four-facet filter bar sat here. It was removed after measuring it:
-         of its ten controls, three were disabled and two more returned 8 of 8,
-         because today every product shares one destination and one category —
-         the two facts the H2 directly above already states. Five working
-         controls out of ten, occupying 39% of the distance between the heading
-         and the first product, in front of a set of eight items that fits in
-         two scrolls.
+    <!-- ================= A-05 · CATALOGUE FILTERS =================
+         The first version of this bar was removed after measuring it: five of
+         its ten controls did nothing, because every product shares one
+         destination and one category today. It returns with the three things
+         that made it unusable fixed.
 
-         Filtering earns its interaction cost when scanning stops being viable.
-         That is the /tours/ catalogue at 20–40 products across several
-         destinations and categories, not this page at eight. The facets a
-         traveller actually decides on — difficulty and length — are on the face
-         of every card instead. -->
+         1. Every option shows its own result count before you touch it, so the
+            control is legible without experimenting. Counts recompute against
+            the other facets, not against the whole catalogue.
+         2. Nothing is disabled. The categories that open later carry their
+            phase instead of a count, and choosing one leads somewhere: a
+            designed state that says when it opens and takes an address.
+         3. On a phone the facets collapse behind one button that carries the
+            number of active filters, rather than stacking four rows of chips
+            above the first product. -->
+    <section class="filters" aria-labelledby="filters-h">
+      <div class="filters__bar">
+        <h3 class="filters__h" id="filters-h">Show me</h3>
+        <button class="filters__toggle" type="button" data-filters-toggle
+                aria-expanded="false" aria-controls="filters-panel">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M3 6h18M7 12h10M11 18h2"/></svg>
+          <span>Filters</span>
+          <span class="filters__badge" data-badge hidden>0</span>
+        </button>
+        <p class="filters__count" data-count role="status">8 tours</p>
+      </div>
+
+      <div class="filters__panel" id="filters-panel" data-filters-panel hidden>
+        <fieldset>
+          <legend>Destination</legend>
+          <div class="filters__opts">
+            <button type="button" data-f="loc" data-v="la-fortuna" aria-pressed="false">La Fortuna <span class="c" data-c>8</span></button>
+            <button type="button" data-f="loc" data-v="monteverde" data-phase="phase 2" aria-pressed="false">Monteverde <span class="c c--soon">Phase 2</span></button>
+            <button type="button" data-f="loc" data-v="chirripo" data-phase="phase 2" aria-pressed="false">Chirrip&oacute; <span class="c c--soon">Phase 2</span></button>
+            <button type="button" data-f="loc" data-v="manuel-antonio" data-phase="phase 3" aria-pressed="false">Manuel Antonio <span class="c c--soon">Phase 3</span></button>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Experience</legend>
+          <div class="filters__opts">
+            <button type="button" data-f="exp" data-v="hiking" aria-pressed="false">Hiking &amp; Trekking <span class="c" data-c>8</span></button>
+            <button type="button" data-f="exp" data-v="nature" data-phase="phase 2" aria-pressed="false">Nature &amp; Wildlife <span class="c c--soon">Phase 2</span></button>
+            <button type="button" data-f="exp" data-v="combos" data-phase="phase 2" aria-pressed="false">Combos <span class="c c--soon">Phase 2</span></button>
+            <button type="button" data-f="exp" data-v="water" data-phase="phase 3" aria-pressed="false">Water &amp; Coast <span class="c c--soon">Phase 3</span></button>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Difficulty</legend>
+          <div class="filters__opts">
+            <button type="button" data-f="grade" data-v="1,2" aria-pressed="false">Easy <span class="c" data-c>4</span></button>
+            <button type="button" data-f="grade" data-v="3,4" aria-pressed="false">Moderate <span class="c" data-c>3</span></button>
+            <button type="button" data-f="grade" data-v="5" aria-pressed="false">Demanding <span class="c" data-c>1</span></button>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Length</legend>
+          <div class="filters__opts">
+            <button type="button" data-f="len" data-v="half" aria-pressed="false">Half day <span class="c" data-c>2</span></button>
+            <button type="button" data-f="len" data-v="full" aria-pressed="false">Full day <span class="c" data-c>6</span></button>
+          </div>
+        </fieldset>
+        <button class="filters__clear" type="button" data-clear hidden>Clear all</button>
+      </div>
+
+      <ul class="chips" data-chips aria-label="Active filters"></ul>
+    </section>
+
+    <div class="tours__empty" data-empty hidden>
+      <p class="label label--accent" data-empty-tag>Opening later</p>
+      <h3 data-empty-h>Monteverde opens in phase 2.</h3>
+      <p data-empty-p>Every category goes live only once we have run each tour in it ourselves. Leave an address and you will hear the day it opens — nothing else.</p>
+      <form class="capture" data-capture>
+        <label class="sr-only" for="notify-email">Email address</label>
+        <input type="email" id="notify-email" placeholder="you@example.com" autocomplete="email" required>
+        <button class="btn btn--accent" type="submit">Notify me</button>
+      </form>
+      <button class="filters__clear" type="button" data-clear>Back to all 8 tours</button>
+    </div>
+
     <div class="tours__grid">
 
       <article class="tcard" data-loc="la-fortuna" data-exp="hiking" data-grade="1" data-len="half">

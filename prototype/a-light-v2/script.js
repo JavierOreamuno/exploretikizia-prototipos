@@ -121,6 +121,116 @@
     addEventListener('scroll', () => { if (!menu.hidden) place(); }, { passive: true });
   }
 
+  /* ---------- A-05 · Catalogue filters ----------
+     OR inside a facet, AND across facets. Two things make the bar legible
+     without experimenting: every option carries the number of tours it will
+     leave, recomputed against the other facets; and the categories that have
+     not opened say which phase they belong to instead of pretending to be
+     unavailable, so choosing one leads somewhere. */
+  const filters = document.querySelector('.filters');
+
+  if (filters) {
+    const cards = [...document.querySelectorAll('.tcard')];
+    const opts = [...filters.querySelectorAll('[data-f]')];
+    const panel = filters.querySelector('[data-filters-panel]');
+    const toggle = filters.querySelector('[data-filters-toggle]');
+    const badge = filters.querySelector('[data-badge]');
+    const countEl = filters.querySelector('[data-count]');
+    const chipsEl = filters.querySelector('[data-chips]');
+    const clearBtns = [...document.querySelectorAll('[data-clear]')];
+    const empty = document.querySelector('[data-empty]');
+
+    const on = (b) => b.getAttribute('aria-pressed') === 'true';
+    const label = (b) => b.childNodes[0].textContent.trim();
+
+    // Selections grouped by facet. An absent facet means "all of it".
+    const picked = () => {
+      const out = {};
+      for (const b of opts) if (on(b)) (out[b.dataset.f] ||= []).push(...b.dataset.v.split(','));
+      return out;
+    };
+    const matches = (card, sel) =>
+      Object.entries(sel).every(([f, vals]) => vals.includes(card.dataset[f]));
+
+    function paint() {
+      const sel = picked();
+      const shown = cards.filter(card => {
+        const hit = matches(card, sel);
+        card.hidden = !hit;
+        return hit;
+      }).length;
+
+      // Each option's count ignores its own facet, so the number describes what
+      // that click would leave rather than the size of the whole catalogue.
+      for (const b of opts) {
+        const rest = { ...sel };
+        delete rest[b.dataset.f];
+        const vals = b.dataset.v.split(',');
+        const n = cards.filter(c => matches(c, rest) && vals.includes(c.dataset[b.dataset.f])).length;
+        const slot = b.querySelector('[data-c]');
+        if (slot) slot.textContent = String(n);
+        b.dataset.emptyResult = String(n === 0);
+      }
+
+      const active = opts.filter(on);
+      countEl.textContent = shown === cards.length ? `${cards.length} tours` : `${shown} of ${cards.length} tours`;
+      badge.textContent = String(active.length);
+      badge.hidden = active.length === 0;
+      clearBtns.forEach(b => { b.hidden = active.length === 0; });
+
+      // The active choices are echoed back as chips, so state stays visible
+      // whether the panel is open or shut.
+      chipsEl.replaceChildren(...active.map(b => {
+        const chip = document.createElement('button');
+        chip.type = 'button';
+        chip.innerHTML = `${label(b)} <i aria-hidden="true">&times;</i>`;
+        chip.setAttribute('aria-label', `Remove filter ${label(b)}`);
+        chip.addEventListener('click', () => { b.setAttribute('aria-pressed', 'false'); paint(); b.focus(); });
+        return chip;
+      }));
+
+      if (empty) {
+        empty.hidden = shown !== 0;
+        const soon = active.find(b => b.dataset.phase);
+        if (shown === 0) {
+          empty.querySelector('[data-empty-tag]').textContent = soon ? 'Opening later' : 'No match';
+          empty.querySelector('[data-empty-h]').textContent = soon
+            ? `${label(soon)} opens in ${soon.dataset.phase}.`
+            : 'Nothing matches those filters yet.';
+          empty.querySelector('[data-empty-p]').textContent = soon
+            ? 'Every category goes live only once we have run each tour in it ourselves. Leave an address and you will hear the day it opens — nothing else.'
+            : 'Try removing one of the filters above. Only Hiking & Trekking in La Fortuna is open today.';
+        }
+      }
+    }
+
+    for (const b of opts) {
+      b.addEventListener('click', () => { b.setAttribute('aria-pressed', String(!on(b))); paint(); });
+    }
+    clearBtns.forEach(btn => btn.addEventListener('click', () => {
+      opts.forEach(b => b.setAttribute('aria-pressed', 'false'));
+      paint();
+      filters.scrollIntoView({ block: 'start', behavior: reduced ? 'auto' : 'smooth' });
+    }));
+
+    toggle.addEventListener('click', () => {
+      const open = toggle.getAttribute('aria-expanded') !== 'true';
+      toggle.setAttribute('aria-expanded', String(open));
+      panel.hidden = !open;
+      if (open) panel.querySelector('button')?.focus();
+    });
+    // Esc closes the panel from anywhere inside it and hands the reader back to
+    // the control that opened it.
+    panel.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape') return;
+      toggle.setAttribute('aria-expanded', 'false');
+      panel.hidden = true;
+      toggle.focus();
+    });
+
+    paint();
+  }
+
   /* ---------- Free-guide capture ----------
      Nothing is sent anywhere. The form swaps itself for its own confirmation so
      the interaction reads as finished instead of reloading the page, which is

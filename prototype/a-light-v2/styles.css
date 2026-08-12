@@ -354,6 +354,102 @@
   .tours { border-top: 1px solid var(--hair); }
   .tours__grid { display: grid; }
   @media (width >= 64rem) { .tours__grid { grid-template-columns: 1fr 1fr; } }
+  /* ---------- A-05 · Catalogue filters ----------
+     Reads as one instrument, not four widgets: a lead-in verb, the facets, the
+     live count, and the active choices echoed back as removable chips. */
+  .filters { padding: 0 var(--gutter) clamp(1.5rem, 3vw, 2.25rem); }
+  .filters__bar { display: flex; align-items: baseline; gap: .75rem 1.25rem; flex-wrap: wrap; }
+  .filters__h {
+    font-size: var(--t-xs); font-weight: 700; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--ink-3);
+  }
+  .filters__count { margin-left: auto; font-size: var(--t-sm); font-weight: 600; color: var(--ink); }
+
+  /* The toggle exists only where the facets would otherwise stack four rows
+     deep above the first product. */
+  .filters__toggle {
+    display: inline-flex; align-items: center; gap: .5rem; min-height: 44px;
+    padding: 0 1rem; cursor: pointer; border: 1px solid var(--hair-2); border-radius: 999px;
+    background: transparent; font: inherit; font-size: var(--t-sm); font-weight: 600; color: var(--ink);
+  }
+  .filters__toggle[aria-expanded="true"] { background: var(--surface); border-color: var(--ink); }
+  .filters__badge {
+    min-width: 20px; padding: 0 .35rem; border-radius: 999px;
+    background: var(--accent); color: var(--on-accent);
+    font-size: var(--t-xs); font-weight: 700; text-align: center;
+  }
+  .filters__badge[hidden] { display: none; }
+
+  .filters__panel { display: grid; gap: 1.1rem; margin-top: .9rem; }
+  .filters__panel[hidden] { display: none; }
+  .filters fieldset { border: 0; margin: 0; padding: 0; display: grid; gap: .4rem; align-content: start; }
+  .filters legend {
+    padding: 0; font-size: var(--t-xs); font-weight: 700; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--ink-3);
+  }
+  .filters__opts { display: flex; flex-wrap: wrap; gap: .4rem; }
+  .filters__opts button {
+    display: inline-flex; align-items: center; gap: .45rem;
+    min-height: 44px; padding: .35rem .45rem .35rem .8rem; cursor: pointer;
+    border: 1px solid var(--hair-2); border-radius: 999px; background: transparent;
+    font: inherit; font-size: var(--t-sm); font-weight: 500; color: var(--ink-2);
+    transition: background .2s var(--ease), color .2s var(--ease), border-color .2s var(--ease);
+  }
+  .filters__opts button:hover { border-color: var(--ink); color: var(--ink); }
+  .filters__opts button[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+  /* The count is the whole point: it says what the control will do before it
+     is touched, which is what makes the bar legible without experimenting. */
+  .filters__opts .c {
+    min-width: 1.2rem; padding: .08rem .35rem; border-radius: 999px;
+    background: var(--surface); color: var(--ink-3);
+    font-size: var(--t-xs); font-weight: 700; font-variant-numeric: tabular-nums; text-align: center;
+  }
+  .filters__opts .c--soon { background: transparent; border: 1px solid var(--hair-2); font-weight: 600; }
+  .filters__opts button[aria-pressed="true"] .c { background: rgb(255 255 255 / .18); color: var(--bg); }
+  /* Dim only what is NOT chosen: a selected control that looks muted reads as
+     broken rather than as active. */
+  .filters__opts button[data-empty-result="true"]:not([aria-pressed="true"]) { opacity: .62; }
+
+  .filters__clear {
+    justify-self: start; margin-right: auto; text-align: left;
+    min-height: 44px; padding: 0 .25rem; border: 0; background: none; cursor: pointer;
+    font: inherit; font-size: var(--t-sm); color: var(--accent-ink);
+    text-decoration: underline; text-underline-offset: 3px;
+  }
+  .filters__clear[hidden] { display: none; }
+
+  /* Active choices echoed back, each removable on its own. */
+  .chips { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .85rem; }
+  .chips:empty { display: none; }
+  .chips button {
+    display: inline-flex; align-items: center; gap: .5rem; min-height: 36px;
+    padding: 0 .5rem 0 .85rem; cursor: pointer; border: 0; border-radius: 999px;
+    background: var(--surface); font: inherit; font-size: var(--t-xs); font-weight: 600; color: var(--ink);
+  }
+  .chips button:hover { background: var(--accent); color: var(--on-accent); }
+  .chips button i { font-style: normal; font-size: var(--t-sm); line-height: 1; }
+
+  /* One behaviour at every width. Keeping the facets permanently open on
+     desktop measured 213px on a 1440 screen and 289px below ~1420, where they
+     wrap to a third row — more than the first product can afford, and a
+     different interaction depending on the machine. The button costs ~70px
+     everywhere, the panel opens in place, and the active choices stay visible
+     as chips whether it is open or shut, so state is never hidden. */
+  @media (width >= 64rem) {
+    .filters__panel { display: flex; flex-wrap: wrap; align-items: flex-start; gap: .9rem 2rem; }
+    .filters fieldset { flex: 0 1 auto; }
+    .filters__clear { flex-basis: 100%; }
+  }
+
+  .tours__empty { padding: clamp(2rem, 5vw, 3.5rem) var(--gutter); border-bottom: 1px solid var(--hair); display: grid; gap: .6rem; }
+  .tours__empty[hidden] { display: none; }
+  .tours__empty h3 { font-size: var(--t-xl); font-weight: 700; letter-spacing: -.025em; }
+  .tours__empty p { max-width: 52ch; color: var(--ink-2); font-size: var(--t-sm); }
+  .tours__empty .capture { margin-top: .5rem; max-width: 26rem; }
+  .tours__empty .filters__clear { margin-top: .25rem; }
+
+  .tcard[hidden] { display: none; }
+
   .tcard {
     display: grid; gap: clamp(1.25rem, 2.5vw, 2rem);
     grid-template-columns: minmax(0, 1fr);
