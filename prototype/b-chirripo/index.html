@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<meta name="description" content="Design prototype B for Explore Tikizia — the Chirripó specialist. Expedition editorial direction.">
-<title>B · The Chirripó Specialist — Explore Tikizia prototype</title>
+<meta name="description" content="Design prototype B for Explore Tikizia — the whole experience catalogue graded on one difficulty scale, opened one category at a time, plus digital guides.">
+<title>B · The Graded Catalogue — Explore Tikizia prototype</title>
 <link rel="icon" href="../assets/favicon.png">
 <link rel="stylesheet" href="../assets/fonts/fonts.css">
 <link rel="stylesheet" href="styles.css">
@@ -15,7 +15,7 @@
 
 <a class="skip" href="#main">Skip to main content</a>
 
-<p class="ribbon">Prototype B · “The Chirripó Specialist” — design direction only. <a href="../index.html">Compare directions</a></p>
+<p class="ribbon">Prototype B · “The Graded Catalogue” — every experience on one scale. <a href="../index.html">Compare directions</a></p>
 
 <header class="nav" data-nav>
   <div class="shell nav__inner">
@@ -23,14 +23,13 @@
       <img src="../assets/logo.png" alt="Explore Tikizia" width="200" height="60">
     </a>
     <nav class="nav__links" aria-label="Main">
-      <a href="#permit">The permit</a>
-      <a href="#routes">Routes</a>
-      <a href="#tours">Tours</a>
-      <a href="#guide">The guide</a>
-      <a href="#consult">Consulting</a>
-      <a href="#who">Who we are</a>
+      <a href="#experiences">Experiences</a>
+      <a href="#catalogue">Catalogue</a>
+      <a href="#method">Grading</a>
+      <a href="#guide">Guides</a>
+      <a href="#flow">Booking</a>
     </nav>
-    <a class="btn nav__cta" href="#guide"><span>Get the guide</span><span class="btn__arrow" aria-hidden="true">→</span></a>
+    <a class="btn nav__cta" href="#catalogue">Open the catalogue <span class="btn__arrow" aria-hidden="true">→</span></a>
   </div>
 </header>
 
@@ -39,338 +38,517 @@
   <!-- ================= HERO ================= -->
   <section class="hero" id="top">
     <div class="hero__bg" aria-hidden="true">
-      <img src="../assets/chirripo-panoramic.jpg" alt="" fetchpriority="high">
+      <img src="../assets/exp-wildlife-quetzal.jpg" alt="" width="800" height="534" fetchpriority="high">
     </div>
     <div class="shell hero__inner">
-      <p class="label">Talamanca range · Costa Rica · 9°29′N 83°29′W</p>
-      <h1>Chirripó<span>starts with a permit</span></h1>
+      <p class="label" data-n="Costa Rica">Experiences, opened one category at a time</p>
+      <h1 class="display">Every experience.<br>One <span>difficulty scale.</span></h1>
       <p class="hero__lede">
-        Costa Rica’s highest peak has a daily quota, a quarterly release and an in-person
-        check-in the day before. Most travellers lose the trip at that step. We wrote the
-        guide we wished existed.
+        Walking, wildlife, water, culture — sold by where you are, what kind of day you want,
+        and how hard it actually is. We publish the third one, which nobody else does, and we
+        open one category at a time so every product is one we have run ourselves.
       </p>
       <div class="hero__actions">
-        <a class="btn btn--lg" href="#guide"><span>Get the guide · $10</span><span class="btn__arrow" aria-hidden="true">→</span></a>
-        <a class="btn btn--outline btn--lg" href="#permit"><span>How the permit works</span></a>
+        <a class="btn btn--lg" href="#catalogue">Open the catalogue <span class="btn__arrow" aria-hidden="true">→</span></a>
+        <a class="btn btn--ghost btn--lg" href="#method">How grading works</a>
       </div>
     </div>
   </section>
 
-
-  <!-- ================= MARQUESINA ================= -->
-  <div class="marquee" aria-hidden="true">
-    <div class="marquee__track">
-      <div class="marquee__group"><span>Cerro Chirripó<em>·</em>Talamanca Range<em>·</em>San Gerardo de Rivas<em>·</em>San Jerónimo<em>·</em>Crestones Base Camp<em>·</em></span></div>
-      <div class="marquee__group"><span>Cerro Chirripó<em>·</em>Talamanca Range<em>·</em>San Gerardo de Rivas<em>·</em>San Jerónimo<em>·</em>Crestones Base Camp<em>·</em></span></div>
-    </div>
-  </div>
-
-  <!-- ================= DATA ================= -->
-  <dl class="data">
-    <div><dt>Summit elevation</dt><dd>3,820 <small>m</small></dd></div>
-    <div><dt>Daily hiker quota</dt><dd>52 <small>people</small></dd></div>
-    <div><dt>Permit release</dt><dd>Quarterly</dd></div>
-    <div><dt>Trail to base camp</dt><dd>14.5 <small>km</small></dd></div>
-  </dl>
-
-
-  <!-- ================= PERFIL DE ALTITUD ================= -->
-  <section class="profile" aria-labelledby="perfil-titulo">
-    <div class="shell profile__inner">
-      <div class="profile__head" data-reveal>
-        <h2 id="perfil-titulo">2,470 metres<br>of ascent</h2>
-        <p>From the ranger station at San Gerardo de Rivas to the summit. The climb is not the
-        difficult part of Chirripó — getting the permit is. But it helps to know what you signed up for.</p>
-      </div>
-
-      <svg viewBox="0 0 1000 300" role="img" aria-labelledby="perfil-desc" data-reveal>
-        <title id="perfil-desc">Elevation profile of the Chirripó ascent: from 1,350 m at San Gerardo de Rivas, to Crestones Base Camp at 3,400 m after 14.5 km, to the 3,820 m summit.</title>
-        <defs>
-          <linearGradient id="altgrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#FF6B2C" stop-opacity=".28"/>
-            <stop offset="100%" stop-color="#FF6B2C" stop-opacity="0"/>
-          </linearGradient>
-        </defs>
-
-        <g class="profile__grid">
-          <line x1="0" y1="260" x2="1000" y2="260"/>
-          <line x1="0" y1="190" x2="1000" y2="190"/>
-          <line x1="0" y1="120" x2="1000" y2="120"/>
-          <line x1="0" y1="50"  x2="1000" y2="50"/>
-        </g>
-        <text class="profile__tick" x="0" y="276">0 km</text>
-        <text class="profile__tick" x="700" y="276">14.5 km</text>
-        <text class="profile__tick" x="905" y="276">19.5 km</text>
-
-        <path class="profile__fill" d="M0,247 C120,225 150,200 200,183 C260,163 310,152 350,141 C420,122 460,116 500,107 C580,90 660,80 725,73 C790,66 840,55 975,37 L1000,37 L1000,260 L0,260 Z"/>
-        <path class="profile__line" d="M0,247 C120,225 150,200 200,183 C260,163 310,152 350,141 C420,122 460,116 500,107 C580,90 660,80 725,73 C790,66 840,55 975,37"/>
-
-        <g class="profile__stop">
-          <circle cx="0" cy="247" r="5"/>
-          <text class="n" x="12" y="238">San Gerardo de Rivas</text>
-          <text class="m" x="12" y="252">1,350 m · SINAC office</text>
-        </g>
-        <g class="profile__stop">
-          <circle cx="725" cy="73" r="5"/>
-          <text class="n" x="737" y="64">Crestones Base Camp</text>
-          <text class="m" x="737" y="78">3,400 m · 14.5 km</text>
-        </g>
-        <g class="profile__stop">
-          <circle cx="975" cy="37" r="6"/>
-          <text class="n" x="963" y="20" text-anchor="end" style="font-size:17px">Summit 3,820 m</text>
-        </g>
-      </svg>
-
-      <div class="profile__legend">
-        <span><b>2,470 m</b> total gain</span>
-        <span><b>14.5 km</b> to base camp</span>
-        <span><b>52</b> hikers per day</span>
-        <span>Indicative profile · elevations from public sources</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= PERMIT ================= -->
-  <section class="permit" id="permit">
-    <div class="shell permit__grid">
-      <div class="head" data-reveal>
-        <p class="label">The hard part</p>
-        <h2>Four institutions, one mountain</h2>
-        <p>SINAC issues the permit. CRC Chirripó runs the base camp. ATURENA covers the San Jerónimo sector. Knowing who does what is half the battle.</p>
-      </div>
-      <div class="permit__media" data-reveal-x>
-        <img src="../assets/sinac-office.jpg" alt="The SINAC ranger office in the San Gerardo de Rivas sector, where hikers register the day before their climb." loading="lazy">
-      </div>
-    </div>
-
+  <section class="strip">
     <div class="shell">
-      <div class="inst">
-        <article>
-          <p class="inst__tag">Issues the permit</p>
-          <h3>SINAC</h3>
-          <p>The national parks authority. Online reservation only, quarterly release, 52 places a day.</p>
-        </article>
-        <article>
-          <p class="inst__tag">Runs the base camp</p>
-          <h3>CRC Chirripó</h3>
-          <p>Beds, meals and porters at Crestones. Booked separately from the park permit.</p>
-        </article>
-        <article>
-          <p class="inst__tag">San Jerónimo sector</p>
-          <h3>ATURENA</h3>
-          <p>The quieter route has a different booking body altogether. Most guides skip this one.</p>
-        </article>
-        <article data-role="you">
-          <p class="inst__tag">Where we come in</p>
-          <h3>You</h3>
-          <p>Four institutions, three websites, one in-person check-in the day before. That is the real obstacle.</p>
-        </article>
+      <dl class="strip__grid">
+        <div><dt>Live now</dt><dd>8 <small>tours · 1 category</small></dd></div>
+        <div><dt>In the plan</dt><dd>24 <small>across 4 more</small></dd></div>
+        <div><dt>Destinations</dt><dd>1 <small>of 4 open</small></dd></div>
+        <div><dt>Grade range</dt><dd>1–5 <small>one scale, all types</small></dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ================= AXIS · EXPERIENCE =================
+       The shop is organised by kind of day first. Each tile carries its launch
+       phase and its difficulty range, so the roadmap and the grading system are
+       visible in the same glance. -->
+  <section class="band shell" id="experiences">
+    <div class="head" data-reveal>
+      <p class="label" data-n="01">The second axis</p>
+      <h2 class="display">Five kinds of day. One opens at a time.</h2>
+      <p>Every product also carries a location and a grade. Opening a category is content work — the template underneath does not change.</p>
+    </div>
+
+    <div class="exps" data-reveal style="margin-top:2rem">
+      <a class="exp" href="#catalogue">
+        <span class="exp__bg" aria-hidden="true"><img src="../assets/lf-juan-castro-trail.jpg" alt="" loading="lazy"></span>
+        <span class="exp__tag exp__tag--live">Live</span>
+        <h3>Hiking &amp; Trekking</h3>
+        <p>Everything on foot, from a forest loop to a valley traverse.</p>
+        <span class="exp__meta">8 tours · La Fortuna</span>
+        <span class="exp__range">
+          <span class="bars" role="img" aria-label="Grades 1 to 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span>
+          <span>Grade 1–5</span>
+        </span>
+      </a>
+
+      <div class="exp">
+        <span class="exp__bg" aria-hidden="true"><img src="../assets/exp-wildlife-monkey.jpg" alt="" loading="lazy"></span>
+        <span class="exp__tag">Phase 2</span>
+        <h3>Nature &amp; Wildlife</h3>
+        <p>Sloths, the Caño Negro wetlands, the float safari, the quetzal season.</p>
+        <span class="exp__meta">12 planned · La Fortuna first</span>
+        <span class="exp__range">
+          <span class="bars" role="img" aria-label="Grades 1 to 2"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span>
+          <span>Grade 1–2</span>
+        </span>
+      </div>
+
+      <div class="exp">
+        <span class="exp__bg" aria-hidden="true"><img src="../assets/lafortuna-arenal-volcano.jpg" alt="" loading="lazy"></span>
+        <span class="exp__tag">Phase 2</span>
+        <h3>Combos</h3>
+        <p>Multi-stop days that cross destinations — the seed of full itineraries.</p>
+        <span class="exp__meta">3 planned · saves $50</span>
+        <span class="exp__range">
+          <span class="bars" role="img" aria-label="Grades 2 to 3"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span>
+          <span>Grade 2–3</span>
+        </span>
+      </div>
+
+      <div class="exp">
+        <span class="exp__bg" aria-hidden="true"><img src="../assets/exp-water-river.jpg" alt="" loading="lazy"></span>
+        <span class="exp__tag">Phase 3</span>
+        <h3>Water &amp; Coast</h3>
+        <p>Rafting on the Toro, the catamaran once Manuel Antonio opens.</p>
+        <span class="exp__meta">6 planned · new category</span>
+        <span class="exp__range">
+          <span class="bars" role="img" aria-label="Grades 1 to 4"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span>
+          <span>Grade 1–4</span>
+        </span>
+      </div>
+
+      <div class="exp">
+        <!-- The one blog image for this category has a caption burned into it and
+             is 500px wide, so it is left empty rather than shipped broken. -->
+        <span class="exp__todo" aria-hidden="true"></span>
+        <span class="exp__tag">Phase 3</span>
+        <h3>Culture &amp; Food</h3>
+        <p>Coffee, dairy farms and the rural community days we already run privately.</p>
+        <span class="exp__meta">3 planned</span>
+        <span class="exp__range">
+          <span class="bars" role="img" aria-label="Grade 1"><i class="on"></i><i></i><i></i><i></i><i></i></span>
+          <span>Grade 1</span>
+        </span>
       </div>
     </div>
   </section>
 
-  <!-- ================= ROUTES ================= -->
-  <section id="routes">
-    <div class="shell">
-      <div class="head" data-reveal>
-        <p class="label">Ways up</p>
-        <h2>Not every route is the same climb</h2>
-        <p>Distance, difficulty and paperwork change with the sector you choose.</p>
-      </div>
+  <!-- ================= CATALOGUE =================
+       Grouped by experience, with the launch phase on the group rather than on
+       every row. Planned rows stay visible and dimmed: the roadmap is part of
+       the pitch, not something to hide until it ships. -->
+  <section class="band shell" id="catalogue">
+    <div class="head" data-reveal>
+      <p class="label" data-n="02">The catalogue</p>
+      <h2 class="display">Everything we sell, on one table.</h2>
+      <p>Location, experience and grade on every row. Filter across categories — a grade 1 wildlife morning and a grade 1 forest loop are the same kind of day.</p>
     </div>
-    <div class="routes__rail" tabindex="0" role="region" aria-label="Routes to the summit, scrollable">
-      <article class="route">
-        <img class="route__img" src="../assets/chirripo-trail.jpg" alt="Trail sign pointing to Cerro Chirripó and Valle de las Morenas." loading="lazy">
-        <h3>San Gerardo de Rivas</h3>
-        <p style="color:var(--mist);font-size:var(--t-sm)">The classic approach and the busiest. Best infrastructure, hardest permit to get in high season.</p>
-        <dl><dt>Sector body</dt><dd>SINAC + CRC</dd><dt>To base camp</dt><dd>14.5 km</dd><dt>Season pressure</dt><dd>High</dd></dl>
-      </article>
-      <article class="route">
-        <img class="route__img" src="../assets/chirripo-km14.jpg" alt="Trail marker at kilometre 14 on the Chirripó route." loading="lazy">
-        <h3>San Jerónimo</h3>
-        <p style="color:var(--mist);font-size:var(--t-sm)">Quieter, greener, and handled by ATURENA. A different booking process most guides skip entirely.</p>
-        <dl><dt>Sector body</dt><dd>ATURENA</dd><dt>Character</dt><dd>Low traffic</dd><dt>Season pressure</dt><dd>Moderate</dd></dl>
-      </article>
-      <article class="route">
-        <img class="route__img" src="../assets/chirripo-basecamp.jpg" alt="Crestones Base Camp building inside Chirripó National Park." loading="lazy">
-        <h3>Crestones Base Camp</h3>
-        <p style="color:var(--mist);font-size:var(--t-sm)">Where every route converges. Beds, meals and porters — booked separately from the park permit.</p>
-        <dl><dt>Booked with</dt><dd>CRC Chirripó</dd><dt>Elevation</dt><dd>3,400 m</dd><dt>Includes</dt><dd>Bed &amp; meals</dd></dl>
-      </article>
-      <article class="route">
-        <img class="route__img" src="../assets/chirripo-cerro-terbi.jpg" alt="Cerro Terbi seen from the Chirripó high plateau." loading="lazy">
-        <h3>The other summits</h3>
-        <p style="color:var(--mist);font-size:var(--t-sm)">Terbi, Crestones and Ventisqueros can be linked from base camp — if you plan the day properly.</p>
-        <dl><dt>Extra peaks</dt><dd>3</dd><dt>Best done</dt><dd>Full day</dd><dt>Needs</dt><dd>Early start</dd></dl>
-      </article>
+
+    <div class="filters" role="group" aria-label="Filter the catalogue" data-filters>
+      <button type="button" aria-pressed="true" data-filter="all">Everything</button>
+      <button type="button" aria-pressed="false" data-filter="live">Bookable now</button>
+      <button type="button" aria-pressed="false" data-filter="easy">Grade 1–2</button>
+      <button type="button" aria-pressed="false" data-filter="moderate">Grade 3–4</button>
+      <button type="button" aria-pressed="false" data-filter="hard">Grade 5</button>
+      <button type="button" aria-pressed="false" data-filter="half">Half day</button>
+    </div>
+
+    <!-- ---------- LIVE · HIKING & TREKKING ---------- -->
+    <section class="cat">
+      <div class="cat__head">
+        <h3>Hiking &amp; Trekking</h3>
+        <span class="cat__status cat__status--live">Bookable now</span>
+        <span class="cat__n">8 tours · La Fortuna</span>
+        <span class="cat__note">All our own departures</span>
+      </div>
+      <div class="matrix-wrap">
+        <table class="matrix" data-matrix>
+          <caption class="sr-only">Hiking and trekking tours, bookable now</caption>
+          <thead>
+            <tr>
+              <th scope="col">Tour</th><th scope="col">Location</th><th scope="col">Profile</th>
+              <th scope="col">Distance</th><th scope="col">Ascent</th><th scope="col">Time</th>
+              <th scope="col">Grade</th><th scope="col">From</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-grade="easy" data-len="half" data-status="live">
+              <th scope="row"><span class="matrix__name"><a href="tour.html">Arenal Volcano Park</a></span><span class="matrix__sub">El Ceibo · 1968 lava flow</span></th>
+              <td class="num">La Fortuna</td>
+              <td><svg class="profile" viewBox="0 0 116 30" preserveAspectRatio="none" aria-hidden="true"><path class="fill" d="M0,26 L14,24 L32,20 L52,17 L74,19 L96,15 L116,18 L116,30 L0,30 Z"/><path class="line" d="M0,26 L14,24 L32,20 L52,17 L74,19 L96,15 L116,18"/></svg></td>
+              <td class="num">4.0 km</td><td class="num">120 m</td><td class="num">4 h</td>
+              <td><span class="grade"><span class="bars" role="img" aria-label="Grade 1 of 5"><i class="on"></i><i></i><i></i><i></i><i></i></span><span>1</span></span></td>
+              <td><span class="price">$66<small>$45 child</small></span></td>
+            </tr>
+            <tr data-grade="easy" data-len="half" data-status="live">
+              <th scope="row"><span class="matrix__name"><a href="tour.html">Jungle Trekking &amp; Culture</a></span><span class="matrix__sub">Ends in a family kitchen</span></th>
+              <td class="num">La Fortuna</td>
+              <td><svg class="profile" viewBox="0 0 116 30" preserveAspectRatio="none" aria-hidden="true"><path class="fill" d="M0,25 L20,23 L44,22 L68,20 L92,22 L116,21 L116,30 L0,30 Z"/><path class="line" d="M0,25 L20,23 L44,22 L68,20 L92,22 L116,21"/></svg></td>
+              <td class="num">4.2 km</td><td class="num">90 m</td><td class="num">4 h</td>
+              <td><span class="grade"><span class="bars" role="img" aria-label="Grade 1 of 5"><i class="on"></i><i></i><i></i><i></i><i></i></span><span>1</span></span></td>
+              <td><span class="price">$97<small>per adult</small></span></td>
+            </tr>
+            <tr data-grade="easy" data-len="full" data-status="live">
+              <th scope="row"><span class="matrix__name"><a href="tour.html">Children’s Eternal Rainforest</a></span><span class="matrix__sub">The reserve bought by schoolchildren</span></th>
+              <td class="num">La Fortuna</td>
+              <td><svg class="profile" viewBox="0 0 116 30" preserveAspectRatio="none" aria-hidden="true"><path class="fill" d="M0,24 L22,21 L46,18 L70,16 L94,19 L116,17 L116,30 L0,30 Z"/><path class="line" d="M0,24 L22,21 L46,18 L70,16 L94,19 L116,17"/></svg></td>
+              <td class="num">5.4 km</td><td class="num">180 m</td><td class="num">7 h</td>
+              <td><span class="grade"><span class="bars" role="img" aria-label="Grade 2 of 5"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span><span>2</span></span></td>
+              <td><span class="price">$127<small>$89 child</small></span></td>
+            </tr>
+            <tr data-grade="moderate" data-len="full" data-status="live">
+              <th scope="row"><span class="matrix__name"><a href="tour.html">Río Celeste &amp; Tenorio</a></span><span class="matrix__sub">Turquoise river · 90 min north</span></th>
+              <td class="num">La Fortuna</td>
+              <td><svg class="profile" viewBox="0 0 116 30" preserveAspectRatio="none" aria-hidden="true"><path class="fill" d="M0,23 L18,20 L38,14 L58,11 L76,15 L96,10 L116,13 L116,30 L0,30 Z"/><path class="line" d="M0,23 L18,20 L38,14 L58,11 L76,15 L96,10 L116,13"/></svg></td>
+              <td class="num">6.0 km</td><td class="num">280 m</td><td class="num">9 h</td>
+              <td><span class="grade"><span class="bars" role="img" aria-label="Grade 3 of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span><span>3</span></span></td>
+              <td><span class="price">$122<small>$85 child</small></span></td>
+            </tr>
+            <tr data-grade="moderate" data-len="full" data-status="live">
+              <th scope="row"><span class="matrix__name"><a href="tour.html">Hule Lagoon Crater</a></span><span class="matrix__sub">Down into a collapsed crater</span></th>
+              <td class="num">La Fortuna</td>
+              <td><svg class="profile" viewBox="0 0 116 30" preserveAspectRatio="none" aria-hidden="true"><path class="fill" d="M0,12 L18,10 L36,18 L58,25 L80,22 L100,12 L116,9 L116,30 L0,30 Z"/><path class="line" d="M0,12 L18,10 L36,18 L58,25 L80,22 L100,12 L116,9"/></svg></td>
+              <td class="num">7.1 km</td><td class="num">350 m</td><td class="num">8 h</td>
+              <td><span class="grade"><span class="bars" role="img" aria-label="Grade 3 of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span><span>3</span></span></td>
+              <td><span class="price">$122<small>$85 child</small></span></td>
+            </tr>
+            <tr data-grade="moderate" data-len="full" data-status="live">
+              <th scope="row"><span class="matrix__name"><a href="tour.html">Cloud Forest · Juan Castro Blanco</a></span><span class="matrix__sub">Pozo Verde · nobody else on the trail</span></th>
+              <td class="num">La Fortuna</td>
+              <td><svg class="profile" viewBox="0 0 116 30" preserveAspectRatio="none" aria-hidden="true"><path class="fill" d="M0,25 L16,21 L34,15 L54,9 L74,7 L96,11 L116,8 L116,30 L0,30 Z"/><path class="line" d="M0,25 L16,21 L34,15 L54,9 L74,7 L96,11 L116,8"/></svg></td>
+              <td class="num">8.3 km</td><td class="num">420 m</td><td class="num">9 h</td>
+              <td><span class="grade"><span class="bars" role="img" aria-label="Grade 3 of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span><span>3</span></span></td>
+              <td><span class="price">$122<small>$85 child</small></span></td>
+            </tr>
+            <tr data-grade="moderate" data-len="full" data-status="live">
+              <th scope="row"><span class="matrix__name"><a href="tour.html">Jungle Trekking · La Tigra</a></span><span class="matrix__sub">Regenerated rainforest, thirty years on</span></th>
+              <td class="num">La Fortuna</td>
+              <td><svg class="profile" viewBox="0 0 116 30" preserveAspectRatio="none" aria-hidden="true"><path class="fill" d="M0,26 L18,22 L38,16 L56,12 L78,14 L98,7 L116,6 L116,30 L0,30 Z"/><path class="line" d="M0,26 L18,22 L38,16 L56,12 L78,14 L98,7 L116,6"/></svg></td>
+              <td class="num">9.0 km</td><td class="num">400 m</td><td class="num">8 h</td>
+              <td><span class="grade"><span class="bars" role="img" aria-label="Grade 4 of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span><span>4</span></span></td>
+              <td><span class="price">$127<small>$89 child</small></span></td>
+            </tr>
+            <tr data-grade="hard" data-len="full" data-status="live">
+              <th scope="row"><span class="matrix__name"><a href="tour.html">Fortuna → Monteverde traverse</a></span><span class="matrix__sub">Walk out of the valley</span></th>
+              <td class="num">Two destinations</td>
+              <td><svg class="profile" viewBox="0 0 116 30" preserveAspectRatio="none" aria-hidden="true"><path class="fill" d="M0,28 L16,26 L32,20 L48,11 L66,14 L84,6 L100,3 L116,4 L116,30 L0,30 Z"/><path class="line" d="M0,28 L16,26 L32,20 L48,11 L66,14 L84,6 L100,3 L116,4"/></svg></td>
+              <td class="num">17.0 km</td><td class="num">900 m</td><td class="num">11 h</td>
+              <td><span class="grade"><span class="bars" role="img" aria-label="Grade 5 of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span>5</span></span></td>
+              <td><span class="price">$216<small>per adult</small></span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ---------- PHASE 2 · NATURE & WILDLIFE ---------- -->
+    <section class="cat cat--soon">
+      <div class="cat__head">
+        <h3>Nature &amp; Wildlife</h3>
+        <span class="cat__status">Phase 2</span>
+        <span class="cat__n">12 planned · 5 shown</span>
+        <span class="cat__note">Same grading scale, no walking required</span>
+      </div>
+      <div class="matrix-wrap">
+        <table class="matrix" data-matrix>
+          <caption class="sr-only">Nature and wildlife tours, planned for phase two</caption>
+          <thead>
+            <tr>
+              <th scope="col">Tour</th><th scope="col">Location</th><th scope="col">Profile</th>
+              <th scope="col">Distance</th><th scope="col">Ascent</th><th scope="col">Time</th>
+              <th scope="col">Grade</th><th scope="col">From</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-grade="easy" data-len="half" data-status="soon">
+              <th scope="row"><span class="matrix__name">Sloth Watching Tour</span><span class="matrix__sub">Naturalist guide and a scope</span></th>
+              <td class="num">La Fortuna</td>
+              <td><svg class="profile" viewBox="0 0 116 30" preserveAspectRatio="none" aria-hidden="true"><path class="fill" d="M0,26 L30,25 L60,26 L90,25 L116,26 L116,30 L0,30 Z"/><path class="line" d="M0,26 L30,25 L60,26 L90,25 L116,26"/></svg></td>
+              <td class="num">1.5 km</td><td class="num">20 m</td><td class="num">2 h</td>
+              <td><span class="grade"><span class="bars" role="img" aria-label="Grade 1 of 5"><i class="on"></i><i></i><i></i><i></i><i></i></span><span>1</span></span></td>
+              <td><span class="price">$70<small>$55 child</small></span></td>
+            </tr>
+            <tr data-grade="easy" data-len="full" data-status="soon">
+              <th scope="row"><span class="matrix__name">Caño Negro Wildlife Refuge</span><span class="matrix__sub">Slow boat through wetlands</span></th>
+              <td class="num">La Fortuna</td>
+              <td><svg class="profile" viewBox="0 0 116 30" preserveAspectRatio="none" aria-hidden="true"><path class="fill" d="M0,27 L30,27 L60,27 L90,27 L116,27 L116,30 L0,30 Z"/><path class="line" d="M0,27 L30,27 L60,27 L90,27 L116,27"/></svg></td>
+              <td class="num">Boat</td><td class="num">0 m</td><td class="num">9 h</td>
+              <td><span class="grade"><span class="bars" role="img" aria-label="Grade 1 of 5"><i class="on"></i><i></i><i></i><i></i><i></i></span><span>1</span></span></td>
+              <td><span class="price">$95<small>$70 child</small></span></td>
+            </tr>
+            <tr data-grade="easy" data-len="half" data-status="soon">
+              <th scope="row"><span class="matrix__name">Safari Float · Peñas Blancas</span><span class="matrix__sub">No rapids, all wildlife</span></th>
+              <td class="num">La Fortuna</td>
+              <td><svg class="profile" viewBox="0 0 116 30" preserveAspectRatio="none" aria-hidden="true"><path class="fill" d="M0,27 L30,27 L60,27 L90,27 L116,27 L116,30 L0,30 Z"/><path class="line" d="M0,27 L30,27 L60,27 L90,27 L116,27"/></svg></td>
+              <td class="num">Raft</td><td class="num">0 m</td><td class="num">4 h</td>
+              <td><span class="grade"><span class="bars" role="img" aria-label="Grade 1 of 5"><i class="on"></i><i></i><i></i><i></i><i></i></span><span>1</span></span></td>
+              <td><span class="price">$73<small>$44 child</small></span></td>
+            </tr>
+            <tr data-grade="easy" data-len="full" data-status="soon">
+              <th scope="row"><span class="matrix__name">Quetzal season · Los Quetzales</span><span class="matrix__sub">March to June, before dawn</span></th>
+              <td class="num">Talamanca</td>
+              <td><svg class="profile" viewBox="0 0 116 30" preserveAspectRatio="none" aria-hidden="true"><path class="fill" d="M0,25 L30,22 L60,21 L90,22 L116,21 L116,30 L0,30 Z"/><path class="line" d="M0,25 L30,22 L60,21 L90,22 L116,21"/></svg></td>
+              <td class="num">3.0 km</td><td class="num">120 m</td><td class="num">6 h</td>
+              <td><span class="grade"><span class="bars" role="img" aria-label="Grade 2 of 5"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span><span>2</span></span></td>
+              <td><span class="price">$118<small>$85 child</small></span></td>
+            </tr>
+            <tr data-grade="easy" data-len="full" data-status="soon">
+              <th scope="row"><span class="matrix__name">Turtle nesting · Ostional</span><span class="matrix__sub">Arribada, by permit and by night</span></th>
+              <td class="num">Guanacaste</td>
+              <td><svg class="profile" viewBox="0 0 116 30" preserveAspectRatio="none" aria-hidden="true"><path class="fill" d="M0,27 L30,26 L60,27 L90,26 L116,27 L116,30 L0,30 Z"/><path class="line" d="M0,27 L30,26 L60,27 L90,26 L116,27"/></svg></td>
+              <td class="num">2.0 km</td><td class="num">10 m</td><td class="num">5 h</td>
+              <td><span class="grade"><span class="bars" role="img" aria-label="Grade 2 of 5"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span><span>2</span></span></td>
+              <td><span class="price">Pending<small>tarifario</small></span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ---------- PHASE 2 · COMBOS ---------- -->
+    <section class="cat cat--soon">
+      <div class="cat__head">
+        <h3>Combos</h3>
+        <span class="cat__status">Phase 2</span>
+        <span class="cat__n">3 planned</span>
+        <span class="cat__note">Cross destinations — the seed of full itineraries</span>
+      </div>
+      <div class="matrix-wrap">
+        <table class="matrix" data-matrix>
+          <caption class="sr-only">Combo tours, planned for phase two</caption>
+          <thead>
+            <tr>
+              <th scope="col">Tour</th><th scope="col">Location</th><th scope="col">Profile</th>
+              <th scope="col">Distance</th><th scope="col">Ascent</th><th scope="col">Time</th>
+              <th scope="col">Grade</th><th scope="col">From</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-grade="moderate" data-len="full" data-status="soon">
+              <th scope="row"><span class="matrix__name">Volcano + Waterfall + Bridges</span><span class="matrix__sub">Three stops, one day, saves $50</span></th>
+              <td class="num">La Fortuna</td>
+              <td><svg class="profile" viewBox="0 0 116 30" preserveAspectRatio="none" aria-hidden="true"><path class="fill" d="M0,24 L20,18 L40,24 L60,12 L80,22 L100,14 L116,20 L116,30 L0,30 Z"/><path class="line" d="M0,24 L20,18 L40,24 L60,12 L80,22 L100,14 L116,20"/></svg></td>
+              <td class="num">7.5 km</td><td class="num">380 m</td><td class="num">10 h</td>
+              <td><span class="grade"><span class="bars" role="img" aria-label="Grade 3 of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span><span>3</span></span></td>
+              <td><span class="price">$164<small>$115 child</small></span></td>
+            </tr>
+            <tr data-grade="moderate" data-len="full" data-status="soon">
+              <th scope="row"><span class="matrix__name">Arenal + Monteverde</span><span class="matrix__sub">Two destinations, shared transport</span></th>
+              <td class="num">Two destinations</td>
+              <td><svg class="profile" viewBox="0 0 116 30" preserveAspectRatio="none" aria-hidden="true"><path class="fill" d="M0,26 L22,20 L44,22 L66,12 L88,16 L110,8 L116,10 L116,30 L0,30 Z"/><path class="line" d="M0,26 L22,20 L44,22 L66,12 L88,16 L110,8 L116,10"/></svg></td>
+              <td class="num">9.0 km</td><td class="num">520 m</td><td class="num">2 days</td>
+              <td><span class="grade"><span class="bars" role="img" aria-label="Grade 3 of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span><span>3</span></span></td>
+              <td><span class="price">Pending<small>tarifario</small></span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ---------- PHASE 3 · WATER & COAST ---------- -->
+    <section class="cat cat--soon">
+      <div class="cat__head">
+        <h3>Water &amp; Coast</h3>
+        <span class="cat__status">Phase 3</span>
+        <span class="cat__n">6 planned</span>
+        <span class="cat__note">New category — opens with Manuel Antonio</span>
+      </div>
+      <div class="matrix-wrap">
+        <table class="matrix" data-matrix>
+          <caption class="sr-only">Water and coast tours, planned for phase three</caption>
+          <thead>
+            <tr>
+              <th scope="col">Tour</th><th scope="col">Location</th><th scope="col">Profile</th>
+              <th scope="col">Distance</th><th scope="col">Ascent</th><th scope="col">Time</th>
+              <th scope="col">Grade</th><th scope="col">From</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-grade="moderate" data-len="half" data-status="soon">
+              <th scope="row"><span class="matrix__name">White Water Rafting</span><span class="matrix__sub">Class III–IV on the Toro</span></th>
+              <td class="num">La Fortuna</td>
+              <td><svg class="profile" viewBox="0 0 116 30" preserveAspectRatio="none" aria-hidden="true"><path class="fill" d="M0,20 L18,26 L36,18 L54,26 L72,18 L90,26 L116,20 L116,30 L0,30 Z"/><path class="line" d="M0,20 L18,26 L36,18 L54,26 L72,18 L90,26 L116,20"/></svg></td>
+              <td class="num">12 km</td><td class="num">River</td><td class="num">5 h</td>
+              <td><span class="grade"><span class="bars" role="img" aria-label="Grade 4 of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span><span>4</span></span></td>
+              <td><span class="price">Pending<small>tarifario</small></span></td>
+            </tr>
+            <tr data-grade="easy" data-len="half" data-status="soon">
+              <th scope="row"><span class="matrix__name">Catamaran &amp; snorkel</span><span class="matrix__sub">Sunset run off the park</span></th>
+              <td class="num">Manuel Antonio</td>
+              <td><svg class="profile" viewBox="0 0 116 30" preserveAspectRatio="none" aria-hidden="true"><path class="fill" d="M0,27 L30,27 L60,27 L90,27 L116,27 L116,30 L0,30 Z"/><path class="line" d="M0,27 L30,27 L60,27 L90,27 L116,27"/></svg></td>
+              <td class="num">Boat</td><td class="num">0 m</td><td class="num">4 h</td>
+              <td><span class="grade"><span class="bars" role="img" aria-label="Grade 1 of 5"><i class="on"></i><i></i><i></i><i></i><i></i></span><span>1</span></span></td>
+              <td><span class="price">Pending<small>tarifario</small></span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <p class="matrix__note" data-reveal>
+      <b>Prototype note.</b> The eight in the first group are the client's real Hiking &amp; Trekking
+      catalogue with their real prices. Everything below is the planned roadmap: products named in
+      the sitemap, priced where a rate exists and marked <em>pending tarifario</em> where it does
+      not. Distances, ascent and grades are placeholders until the routes are walked with a GPS —
+      publishing them is this direction's whole argument, so every figure has to survive checking.
+    </p>
+  </section>
+
+  <!-- ================= GRADING METHOD ================= -->
+  <section class="band method" id="method">
+    <div class="shell grid12 method__grid">
+      <div class="method__head" data-reveal>
+        <p class="label" data-n="03">Grading</p>
+        <h2 class="display">One scale across every kind of day.</h2>
+        <p>A boat trip and a mountain traverse belong on the same axis, or the number means nothing.</p>
+      </div>
+      <ol class="method__list" data-reveal>
+        <li>
+          <b>01</b>
+          <div>
+            <h3>The grade is effort, not activity</h3>
+            <p>Grade 1 is a day anyone who can walk twenty minutes can take — that covers the sloth walk, the wetland boat and the shortest forest loop alike. Grade 5 is the traverse.</p>
+          </div>
+        </li>
+        <li>
+          <b>02</b>
+          <div>
+            <h3>Relative to our own catalogue, not the country</h3>
+            <p>“Moderate” means nothing on its own. The five bars place each product against everything else we sell, so the comparison is internal and checkable.</p>
+          </div>
+        </li>
+        <li>
+          <b>03</b>
+          <div>
+            <h3>Walked, floated or paddled before it is listed</h3>
+            <p>A category opens when we have run every product in it ourselves. That is why they launch one at a time instead of all at once.</p>
+          </div>
+        </li>
+        <li>
+          <b>04</b>
+          <div>
+            <h3>Times are door to door</h3>
+            <p>Including the drive, the stops and the queue at the gate — not just the hours you are moving.</p>
+          </div>
+        </li>
+      </ol>
     </div>
   </section>
 
-
-  <!-- ================= TOURS ================= -->
-  <section id="tours">
-    <div class="shell">
-      <div class="head" data-reveal>
-        <p class="label">Guided departures</p>
-        <h2>Tours we run, tours we trust</h2>
-        <p>Our own departures confirm instantly. Partner operator tours are confirmed with them before you pay a colón.</p>
-      </div>
+  <!-- ================= BOOKING FLOW ================= -->
+  <section class="band shell grid12 flow__grid" id="flow">
+    <div class="flow__head" data-reveal>
+      <p class="label" data-n="04">Booking</p>
+      <h2 class="display">Pick, pay, go.</h2>
+      <p>Card payment, instant confirmation, no enquiry form in the middle.</p>
     </div>
-    <div class="tourgrid">
-      <article class="tourcard">
-        <a class="tourcard__link" href="../a-local-expert/tour.html">
-          <img src="../assets/chirripo-summit.jpg" alt="Hiker at the summit of Cerro Chirripó." loading="lazy">
-          <p class="tourcard__mode tourcard__mode--req">On request · reply within 24 h</p>
-          <h3>Chirripó summit · 3 days</h3>
-          <dl><dt>Per adult</dt><dd>$395</dd><dt>Per child</dt><dd>$310</dd><dt>Permit</dt><dd>Handled</dd></dl>
-        </a>
-      </article>
-      <article class="tourcard">
-        <a class="tourcard__link" href="tour.html">
-          <img src="../assets/chirripo-basecamp.jpg" alt="Crestones Base Camp in Chirripó National Park." loading="lazy">
-          <p class="tourcard__mode tourcard__mode--now">Instant confirmation</p>
-          <h3>Valley, no permit needed</h3>
-          <dl><dt>Per adult</dt><dd>$95</dd><dt>Per child</dt><dd>$70</dd><dt>Duration</dt><dd>Full day</dd></dl>
-        </a>
-      </article>
-      <article class="tourcard">
-        <a class="tourcard__link" href="#tours">
-          <img src="../assets/chirripo-km14.jpg" alt="Trail marker in the Costa Rican highlands." loading="lazy">
-          <p class="tourcard__mode tourcard__mode--now">Instant confirmation</p>
-          <h3>San Jerónimo day hike</h3>
-          <dl><dt>Per adult</dt><dd>$120</dd><dt>Per child</dt><dd>$90</dd><dt>Pick-up</dt><dd>Included</dd></dl>
-        </a>
-      </article>
-    </div>
-    <div class="shell" style="padding-top:clamp(2rem,4vw,3rem)">
-      <div class="disclosure" data-reveal>
-        <h3>Two kinds of tour, told apart on purpose</h3>
-        <p><b>Instant confirmation</b> is our own departure: you book and pay in one step. <b>On request</b>
-        is run by a partner operator: you send the request, we confirm the space, and only then do we
-        send the payment link. You never pay before a seat exists.</p>
-        <p style="color:var(--signal);font-size:var(--t-xs);font-family:var(--font-mono);letter-spacing:.1em;text-transform:uppercase">
-          Prototype placeholder · real catalogue and prices come from the client
-        </p>
-      </div>
-    </div>
+    <ol class="flow__steps" data-reveal>
+      <li><b>Step 01</b><h3>Date</h3><p>Live availability. Sold-out and closed days stay visible, struck through.</p></li>
+      <li><b>Step 02</b><h3>Party</h3><p>Adults and children priced separately, recalculated on screen.</p></li>
+      <li><b>Step 03</b><h3>Extras</h3><p>Lunch, private guide, transport, the $10 guide. Nothing pre-ticked.</p></li>
+      <li><b>Step 04</b><h3>Payment</h3><p>BAC Credomatic. Voucher and pick-up time by email immediately.</p></li>
+    </ol>
   </section>
 
-  <!-- ================= PRODUCT ================= -->
-  <section class="product" id="guide">
-    <div class="shell product__grid">
-      <div data-reveal-x>
-        <img class="product__img" src="../assets/ebook-chirripo.jpg" alt="Cover of the Cerro Chirripó Valley City Guide by Explore Tikizia." loading="lazy">
-      </div>
-      <div data-reveal>
-        <p class="label">The guide</p>
-        <h2>Explore the valley, even without a climbing permit</h2>
-        <p style="color:#3B4A47">
-          Dreaming of exploring Costa Rica’s highest peaks but worried about getting a climbing permit?
-          Don’t let bureaucracy stop your adventure. Our guide opens the doors to the hidden gems of
-          Chirripó Valley.
-        </p>
+  <!-- ================= INFOPRODUCTS =================
+       The second product line, sold the way the current site already sells its
+       Chirripó ebook: a real product with a cover, a price and instant delivery. -->
+  <section class="band product" id="guide">
+    <div class="shell grid12 product__grid">
+      <figure class="product__fig" data-reveal>
+        <img src="../assets/ebook-chirripo.jpg" alt="Cover of a digital guide published by Explore Tikizia." loading="lazy">
+      </figure>
+      <div class="product__body" data-reveal>
+        <p class="label" data-n="05">Second product line</p>
+        <h2 class="display">Guides you buy, not tours you book.</h2>
+        <p>The same dataset, sold on its own. One guide per destination, delivered from this site — the model the current shop already runs on.</p>
         <ul>
-          <li>Insider tips to explore the valley without a climbing permit</li>
-          <li>Local recommendations: accommodation, food and alternative trails</li>
-          <li>Bonus itineraries built around the valley, not just the summit</li>
-          <li>Support local communities and travel more sustainably</li>
+          <li>Every profile at full resolution, with waypoints</li>
+          <li>Entrance fees, opening hours and daily entry caps</li>
+          <li>Which days close after rain, and which gate to use</li>
+          <li>Free packing list for every destination we cover</li>
         </ul>
         <div class="product__buy">
           <span class="product__price">$10 <small>USD · instant download</small></span>
           <a class="btn" href="#"><span>Buy the guide</span><span class="btn__arrow" aria-hidden="true">→</span></a>
         </div>
-        <p style="margin-top:1.25rem;font-size:var(--t-xs);color:#5A6A66">
-          Prototype note: in this direction the guide is sold on the site itself, with automatic
-          delivery — not on an external platform.
-        </p>
+      </div>
+      <div class="product__free" data-reveal>
+        <h3>Packing list</h3>
+        <p>Free, and it works for every destination — which is why it is the one we give away.</p>
+        <form class="capture" data-capture>
+          <label class="sr-only" for="g-email">Email address</label>
+          <input type="email" id="g-email" placeholder="you@example.com" required>
+          <button class="btn" type="submit"><span>Send</span></button>
+        </form>
       </div>
     </div>
   </section>
 
-  <!-- ================= CONSULT ================= -->
-  <section class="consult" id="consult">
-    <div class="shell">
-      <div class="head" data-reveal>
-        <p class="label">Go deeper</p>
-        <h2>Talk it through with someone who climbed it</h2>
-        <p>A Q&amp;A-style session, ideal for DIY travellers who want expert insight without hiring a full planner.</p>
-      </div>
-      <div class="consult__grid">
-        <div class="consult__panel" data-reveal>
-          <h3>Travel consultation</h3>
-          <p class="consult__price">$100</p>
-          <p class="consult__meta">60 minutes · 1:1 · video call</p>
-          <hr class="rule" style="margin-block:1.5rem">
-          <p style="color:var(--mist);font-size:var(--t-sm)">
-            Honest feedback on your self-made itinerary. Help with logistics — weather, safety, routes.
-            Advice on the best areas based on your interests. Tips on transport, activities and
-            accommodation. Help avoiding the mistakes first-timers make.
-          </p>
-          <div style="margin-top:2rem">
-            <a class="btn btn--lg" href="#" style="width:100%"><span>Book &amp; pay in one step</span><span class="btn__arrow" aria-hidden="true">→</span></a>
-          </div>
-          <p style="margin-top:1rem;font-family:var(--font-mono);font-size:var(--t-xs);letter-spacing:.1em;text-transform:uppercase;color:var(--mist)">
-            Reschedule free · 24 h notice
-          </p>
-        </div>
-        <ol data-reveal>
-          <li><div><strong>Pick a time and pay</strong><span>One transaction. Confirmed immediately.</span></div></li>
-          <li><div><strong>Send your draft itinerary</strong><span>A short form — six fields, not a hundred.</span></div></li>
-          <li><div><strong>We meet by video</strong><span>Sixty minutes, your questions, no script.</span></div></li>
-          <li><div><strong>You get the recap</strong><span>Written notes so you can act on it later.</span></div></li>
-        </ol>
-      </div>
+  <!-- ================= PROOF ================= -->
+  <section class="band shell grid12 proof__grid">
+    <figure class="proof__lead" data-reveal>
+      <blockquote class="display">“The service could not have been better. I recommend Explore Tikizia, and our planner, coordinator and driver, Rodrigo Santamaria, without reservation.”</blockquote>
+      <figcaption>Dave Faulders · Google review · March 2025 · ★★★★★</figcaption>
+    </figure>
+    <div class="proof__side" data-reveal>
+      <figure>
+        <p>“Rodrigo was beyond amazing. Knowledgeable, patient, and he made every part of the trip feel effortless.”</p>
+        <figcaption>Sofia Gonzales · February 2025</figcaption>
+      </figure>
+      <figure>
+        <p>“From arrival to departure every event proceeded smoothly — pickups on time and knowledgeable guides throughout.”</p>
+        <figcaption>Google Business Profile</figcaption>
+      </figure>
     </div>
   </section>
 
-  <!-- ================= AUTHORITY ================= -->
-  <section class="authority" id="who">
-    <div class="shell authority__grid">
-      <div data-reveal-x>
-        <img src="../assets/rodrigo-portrait.jpg" alt="Rodrigo Santamaria, founder of Explore Tikizia." loading="lazy">
-      </div>
-      <div data-reveal>
-        <p class="label">Who we are</p>
-        <blockquote>
-          “One hike changed everything for us. Our climb up Cerro Chirripó sparked a passion for
-          exploring and discovering hidden gems together.”
-        </blockquote>
-        <cite><b>Ligia Morera &amp; Rodrigo Santamaría</b>Explore Tikizia · San Ramón de Alajuela</cite>
-        <p style="margin-top:1.75rem;color:var(--mist);font-size:var(--t-sm);max-width:52ch">
-          Since then we’ve dedicated ourselves to helping travellers experience the true heart of
-          Costa Rica through local connections. Now, as a family with two young explorers, we keep
-          uncovering the best-kept secrets of our country.
-        </p>
-      </div>
+  <!-- ================= FAQ ================= -->
+  <section class="band shell grid12 faq__grid" id="faq">
+    <div class="faq__head" data-reveal>
+      <p class="label" data-n="06">Questions</p>
+      <h2 class="display">Before you book.</h2>
     </div>
-  </section>
-
-  <!-- ================= DISCLOSURE ================= -->
-  <section style="padding-block:0 var(--stack)">
-    <div class="shell shell--tight">
-      <div class="disclosure" data-reveal>
-        <h3>What we guarantee, and what we don’t</h3>
-        <p>
-          Chirripó permits are issued by SINAC, Costa Rica’s national parks authority, with a limited
-          daily quota released quarterly. Explore Tikizia helps you understand and navigate that
-          process. We do not control availability and cannot guarantee a permit.
-        </p>
-        <p style="color:var(--signal);font-size:var(--t-xs);font-family:var(--font-mono);letter-spacing:.1em;text-transform:uppercase">
-          Prototype placeholder · exact wording requires legal review by the client
-        </p>
-      </div>
+    <div class="faq__list" data-reveal>
+      <details>
+        <summary>Why can I only book hiking right now?</summary>
+        <p class="a">Because that is the category we have finished measuring. A category goes live when every product in it has been run by us and graded — the rest are on the table above with their phase marked, not hidden.</p>
+      </details>
+      <details>
+        <summary>What does the grade mean on a boat trip?</summary>
+        <p class="a">The same thing it means on a trail: effort, not activity. Grade 1 is a day anyone who can walk twenty minutes can take. That is why the wetland boat and the shortest forest loop share a number.</p>
+      </details>
+      <details>
+        <summary>How are tours organised?</summary>
+        <p class="a">On three facts: location, experience and grade. A tour lives at one flat address and appears under whichever destination and category claim it, so opening Nature &amp; Wildlife never moves an existing URL.</p>
+      </details>
+      <details>
+        <summary>What are the guides?</summary>
+        <p class="a">A second product line. Each destination gets one $10 digital guide with the full dataset, sold and delivered here. The packing list is free and works everywhere.</p>
+      </details>
+      <details>
+        <summary>Do I pay now or on the day?</summary>
+        <p class="a">Now, by card. That is what holds the place. Full refund up to 48 hours before departure. <span style="color:var(--signal)">Final wording pending the client.</span></p>
+      </details>
     </div>
   </section>
 
   <!-- ================= FINAL ================= -->
-  <section class="final">
-    <div class="final__bg" aria-hidden="true"><img src="../assets/chirripo-summit.jpg" alt="" loading="lazy"></div>
-    <div class="shell shell--tight final__inner" data-reveal>
-      <h2>The mountain is the easy part</h2>
-      <p>Start with the guide. Or book an hour with someone who has walked every route on this page.</p>
-      <div class="hero__actions" style="justify-content:center">
-        <a class="btn btn--lg" href="#guide"><span>Get the guide · $10</span><span class="btn__arrow" aria-hidden="true">→</span></a>
-        <a class="btn btn--outline btn--lg" href="#consult"><span>Book a call · $100</span></a>
+  <section class="band final">
+    <div class="shell" data-reveal>
+      <h2 class="display">One catalogue.<br>One scale. One click to pay.</h2>
+      <p>Eight tours bookable today, twenty-four more measured and queued behind them.</p>
+      <div class="hero__actions">
+        <a class="btn btn--lg" href="#catalogue">Open the catalogue <span class="btn__arrow" aria-hidden="true">→</span></a>
       </div>
     </div>
   </section>
@@ -380,16 +558,15 @@
 <footer class="foot">
   <div class="shell foot__grid">
     <div>
-      <img src="../assets/logo.png" alt="Explore Tikizia" width="180" height="54" style="filter:brightness(0) invert(1);opacity:.85">
-      <p style="margin-top:1rem;color:var(--mist);font-size:var(--t-sm);max-width:30ch">Local expertise on Costa Rica, from the Talamanca range to the coast.</p>
+      <img src="../assets/logo.png" alt="Explore Tikizia" width="180" height="54">
+      <p style="margin-top:1rem;max-width:30ch;font-size:var(--t-sm);color:var(--mist)">Graded experiences across Costa Rica. Run from San Ramón de Alajuela.</p>
     </div>
-    <div><h4>Chirripó</h4><ul>
-      <li><a href="#permit">Permits</a></li><li><a href="#routes">Routes</a>
-      <a href="#tours">Tours</a></li>
-      <li><a href="#guide">The guide</a></li><li><a href="#">Base camp</a></li></ul></div>
-    <div><h4>Services</h4><ul>
-      <li><a href="#consult">Consultation</a></li><li><a href="#">Itinerary planning</a></li>
-      <li><a href="#">Transport</a></li><li><a href="#">Partnerships</a></li></ul></div>
+    <div><h4>Experiences</h4><ul>
+      <li><a href="#experiences">Hiking &amp; Trekking</a></li><li><a href="#experiences">Nature &amp; Wildlife</a></li>
+      <li><a href="#experiences">Combos</a></li><li><a href="#experiences">Water &amp; Coast</a></li></ul></div>
+    <div><h4>Practical</h4><ul>
+      <li><a href="#method">How grading works</a></li><li><a href="#flow">Booking</a></li>
+      <li><a href="#guide">Digital guides</a></li><li><a href="#faq">FAQ</a></li></ul></div>
     <div><h4>Connect</h4><ul>
       <li><a href="#">Instagram</a></li><li><a href="#">Facebook</a></li>
       <li><a href="#">YouTube</a></li><li><a href="#">Newsletter</a></li></ul></div>
@@ -399,11 +576,6 @@
     <span>Privacy · Terms · Cancellation</span>
   </div>
 </footer>
-
-<div class="dock" data-dock>
-  <span class="dock__txt"><b>Chirripó Valley Guide</b>$10 · instant download</span>
-  <a class="btn" href="#guide"><span>Buy</span></a>
-</div>
 
 </body>
 </html>

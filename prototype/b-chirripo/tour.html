@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<meta name="description" content="Tour detail template for direction B — the comparison table against the summit trek.">
-<title>Chirripó Valley, No Permit Needed — Explore Tikizia prototype</title>
+<meta name="description" content="Trail detail template for direction B — Arenal Volcano Park Expedition, with a published elevation profile and the four-step click-to-pay funnel.">
+<title>Arenal Volcano Park Expedition — Explore Tikizia prototype</title>
 <link rel="icon" href="../assets/favicon.png">
 <link rel="stylesheet" href="../assets/fonts/fonts.css">
 <link rel="stylesheet" href="styles.css">
@@ -16,7 +16,7 @@
 
 <a class="skip" href="#main">Skip to main content</a>
 
-<p class="ribbon">Prototype B · Tour detail — the comparison table against the summit trek. <a href="../index.html">Compare directions</a></p>
+<p class="ribbon">Prototype B · Trail detail — published profile + click-to-pay funnel. <a href="../index.html">Compare directions</a></p>
 
 <header class="nav" data-nav>
   <div class="shell nav__inner">
@@ -24,12 +24,13 @@
       <img src="../assets/logo.png" alt="Explore Tikizia" width="200" height="60">
     </a>
     <nav class="nav__links" aria-label="Main">
-      <a href="index.html#tours">All tours</a>
-      <a href="#compare">Compare</a>
-      <a href="#spec">Requirements</a>
-      <a href="#reviews">Reviews</a>
+      <a href="index.html#catalogue">The matrix</a>
+      <a href="#profile">Profile</a>
+      <a href="#book">Book</a>
+      <a href="#day">The day</a>
+      <a href="#scope">Scope</a>
     </nav>
-    <a class="btn nav__cta" href="#book"><span>Check dates</span></a>
+    <a class="btn nav__cta" href="#book">Check dates <span class="btn__arrow" aria-hidden="true">→</span></a>
   </div>
 </header>
 
@@ -38,235 +39,346 @@
   <!-- ================= HERO ================= -->
   <section class="thero">
     <div class="thero__bg" aria-hidden="true">
-      <img src="../assets/chirripo-basecamp.jpg" alt="" fetchpriority="high">
+      <img src="../assets/lafortuna-arenal-volcano.jpg" alt="" width="800" height="449" fetchpriority="high">
     </div>
     <div class="shell thero__inner">
       <nav class="crumbs" aria-label="Breadcrumb">
         <ol>
-          <li><a href="index.html#tours">Tours</a></li>
-          <li aria-current="page">Chirripó Valley</li>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#catalogue">La Fortuna · Hiking &amp; Trekking</a></li>
+          <li aria-current="page">Arenal Volcano Park</li>
         </ol>
       </nav>
-      <p class="label" style="margin-top:.75rem">Full day · no SINAC permit required</p>
-      <h1>Chirripó Valley,<span>no permit needed.</span></h1>
-      <p class="thero__lede">Same valley, same guide, none of the paperwork. For the days the summit permit did not come through — or for travellers who never wanted the climb in the first place.</p>
+      <p class="label" data-n="Trail 01">Easy · grade 1 of 5</p>
+      <h1 class="display">Arenal Volcano<br>Park Expedition</h1>
+      <p class="thero__lede">
+        4.0 km, 120 m of ascent, 6 % at its steepest. The gentlest of the eight, and the only one
+        where the thing you came to see makes its own weather.
+      </p>
     </div>
   </section>
 
-  <!-- ================= DATA ================= -->
-  <dl class="data">
-    <div><dt>Duration</dt><dd>Full <small>day</small></dd></div>
-    <div><dt>Difficulty</dt><dd>Easy <small>1 of 5</small></dd></div>
-    <div><dt>Confirmation</dt><dd>Instant</dd></div>
-    <div><dt>Per adult</dt><dd>$95 <small>USD</small></dd></div>
-  </dl>
+  <!-- ================= VITALS ================= -->
+  <section class="vitals">
+    <div class="shell">
+      <dl class="vitals__grid">
+        <div><dt>Distance</dt><dd>4.0 <small>km</small></dd></div>
+        <div><dt>Ascent</dt><dd>120 <small>m</small></dd></div>
+        <div><dt>Max grade</dt><dd>6 <small>%</small></dd></div>
+        <div><dt>Door to door</dt><dd>4 <small>h</small></dd></div>
+        <div><dt>Entry</dt><dd>$15 <small>included</small></dd></div>
+        <div><dt>From</dt><dd>$66 <small>adult</small></dd></div>
+      </dl>
+    </div>
+  </section>
 
-  <div class="shell cols">
-    <div class="cols__main">
+  <!-- ================= ELEVATION PROFILE =================
+       The published dataset, at full width. This is the argument of the whole
+       direction, so it gets the space rather than a thumbnail. -->
+  <section class="band shell" id="profile">
+    <div class="head" data-reveal>
+      <p class="label" data-n="01">Profile</p>
+      <h2 class="display">What the four kilometres actually do.</h2>
+    </div>
 
-      <!-- ================= COMPARISON ================= -->
-      <section class="sec" id="compare" aria-labelledby="compare-h">
-        <p class="kicker">Choosing</p>
-        <h2 id="compare-h">How this compares to the summit.</h2>
-        <p class="sec__lead">Same mountain, three very different commitments. This is the table most operators do not publish.</p>
+    <div class="elev" data-reveal style="margin-top:2rem">
+      <svg class="elev__chart" viewBox="0 0 1000 220" preserveAspectRatio="none" role="img"
+           aria-label="Elevation profile: from 480 metres at the gate, rising gradually to 600 metres on the lava flow at kilometre 2.6, then back down to 500 metres.">
+        <defs>
+          <linearGradient id="elevfill" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="rgb(255 95 31 / .34)"/>
+            <stop offset="100%" stop-color="rgb(255 95 31 / .02)"/>
+          </linearGradient>
+        </defs>
+        <g class="grid">
+          <line x1="0" y1="40" x2="1000" y2="40"/>
+          <line x1="0" y1="100" x2="1000" y2="100"/>
+          <line x1="0" y1="160" x2="1000" y2="160"/>
+          <line x1="0" y1="219" x2="1000" y2="219"/>
+        </g>
+        <path class="area" d="M0,168 L90,160 L180,150 L270,132 L360,120 L450,96 L540,72 L650,64 L740,88 L840,120 L920,146 L1000,158 L1000,220 L0,220 Z"/>
+        <path class="stroke" d="M0,168 L90,160 L180,150 L270,132 L360,120 L450,96 L540,72 L650,64 L740,88 L840,120 L920,146 L1000,158"/>
+        <circle class="pt" cx="0" cy="168" r="5"/>
+        <circle class="pt" cx="360" cy="120" r="5"/>
+        <circle class="pt" cx="650" cy="64" r="5"/>
+        <circle class="pt" cx="1000" cy="158" r="5"/>
+      </svg>
+      <p class="elev__axis"><span>0 km · 480 m</span><span>1.4 km</span><span>2.6 km · 600 m</span><span>4.0 km · 500 m</span></p>
 
-        <div class="table-wrap">
-          <table class="matrix">
-            <caption class="sr-only">Comparison of three Chirripó-area tours</caption>
-            <thead>
-              <tr>
-                <th scope="col">Tour</th>
-                <th scope="col">Permit</th>
-                <th scope="col">Duration</th>
-                <th scope="col">Difficulty</th>
-                <th scope="col">Confirmation</th>
-                <th scope="col">From</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="is-current">
-                <th scope="row">Chirripó Valley <span class="tag-now">you are here</span></th>
-                <td>Not required</td>
-                <td>Full day</td>
-                <td><span class="bars bars--sm" role="img" aria-label="1 of 5"><i class="on"></i><i></i><i></i><i></i><i></i></span></td>
-                <td>Instant</td>
-                <td><strong>$95</strong></td>
-              </tr>
-              <tr>
-                <th scope="row"><a href="../a-local-expert/tour.html">Cerro Chirripó Summit</a></th>
-                <td>SINAC, quarterly</td>
-                <td>3 days</td>
-                <td><span class="bars bars--sm" role="img" aria-label="5 of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></td>
-                <td>On request</td>
-                <td><strong>$395</strong></td>
-              </tr>
-              <tr>
-                <th scope="row"><a href="index.html#tours">San Jerónimo Day Hike</a></th>
-                <td>Not required</td>
-                <td>Full day</td>
-                <td><span class="bars bars--sm" role="img" aria-label="2 of 5"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></td>
-                <td>Instant</td>
-                <td><strong>$120</strong></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <p class="fine">The summit needs a SINAC permit released quarterly, with roughly 52 places a day — see <a href="index.html#permit">the permit page</a>. Both valley routes need none.</p>
-      </section>
+      <ol class="elev__marks">
+        <li><b>0.0 km</b><h3>Ranger station</h3><p>480 m. Peninsula sector gate, card payment, no cash.</p></li>
+        <li><b>1.4 km</b><h3>El Ceibo</h3><p>545 m. Flat and shaded. Best chance of sloths on the whole walk.</p></li>
+        <li><b>2.6 km</b><h3>1968 lava flow</h3><p>600 m. Loose black rock, no shade, the steepest 6 % of the day.</p></li>
+        <li><b>4.0 km</b><h3>Lake viewpoint</h3><p>500 m. Done last, when the cone has usually clouded over.</p></li>
+      </ol>
 
-      <!-- ================= FIT ================= -->
-      <section class="sec" id="spec" aria-labelledby="spec-h">
-        <p class="kicker">Requirements</p>
-        <h2 id="spec-h">Who this route is for.</h2>
-        <div class="two">
-          <div class="panel panel--yes">
-            <h3>Suitable if</h3>
-            <ul>
-              <li>You want the valley, the hot springs and the scenery without the summit push</li>
-              <li>Your SINAC permit application did not go through this quarter</li>
-              <li>You are travelling with people who should not attempt the full ascent</li>
-            </ul>
+      <p class="matrix__note" style="margin-top:1.5rem">
+        <b>Prototype note.</b> The profile above is drawn to plausible figures, not from a recorded
+        track. Publishing it is the point of this direction — so it has to be re-drawn from a real
+        GPS file before launch.
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= BOOKING FUNNEL ================= -->
+  <section class="band book" id="book">
+    <div class="shell grid12 book__grid">
+
+      <div class="book__panel">
+        <p class="label" data-n="02">Book</p>
+        <h2 class="display" style="font-size:var(--t-2xl);margin-block:1rem 1.75rem">Date · party · extras · pay</h2>
+
+        <ol class="steps" data-steps>
+          <li data-state="active"><b><span>1</span></b><button type="button" data-goto="0">Date</button></li>
+          <li data-state="todo"><b><span>2</span></b><button type="button" data-goto="1">Party</button></li>
+          <li data-state="todo"><b><span>3</span></b><button type="button" data-goto="2">Extras</button></li>
+          <li data-state="todo"><b><span>4</span></b><button type="button" data-goto="3">Payment</button></li>
+        </ol>
+
+        <form class="panel" data-funnel novalidate>
+
+          <!-- STEP 1 · DATE -->
+          <section class="step" data-step data-active="true" aria-label="Choose a date">
+            <h2>Select a departure</h2>
+            <p class="hint">Live availability. Sold-out and closed days stay on the calendar, struck through — a month with gaps in it is information, not an error.</p>
+            <div class="step__body">
+              <div class="cal__head">
+                <p class="cal__month" data-cal-month>Month</p>
+                <div class="cal__nav">
+                  <button type="button" data-cal-prev aria-label="Previous month">‹</button>
+                  <button type="button" data-cal-next aria-label="Next month">›</button>
+                </div>
+              </div>
+              <div class="cal__dow" aria-hidden="true"><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span><span>Su</span></div>
+              <div class="cal__grid" data-cal-grid role="group" aria-label="Available departure dates"></div>
+              <div class="legend">
+                <span><i></i> Available</span><span><i class="few"></i> Few places</span><span><i class="out"></i> Sold out / closed</span>
+              </div>
+              <p class="hint" style="margin-top:1rem" data-cal-status role="status">Pick a date to continue.</p>
+            </div>
+            <div class="nav-row">
+              <span style="margin-right:auto"></span>
+              <button class="btn" type="button" data-next disabled>Continue <span class="btn__arrow" aria-hidden="true">→</span></button>
+            </div>
+          </section>
+
+          <!-- STEP 2 · PARTY -->
+          <section class="step" data-step aria-label="Party">
+            <h2>Party size</h2>
+            <p class="hint">Adult and child rates are fixed in advance and shown here, not resolved at checkout.</p>
+            <div class="step__body">
+              <div class="party">
+                <div class="party__row">
+                  <span class="party__label"><b>Adults</b><span>12 and over</span></span>
+                  <span class="party__price">$66</span>
+                  <span class="stepper">
+                    <button type="button" data-dec="adults" aria-label="One adult fewer">−</button>
+                    <output data-out="adults" aria-live="polite">2</output>
+                    <button type="button" data-inc="adults" aria-label="One adult more">+</button>
+                  </span>
+                </div>
+                <div class="party__row">
+                  <span class="party__label"><b>Children</b><span>5–11 · under 5 free</span></span>
+                  <span class="party__price">$45</span>
+                  <span class="stepper">
+                    <button type="button" data-dec="children" aria-label="One child fewer">−</button>
+                    <output data-out="children" aria-live="polite">0</output>
+                    <button type="button" data-inc="children" aria-label="One child more">+</button>
+                  </span>
+                </div>
+              </div>
+              <p class="hint" style="margin-top:1rem">Maximum ten per departure. Above that the group gets its own guide and a private rate.</p>
+            </div>
+            <div class="nav-row">
+              <button class="btn btn--ghost" type="button" data-back>Back</button>
+              <button class="btn" type="button" data-next>Continue <span class="btn__arrow" aria-hidden="true">→</span></button>
+            </div>
+          </section>
+
+          <!-- STEP 3 · EXTRAS -->
+          <section class="step" data-step aria-label="Extras">
+            <h2>Add-ons</h2>
+            <p class="hint">Priced individually. Nothing is pre-ticked.</p>
+            <div class="step__body">
+              <div class="extras">
+                <label class="extra">
+                  <input type="checkbox" data-extra="pickup" data-amount="0">
+                  <span class="extra__txt"><b>Hotel pick-up · La Fortuna</b><span>Included as standard. Tick it so we know which lobby.</span></span>
+                  <span class="extra__price">Free</span>
+                </label>
+                <label class="extra">
+                  <input type="checkbox" data-extra="lunch" data-amount="14" data-per="person">
+                  <span class="extra__txt"><b>Soda lunch, El Castillo</b><span>Casado at a family kitchen on the way back.</span></span>
+                  <span class="extra__price">$14 <small>per person</small></span>
+                </label>
+                <label class="extra">
+                  <input type="checkbox" data-extra="scope" data-amount="20" data-per="booking">
+                  <span class="extra__txt"><b>Private naturalist &amp; scope</b><span>Your own guide for the group, and the optics that find the wildlife.</span></span>
+                  <span class="extra__price">$20 <small>per booking</small></span>
+                </label>
+                <label class="extra">
+                  <input type="checkbox" data-extra="gpx" data-amount="0">
+                  <span class="extra__txt"><b>GPX track by email</b><span>The recorded file for this trail, free with any booking.</span></span>
+                  <span class="extra__price">Free</span>
+                </label>
+              </div>
+            </div>
+            <div class="nav-row">
+              <button class="btn btn--ghost" type="button" data-back>Back</button>
+              <button class="btn" type="button" data-next>Continue to payment <span class="btn__arrow" aria-hidden="true">→</span></button>
+            </div>
+          </section>
+
+          <!-- STEP 4 · PAY -->
+          <section class="step" data-step aria-label="Payment">
+            <h2>Payment</h2>
+            <p class="hint">Card via BAC Credomatic. Voucher and pick-up time by email immediately.</p>
+            <div class="step__body">
+              <div class="pay">
+                <div class="field"><label for="p-name">Name on the booking</label><input type="text" id="p-name" autocomplete="name" placeholder="Jane Ellis" required></div>
+                <div class="field"><label for="p-email">Email</label><input type="email" id="p-email" autocomplete="email" placeholder="you@example.com" required><span class="field__hint">Voucher, pick-up time and the GPX file go here.</span></div>
+                <div class="field"><label for="p-hotel">Hotel in La Fortuna</label><input type="text" id="p-hotel" placeholder="Where we collect you"></div>
+                <div class="field"><label for="p-card">Card number</label><input type="text" id="p-card" inputmode="numeric" placeholder="•••• •••• •••• ••••" autocomplete="off"></div>
+                <div class="field--split">
+                  <div class="field"><label for="p-exp">Expiry</label><input type="text" id="p-exp" placeholder="MM / YY" autocomplete="off"></div>
+                  <div class="field"><label for="p-cvc">CVC</label><input type="text" id="p-cvc" placeholder="•••" autocomplete="off"></div>
+                </div>
+                <p class="paybar"><b>Prototype only.</b> No card details are transmitted, stored or charged. The fields exist to show the step; the form is wired to nothing.</p>
+              </div>
+            </div>
+            <div class="nav-row">
+              <button class="btn btn--ghost" type="button" data-back>Back</button>
+              <button class="btn btn--lg" type="button" data-pay>Pay <span data-pay-total>$132</span> · confirm</button>
+              <span class="nav-row__note">Full refund up to 48 h before departure. <span class="pending">Final wording pending the client.</span></span>
+            </div>
+          </section>
+
+          <!-- CONFIRMATION -->
+          <section class="step" data-step aria-label="Confirmed">
+            <div class="done">
+              <p class="done__mark" aria-hidden="true">✓</p>
+              <h2 class="display">Confirmed</h2>
+              <p data-done-line>Arenal Volcano Park Expedition.</p>
+              <p class="done__ref" data-done-ref>ET-0000</p>
+              <p style="margin-top:1.5rem;font-size:var(--t-sm)">In the live site this is the WooCommerce order confirmation. <b style="color:var(--signal)">Prototype only — nothing was charged.</b></p>
+              <div class="nav-row" style="justify-content:center">
+                <button class="btn btn--ghost" type="button" data-restart>Run it again</button>
+              </div>
+            </div>
+          </section>
+
+        </form>
+      </div>
+
+      <aside class="summary">
+        <div class="summary__card">
+          <div class="summary__top">
+            <p class="label" data-n="Trail 01">Arenal Volcano</p>
+            <h3>Park Expedition</h3>
           </div>
-          <div class="panel panel--no">
-            <h3>Not suitable if</h3>
-            <ul>
-              <li>Reaching the 3,820 m summit is the whole point of your trip — book the summit trek instead</li>
-              <li>You need technical climbing or rappelling — this route has neither</li>
-            </ul>
-          </div>
+          <dl class="summary__lines" data-summary>
+            <div><dt>Date</dt><dd data-sum-date class="muted">Not set</dd></div>
+            <div><dt>Adults <span data-sum-adults-n>× 2</span></dt><dd data-sum-adults>$132</dd></div>
+            <div><dt>Children <span data-sum-children-n>× 0</span></dt><dd data-sum-children class="muted">—</dd></div>
+            <div data-sum-extras-row hidden><dt>Add-ons</dt><dd data-sum-extras>$0</dd></div>
+          </dl>
+          <div class="summary__total"><span>Total</span><strong data-sum-total>$132</strong></div>
+          <p class="summary__note">USD · taxes included · nothing charged before step 4</p>
         </div>
-      </section>
+        <ul class="summary__trust">
+          <li>Instant confirmation, no enquiry step</li>
+          <li>Free cancellation up to 48 hours before</li>
+          <li>Own departure, own guide, measured route</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
 
-      <!-- ================= PRACTICAL ================= -->
-      <section class="sec" id="practical" aria-labelledby="practical-h">
-        <p class="kicker">Practical</p>
-        <h2 id="practical-h">Everything before you book.</h2>
-        <ol class="plist">
-          <li><b>01</b><h3>Departure</h3><p>Early morning from San Gerardo de Rivas. Exact pick-up time confirmed right after booking.</p></li>
-          <li><b>02</b><h3>Meeting point</h3><p>Hotel pick-up in San Gerardo de Rivas or San Isidro del General. Ask before booking if you are staying further out.</p></li>
-          <li><b>03</b><h3>Group</h3><p>Shared departure. Private departures available — ask on the itinerary form.</p></li>
-          <li><b>04</b><h3>Cancellation</h3><p>Full refund up to 48 hours before departure. <span class="pending">Wording is a placeholder pending the client.</span></p></li>
+  <!-- ================= BODY ================= -->
+  <div class="shell grid12 band">
+    <div class="body__main">
+      <section class="sec" id="day">
+        <p class="label" data-n="03">Timetable</p>
+        <h2 class="display">Door to door, four hours.</h2>
+        <p>The cone is usually clear until around ten and clouded by early afternoon. Every time below is set by that one fact.</p>
+        <ol class="timeline">
+          <li><time datetime="08:00">08:00</time><div><h3>Pick-up</h3><p>Your hotel lobby in La Fortuna. Fifteen minutes to the gate on Route 142, then signposted gravel.</p></div></li>
+          <li><time datetime="08:30">08:30</time><div><h3>El Ceibo · 1.8 km</h3><p>Flat, shaded, secondary forest. The scope comes out here.</p></div></li>
+          <li><time datetime="10:00">10:00</time><div><h3>Lava flow · 2.6 km</h3><p>Loose black rock, no shade. Closest approach to the cone.</p></div></li>
+          <li><time datetime="11:15">11:15</time><div><h3>Lake viewpoint</h3><p>Last on purpose — by now the volcano has usually gone.</p></div></li>
+          <li><time datetime="12:00">12:00</time><div><h3>Back in town</h3><p>Dropped where you were collected.</p></div></li>
         </ol>
       </section>
 
-      <!-- ================= SCOPE ================= -->
-      <section class="sec" id="inc" aria-labelledby="inc-h">
-        <p class="kicker">Scope</p>
-        <h2 id="inc-h">Included, excluded, and what to bring.</h2>
-        <div class="three">
+      <section class="sec" id="scope">
+        <p class="label" data-n="04">Scope</p>
+        <h2 class="display">Included and excluded.</h2>
+        <div class="cols2">
           <div>
             <h3 class="col-h col-h--in">Included</h3>
-            <ul class="dots">
-              <li>Local bilingual guide</li>
-              <li>Round-trip transport within San Gerardo de Rivas</li>
-              <li>Access to the hot springs</li>
+            <ul class="dots dots--in">
+              <li>Transport from your hotel in La Fortuna</li>
+              <li>Park entry, $15 value</li>
+              <li>Certified naturalist guide, EN / ES</li>
+              <li>Spotting scope and bottled water</li>
+              <li>GPX track of the route, by email</li>
             </ul>
           </div>
           <div>
             <h3 class="col-h col-h--out">Not included</h3>
-            <ul class="dots">
-              <li>Meals</li>
+            <ul class="dots dots--out">
+              <li>Meals — the walk ends before lunch</li>
               <li>Gratuities</li>
-              <li>Personal travel insurance</li>
-            </ul>
-          </div>
-          <div>
-            <h3 class="col-h col-h--bring">Bring</h3>
-            <ul class="dots">
-              <li>Swimwear and a towel</li>
-              <li>Closed hiking shoes</li>
-              <li>A warm layer for the higher stops</li>
-              <li>Water bottle</li>
+              <li>Travel insurance</li>
             </ul>
           </div>
         </div>
       </section>
 
-      <!-- ================= REVIEWS ================= -->
-      <section class="sec" id="reviews" aria-labelledby="rev-h">
-        <p class="kicker">Verified</p>
-        <h2 id="rev-h">From travellers on the current site.</h2>
-        <div class="quotes">
-          <blockquote><p>“The service could not have been better. I recommend Explore Tikizia, and our planner, coordinator and driver, Rodrigo Santamaria, without reservation.”</p><cite>Dave Faulders · Google review · March 2025</cite></blockquote>
-          <blockquote><p>“Rodrigo was beyond amazing. Knowledgeable, patient, and he made every part of the trip feel effortless.”</p><cite>Sofia Gonzales · Google review · February 2025</cite></blockquote>
-        </div>
-        <p class="fine">Prototype placeholder — these are the two reviews already live on the current site. A tour-specific review programme is proposed as an optional module.</p>
+      <section class="sec">
+        <p class="label" data-n="05">Stated plainly</p>
+        <h2 class="display">Two things the brochures leave out.</h2>
+        <ul class="dots dots--out" style="margin-top:1.25rem">
+          <li>You will not see lava. Arenal stopped erupting in 2010; the flow is cold rock.</li>
+          <li>The cone is often invisible. It makes its own weather, and no operator can promise you a view of it.</li>
+        </ul>
       </section>
-
     </div>
 
-    <!-- ================= BOOKING RAIL ================= -->
-    <aside class="cols__aside">
-      <form class="book" id="book" data-booking data-mode="instant">
-        <div class="book__row">
-          <div>
-            <p class="book__label">Per adult</p>
-            <p class="book__price" data-total>$95</p>
-          </div>
-          <p class="book__tax">child<br>$70</p>
-        </div>
-
-        <div class="f">
-          <label for="date">Date</label>
-          <input type="date" id="date" required aria-describedby="date-hint">
-          <p class="f__hint" id="date-hint">Confirmed instantly for this tour.</p>
-        </div>
-        <div class="f2">
-          <div class="f"><label for="ad">Adults</label><input type="number" id="ad" min="1" max="10" value="2" data-adults></div>
-          <div class="f"><label for="ch">Children <span>(5–11)</span></label><input type="number" id="ch" min="0" max="10" value="0" data-children></div>
-        </div>
-
-        <div class="book__total"><span>Total</span><strong data-grand>$190 USD</strong></div>
-        <button class="btn" type="submit"><span>Book — confirmed instantly</span></button>
-        <p class="book__note" data-outcome>Card payment, written confirmation immediately, pick-up time within 24 h.</p>
-        <p class="book__alt"><a href="../a-local-expert/tour.html">Compare with the summit trek instead</a></p>
-      </form>
+    <aside class="body__aside">
+      <div class="side">
+        <p class="label" data-n="$10">Self-guided</p>
+        <h3>La Fortuna guide</h3>
+        <p>Full-resolution profiles, waypoints, entry caps and gate details for the five trails you can walk alone.</p>
+        <a class="btn btn--ghost btn--block" href="index.html#guide">See the guide</a>
+      </div>
+      <div class="side">
+        <p class="label" data-n="7">Compare</p>
+        <ul class="side__list">
+          <li><a href="index.html#catalogue">Río Celeste</a><span>280 m · $122</span></li>
+          <li><a href="index.html#catalogue">Hule Lagoon</a><span>350 m · $122</span></li>
+          <li><a href="index.html#catalogue">Juan Castro Blanco</a><span>420 m · $122</span></li>
+          <li><a href="index.html#catalogue">La Tigra</a><span>400 m · $127</span></li>
+          <li><a href="index.html#catalogue">Monteverde traverse</a><span>900 m · $216</span></li>
+        </ul>
+      </div>
     </aside>
   </div>
-
-  <!-- ================= RELATED ================= -->
-  <section class="tourband" id="tours" aria-labelledby="more-h">
-    <div class="shell">
-      <div class="tourband__head">
-        <h2 id="more-h">Two more ways up the mountain</h2>
-        <a class="arrow" href="index.html#tours">All tours <span aria-hidden="true">→</span></a>
-      </div>
-      <div class="tourgrid">
-        <article class="tourcard">
-          <a class="tourcard__link" href="../a-local-expert/tour.html">
-            <img src="../assets/chirripo-summit.jpg" alt="Hiker at the summit of Cerro Chirripó." loading="lazy">
-            <p class="tourcard__mode tourcard__mode--req">On request · reply within 24 h</p>
-            <h3>Chirripó summit · 3 days</h3>
-            <dl><dt>Per adult</dt><dd>$395</dd><dt>Per child</dt><dd>$310</dd><dt>Permit</dt><dd>Handled</dd></dl>
-          </a>
-        </article>
-        <article class="tourcard">
-          <a class="tourcard__link" href="index.html#tours">
-            <img src="../assets/chirripo-km14.jpg" alt="Trail marker in the Costa Rican highlands." loading="lazy">
-            <p class="tourcard__mode tourcard__mode--now">Instant confirmation</p>
-            <h3>San Jerónimo day hike</h3>
-            <dl><dt>Per adult</dt><dd>$120</dd><dt>Per child</dt><dd>$90</dd><dt>Pick-up</dt><dd>Included</dd></dl>
-          </a>
-        </article>
-      </div>
-    </div>
-  </section>
 
 </main>
 
 <footer class="foot">
   <div class="shell foot__grid">
     <div>
-      <img src="../assets/logo.png" alt="Explore Tikizia" width="180" height="54" style="filter:brightness(0) invert(1);opacity:.85">
-      <p style="margin-top:1rem;color:var(--mist);font-size:var(--t-sm);max-width:30ch">Local expertise on Costa Rica, from the Talamanca range to the coast.</p>
+      <img src="../assets/logo.png" alt="Explore Tikizia" width="180" height="54">
+      <p style="margin-top:1rem;max-width:30ch;font-size:var(--t-sm);color:var(--mist)">Measured hiking in La Fortuna. Run from San Ramón de Alajuela, Costa Rica.</p>
     </div>
-    <div><h4>Chirripó</h4><ul>
-      <li><a href="index.html#permit">Permits</a></li><li><a href="index.html#routes">Routes</a></li>
-      <li><a href="index.html#tours">Tours</a></li>
-      <li><a href="index.html#guide">The guide</a></li><li><a href="#">Base camp</a></li></ul></div>
-    <div><h4>Services</h4><ul>
-      <li><a href="index.html#consult">Consultation</a></li><li><a href="#">Itinerary planning</a></li>
-      <li><a href="#">Transport</a></li><li><a href="#">Partnerships</a></li></ul></div>
+    <div><h4>Trails</h4><ul>
+      <li><a href="tour.html">Arenal Volcano Park</a></li><li><a href="index.html#catalogue">All eight</a></li>
+      <li><a href="index.html#method">How we measure</a></li><li><a href="index.html#guide">The guide</a></li></ul></div>
+    <div><h4>Practical</h4><ul>
+      <li><a href="#book">Booking</a></li><li><a href="#scope">Scope</a></li>
+      <li><a href="index.html#faq">FAQ</a></li><li><a href="#profile">Profile</a></li></ul></div>
     <div><h4>Connect</h4><ul>
       <li><a href="#">Instagram</a></li><li><a href="#">Facebook</a></li>
       <li><a href="#">YouTube</a></li><li><a href="#">Newsletter</a></li></ul></div>
@@ -278,8 +390,8 @@
 </footer>
 
 <div class="dock" data-dock>
-  <span class="dock__txt"><b>Chirripó Valley</b><span data-dock-total>$190 USD</span> today</span>
-  <a class="btn" href="#book"><span>Book</span></a>
+  <span class="dock__txt">Total<b data-dock-total>$132</b></span>
+  <a class="btn" href="#book">Book</a>
 </div>
 
 </body>
