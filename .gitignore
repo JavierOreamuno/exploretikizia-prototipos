@@ -9,6 +9,11 @@
 docs/
 .atl/
 
+# Client-owned material: brand manual, logo sources, the master tour sheet.
+# This repository is public through GitHub Pages, so none of it goes near it.
+desingn-tikizia/
+master-tours/
+
 # Audit instruments stay local; only the Pages build script is committed
 scripts/*
 !scripts/build-pages.mjs
