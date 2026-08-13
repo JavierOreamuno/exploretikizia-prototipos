@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="Tour detail template for direction A — OTA product layout with the whole booking flow in one sticky rail.">
+<title>Arenal Volcano Park Expedition — Explore Tikizia prototype (corrected)</title>
+<link rel="icon" href="../assets/favicon.png">
+<link rel="stylesheet" href="../assets/fonts/fonts.css">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="tour.css">
+<script src="tour.js" defer></script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to main content</a>
+
+<p class="ribbon">Prototype A-light · Tour detail — audited build: progressive rail, working mobile bar. <a href="../index.html">Compare directions</a></p>
+
+<header class="nav" data-nav>
+  <div class="nav__inner">
+    <a class="nav__brand" href="index.html" aria-label="Explore Tikizia — home">
+      <img src="../assets/logo.png" alt="" width="200" height="60">
+      <span>Explore Tikizia</span>
+    </a>
+    <nav class="nav__links" aria-label="Main">
+      <a href="index.html#tours">Tours</a>
+      <a href="index.html#destinations">Destinations</a>
+      <a href="index.html#experiences">Experiences</a>
+      <a href="index.html#guides">Guides</a>
+      <a href="#book" aria-current="page">Book</a>
+    </nav>
+    <a class="nav__cta" href="#book">Check availability</a>
+    <button class="nav__burger" type="button" data-menu-btn aria-expanded="false" aria-controls="mobile-menu">
+      <span class="nav__burger-box" aria-hidden="true"><i></i><i></i></span>
+      Menu
+    </button>
+  </div>
+</header>
+
+<div class="menu" id="mobile-menu" data-menu hidden>
+  <div class="menu__group">
+    <p>By destination</p>
+    <a href="index.html#tours">La Fortuna <b class="is-live">8 tours</b></a>
+    <span class="menu__soon">Monteverde <b>Phase 2</b></span>
+    <span class="menu__soon">Chirrip&oacute; <b>Phase 2</b></span>
+    <span class="menu__soon">Manuel Antonio <b>Phase 3</b></span>
+  </div>
+  <div class="menu__group">
+    <p>By experience</p>
+    <a href="index.html#tours">Hiking &amp; Trekking <b class="is-live">Open now</b></a>
+    <span class="menu__soon">Nature &amp; Wildlife <b>12 planned</b></span>
+    <span class="menu__soon">Combos <b>1 planned</b></span>
+    <span class="menu__soon">Water &amp; Coast <b>Phase 3</b></span>
+  </div>
+  <div class="menu__group">
+    <p>This tour</p>
+    <a href="#book">Check availability <b class="is-live">From $66</b></a>
+    <a href="#details">What is included</a>
+    <a href="#reviews">Reviews</a>
+  </div>
+  <div class="menu__contact">
+    <p class="menu__wa"><svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.1 14.2c-.2.6-1.2 1.2-1.7 1.2-.5.1-1 .1-3.2-.8-2.7-1.1-4.4-3.9-4.5-4.1-.1-.2-1-1.4-1-2.6s.6-1.8.9-2.1c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.5c-.1.2-.3.3-.1.6.2.3.7 1.2 1.6 2 1.1.9 1.9 1.2 2.2 1.3.2.1.4.1.5-.1l.8-.9c.2-.2.3-.2.5-.1l2 .9c.2.1.4.2.4.3.1.2.1.7-.1 1.2Z"/></svg> WhatsApp <span class="pending">number wired at launch</span></p>
+    <p>Rodrigo replies within 2 hours, 7:00&ndash;20:00 Costa Rica time.</p>
+  </div>
+</div>
+
+<main id="main">
+  <div class="shell">
+
+    <!-- ================= PRODUCT HEAD ================= -->
+    <div class="phead">
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#destinations">La Fortuna</a></li>
+          <li><a href="index.html#experiences">Hiking &amp; Trekking</a></li>
+          <li aria-current="page">Arenal Volcano Park</li>
+        </ol>
+      </nav>
+      <h1>Arenal Volcano Park Expedition</h1>
+      <div class="phead__row">
+        <span class="rating">
+          <span class="rating__stars" aria-hidden="true">★★★★★</span>
+          <span class="rating__score">5.0</span>
+          <a href="#reviews">190 reviews</a>
+        </span>
+        <span class="phead__meta">La Fortuna · Hiking &amp; Trekking · Our own departure</span>
+        <span class="phead__acts">
+          <button class="iconbtn" type="button">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20.8 6.6a5 5 0 0 0-7.1 0L12 8.3l-1.7-1.7a5 5 0 1 0-7.1 7.1L12 22l8.8-8.3a5 5 0 0 0 0-7.1Z"/></svg>
+            Save
+          </button>
+          <button class="iconbtn" type="button">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3v13M7 8l5-5 5 5M5 21h14"/></svg>
+            Share
+          </button>
+        </span>
+      </div>
+    </div>
+
+    <!-- A-01 · The rail used to begin below the gallery and the tabs, so at
+         1440×900 the price, the calendar and the pay button were all under the
+         fold. The page is now one two-column grid from the head down: gallery,
+         tabs and body share the left column, the rail owns the right one and
+         starts level with the first photograph. -->
+    <div class="pgrid">
+      <div class="pgrid__main">
+
+    <!-- ================= GALLERY ================= -->
+    <div class="gallery">
+      <figure><img src="../assets/lafortuna-arenal-volcano.jpg" alt="The cone of Arenal Volcano above rainforest." width="800" height="449" fetchpriority="high"></figure>
+      <figure><img src="../assets/lafortuna-arenal-trail.jpg" alt="Walkers on the El Ceibo forest trail." loading="lazy"></figure>
+      <figure><img src="../assets/lf-juan-castro-trail.jpg" alt="A mossy cloud-forest trail near La Fortuna." loading="lazy"></figure>
+      <figure><img src="../assets/lafortuna-town.jpg" alt="La Fortuna town with the volcano behind." loading="lazy"></figure>
+      <figure>
+        <div class="gallery__todo">Photograph needed<br>The 1968 lava flow</div>
+        <a class="gallery__all" href="#gallery-note">View all &middot; 5</a>
+      </figure>
+    </div>
+    <p class="gallery__hint" aria-hidden="true">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      Swipe for all 5 frames
+    </p>
+
+    <!-- C-02 · The bookbar observed the rail, which on mobile starts 5,016px
+         below the fold: the callback ran once with scrollY at 0 and never
+         fired again. It now watches this sentinel instead. -->
+    <div data-bar-sentinel aria-hidden="true"></div>
+
+    <!-- ================= SECTION TABS =================
+         Sticks under the nav and follows the reader. The four sections below
+         carry the matching ids. -->
+    <nav class="tabs" aria-label="Sections of this tour">
+      <div class="tabs__inner" data-tabs>
+        <a href="#overview" aria-current="true">Overview</a>
+        <a href="#details">Details</a>
+        <a href="#operator">Operator</a>
+        <a href="#reviews">Reviews</a>
+        <span class="tabs__bar" data-tabs-bar aria-hidden="true"></span>
+      </div>
+    </nav>
+
+    <!-- ================= BODY ================= -->
+    <div class="pbody">
+      <div class="pbody__main">
+
+        <ul class="promises">
+          <li>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.2 2.4 2.4 4.6-4.9"/></svg>
+            <span><b>Free cancellation</b><span>Full refund up to 48 hours before</span></span>
+          </li>
+          <li>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            <span><b>Instant confirmation</b><span>The seat is yours the moment you pay</span></span>
+          </li>
+          <li>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s7-6.4 7-11a7 7 0 1 0-14 0c0 4.6 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>
+            <span><b>Hotel pick-up included</b><span>Anywhere in La Fortuna</span></span>
+          </li>
+          <li>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 19l6-9 4 5 3-4 5 8H3Z"/></svg>
+            <span><b>Easy · grade 1 of 5</b><span>4 km, 120 m of climb, half a day</span></span>
+          </li>
+        </ul>
+
+        <section class="sec" id="overview">
+          <p class="label">About</p>
+          <h2>Half a day under the volcano.</h2>
+          <p>
+            The El Ceibo forest loop, the 1968 lava flow and the lake viewpoint, with a certified
+            naturalist guide and a spotting scope. The cone is usually clear until around ten and
+            clouded by early afternoon — that single fact sets the whole timetable, which is why
+            we leave at eight and are back before lunch.
+          </p>
+        </section>
+
+        <section class="sec">
+          <p class="label">The day</p>
+          <h2>Out by eight, back before lunch.</h2>
+          <ol class="timeline">
+            <li><time datetime="08:00">08:00</time><div><h3>Pick-up in La Fortuna</h3><p>From your hotel lobby. Fifteen minutes to the park gate on Route 142, then a signposted gravel access road.</p></div></li>
+            <li><time datetime="08:30">08:30</time><div><h3>El Ceibo trail · 1.8 km</h3><p>Flat, shaded, secondary forest to a ceibo several hundred years old. The best of the three walks for sloths and birds.</p></div></li>
+            <li><time datetime="10:00">10:00</time><div><h3>The 1968 lava flow · 2.6 km</h3><p>Out onto the flow itself. Loose black rock, no shade, and the closest you get to the cone.</p></div></li>
+            <li><time datetime="11:15">11:15</time><div><h3>Lake viewpoint</h3><p>Last, deliberately — by now the volcano has usually clouded over.</p></div></li>
+            <li><time datetime="12:00">12:00</time><div><h3>Back in town</h3><p>Dropped where you were collected.</p></div></li>
+          </ol>
+        </section>
+
+        <section class="sec" id="details">
+          <p class="label">Scope</p>
+          <h2>Included, excluded, what to bring.</h2>
+          <div class="cols2">
+            <div>
+              <h3 class="col-h">Included</h3>
+              <ul class="dots dots--in">
+                <li>Round-trip transport from your hotel in La Fortuna</li>
+                <li>Entrance to Arenal Volcano National Park</li>
+                <li>Certified naturalist guide, English and Spanish</li>
+                <li>Spotting scope and bottled water</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="col-h">Not included</h3>
+              <ul class="dots dots--out">
+                <li>Meals — the walk ends before lunch</li>
+                <li>Gratuities</li>
+                <li>Personal travel insurance</li>
+              </ul>
+            </div>
+          </div>
+          <div class="cols2">
+            <div>
+              <h3 class="col-h">Bring with you</h3>
+              <ul class="dots dots--in">
+                <li>Closed shoes with grip — the lava flow is loose rock</li>
+                <li>Sun protection; there is no shade on the flow</li>
+                <li>A rain layer, year round</li>
+                <li>Insect repellent for the forest loop</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="sec">
+          <p class="label">Honestly</p>
+          <h2>What we say before you book.</h2>
+          <ul class="fit">
+            <li class="no">You will not see lava. Arenal stopped erupting in 2010 — anyone selling a “lava tour” is selling a walk on rock that cooled decades ago.</li>
+            <li class="no">The cone is often invisible. It makes its own weather. If it is clear when you wake up, move your plans and come that morning.</li>
+            <li class="yes">The park is the quiet option. Most visitors photograph the volcano from the road and never pay to walk under it.</li>
+            <li class="yes">The trails are self-guided and signposted. What you are buying is the naturalist and the scope, not access.</li>
+          </ul>
+        </section>
+
+        <section class="sec" id="operator">
+          <p class="label">Operator</p>
+          <h2>Who actually runs the day.</h2>
+          <div class="op">
+            <figure class="op__fig">
+              <img src="../assets/rodrigo-ventisqueros.jpg" alt="Rodrigo Santamaria on a trail in the Costa Rican highlands." width="800" height="600" loading="lazy">
+            </figure>
+            <div>
+              <p class="op__name">Rodrigo Santamaria</p>
+              <p class="op__role">Explore Tikizia · San Ramón de Alajuela</p>
+              <blockquote>“Anyone can drive you to a trailhead. Knowing which of these is worth your Tuesday, given the rain last week — that is the part you are paying for.”</blockquote>
+              <dl class="op__facts">
+                <div><dt>Guiding since</dt><dd>2011</dd></div>
+                <div><dt>Replies within</dt><dd>2 h</dd></div>
+                <div><dt>Departures run</dt><dd>Own</dd></div>
+              </dl>
+              <ul class="op__creds">
+                <li>15+ years guiding</li>
+                <li>English &amp; Spanish</li>
+                <li data-pending>Certified tour guide</li>
+                <li data-pending>ICT registration</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="sec" id="reviews">
+          <p class="label">Reviews</p>
+          <h2>What travellers say.</h2>
+          <div class="revcards">
+            <article class="revcard">
+              <div class="revcard__top">
+                <span class="revcard__av" aria-hidden="true">D</span>
+                <span><b>Dave Faulders</b><time datetime="2025-03">March 2025 · Verified</time></span>
+              </div>
+              <span class="rating__stars" aria-label="5 out of 5">★★★★★</span>
+              <p>“The service could not have been better. I recommend Explore Tikizia, and our planner, coordinator and driver, Rodrigo Santamaria, without reservation.”</p>
+            </article>
+            <article class="revcard">
+              <div class="revcard__top">
+                <span class="revcard__av" aria-hidden="true">S</span>
+                <span><b>Sofia Gonzales</b><time datetime="2025-02">February 2025 · Verified</time></span>
+              </div>
+              <span class="rating__stars" aria-label="5 out of 5">★★★★★</span>
+              <p>“Rodrigo was beyond amazing. Knowledgeable, patient, and he made every part of the trip feel effortless.”</p>
+            </article>
+          </div>
+          <p class="checkout__hint" style="margin-top:1rem" id="gallery-note">
+            Prototype note: these are the reviews already live on the client's site, and none name
+            this tour. Collecting them per product is the only legitimate route to a star rating in
+            search results — it starts at launch, not in phase two. One of the five gallery slots
+            has no photograph for the same reason.
+          </p>
+        </section>
+
+      </div><!-- /.pbody__main -->
+      </div><!-- /.pbody -->
+      </div><!-- /.pgrid__main -->
+
+      <!-- ================= BOOKING RAIL =================
+           A-02 · One step at a time: the date collapses to an editable line and
+           hands its space to travellers and extras. -->
+      <aside class="rail" id="book">
+        <div class="rail__card">
+          <div class="rail__price">
+            <!-- M-02 · The anchor was a bare struck-through number with no
+                 stated source, and the currency appeared nowhere. -->
+            <p class="rail__from"><span class="rail__was">$78</span> on booking platforms</p>
+            <p class="rail__now"><strong>$66</strong> <span>USD per adult</span></p>
+            <span class="rail__save">Save 15% booking direct</span>
+          </div>
+
+          <form class="rail__body" data-booking novalidate>
+            <!-- A-02 · One step open at a time. The date collapses to an
+                 editable line and hands its space to the two steps below, so
+                 the card fits the viewport without an inner scrollbar. -->
+            <div class="field step" data-step="date">
+              <p class="field__label">Choose a date</p>
+              <div class="cal">
+                <div class="cal__head">
+                  <p class="cal__month" data-cal-title>Month</p>
+                  <div class="cal__nav">
+                    <button type="button" data-cal-prev aria-label="Previous month">‹</button>
+                    <button type="button" data-cal-next aria-label="Next month">›</button>
+                  </div>
+                </div>
+                <div class="cal__dow" aria-hidden="true"><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span></div>
+                <div class="cal__grid" data-cal-grid role="group" aria-label="Available departure dates"></div>
+                <div class="cal__legend">
+                  <span><i></i> Available</span><span><i class="few"></i> Few left</span><span><i class="out"></i> Sold out</span>
+                </div>
+              </div>
+              <p class="cal__pick" data-cal-status role="status">Pick a date to see your total.</p>
+            </div>
+
+            <button class="picked" type="button" data-edit-date hidden>
+              <span class="picked__txt">
+                <b data-picked-date>&mdash;</b>
+                <span data-picked-sub>08:00 departure &middot; free cancellation</span>
+              </span>
+              <span class="picked__edit">Change</span>
+            </button>
+
+            <div class="field step" data-step="party" hidden>
+              <p class="field__label">Travellers <span>Max 10</span></p>
+              <div class="party">
+                <div class="party__row">
+                  <span class="party__label"><b>Adults</b><span>12 and over · $66</span></span>
+                  <span class="stepper">
+                    <button type="button" data-dec="adults" aria-label="One adult fewer">−</button>
+                    <output data-out="adults" aria-live="polite">2</output>
+                    <button type="button" data-inc="adults" aria-label="One adult more">+</button>
+                  </span>
+                </div>
+                <div class="party__row">
+                  <span class="party__label"><b>Children</b><span>5–11 · $45 · under 5 free</span></span>
+                  <span class="stepper">
+                    <button type="button" data-dec="children" aria-label="One child fewer">−</button>
+                    <output data-out="children" aria-live="polite">0</output>
+                    <button type="button" data-inc="children" aria-label="One child more">+</button>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="field step" data-step="extras" hidden>
+              <p class="field__label">Add to your day <span>Optional</span></p>
+              <div class="extras">
+                <label class="extra">
+                  <input type="checkbox" data-extra="lunch" data-amount="14" data-per="person">
+                  <span class="extra__txt"><b>Soda lunch after the walk</b><span>Casado at a family kitchen in El Castillo</span></span>
+                  <span class="extra__price">$14</span>
+                </label>
+                <label class="extra">
+                  <input type="checkbox" data-extra="scope" data-amount="20" data-per="booking">
+                  <span class="extra__txt"><b>Private guide &amp; scope</b><span>Your own naturalist for the group</span></span>
+                  <span class="extra__price">$20</span>
+                </label>
+                <label class="extra">
+                  <input type="checkbox" data-extra="guide" data-amount="10" data-per="booking">
+                  <span class="extra__txt"><b>La Fortuna guide · ebook</b><span>The $10 guide, for the days we are not with you</span></span>
+                  <span class="extra__price">$10</span>
+                </label>
+              </div>
+            </div>
+          </form>
+
+          <div class="rail__sum">
+            <dl class="rail__lines">
+              <div><dt>Adults <span data-sum-adults-n>× 2</span></dt><dd data-sum-adults>$132</dd></div>
+              <div data-sum-children-row hidden><dt>Children <span data-sum-children-n>× 0</span></dt><dd data-sum-children>$0</dd></div>
+              <div data-sum-extras-row hidden><dt>Extras</dt><dd data-sum-extras>$0</dd></div>
+            </dl>
+            <p class="rail__total"><span>Total</span><strong data-sum-total>$132</strong></p>
+            <button class="btn btn--accent btn--block rail__cta" type="button" data-open-checkout disabled>
+              <span data-cta-label>Select a date to continue</span>
+            </button>
+            <p class="rail__note">You will not be charged until you confirm. Prices in USD.</p>
+          </div>
+
+        </div>
+        <p class="rail__ask">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.1 14.2c-.2.6-1.2 1.2-1.7 1.2-.5.1-1 .1-3.2-.8-2.7-1.1-4.4-3.9-4.5-4.1-.1-.2-1-1.4-1-2.6s.6-1.8.9-2.1c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.5c-.1.2-.3.3-.1.6.2.3.7 1.2 1.6 2 1.1.9 1.9 1.2 2.2 1.3.2.1.4.1.5-.1l.8-.9c.2-.2.3-.2.5-.1l2 .9c.2.1.4.2.4.3.1.2.1.7-.1 1.2Z"/></svg>
+          <span>Ask before you book<small>WhatsApp &middot; replies within 2 h <span class="pending">number wired at launch</span></small></span>
+        </p>
+        <ul class="rail__trust">
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.2 2.4 2.4 4.6-4.9"/></svg>
+              <span><b>Free cancellation</b><span>Cancel up to 48 hours before for a full refund. <span class="pending">Final wording pending the client.</span></span></span>
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.2 2.4 2.4 4.6-4.9"/></svg>
+              <span><b>Our own departure</b><span>Not resold. Same guide, same vehicle, every week.</span></span>
+            </li>
+        </ul>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<!-- ================= CHECKOUT =================
+     A native <dialog>: focus trapping, Esc and the backdrop come from the
+     platform rather than from hand-written key handling. -->
+<dialog class="checkout" data-checkout aria-labelledby="co-h">
+  <div data-checkout-form>
+    <div class="checkout__head">
+      <div>
+        <h2 id="co-h">Confirm and pay</h2>
+        <p>Arenal Volcano Park Expedition</p>
+      </div>
+      <button class="checkout__close" type="button" data-close-checkout aria-label="Close">✕</button>
+    </div>
+
+    <div class="checkout__body">
+      <dl class="checkout__recap">
+        <div><dt>Date</dt><dd data-co-date>—</dd></div>
+        <div><dt>Travellers</dt><dd data-co-party>—</dd></div>
+        <div data-co-extras-row hidden><dt>Extras</dt><dd data-co-extras>$0</dd></div>
+        <div class="grand"><dt>Total</dt><dd data-co-total>$132</dd></div>
+      </dl>
+
+      <div>
+        <label for="co-name">Name on the booking</label>
+        <input type="text" id="co-name" autocomplete="name" placeholder="Jane Ellis" required
+               aria-describedby="co-name-err">
+        <p class="err" id="co-name-err" role="alert" hidden>Enter the name the booking should be under.</p>
+      </div>
+      <div>
+        <label for="co-email">Email</label>
+        <input type="email" id="co-email" autocomplete="email" placeholder="you@example.com" required
+               aria-describedby="co-email-err">
+        <p class="err" id="co-email-err" role="alert" hidden>Enter an email address we can send the voucher to.</p>
+        <p class="checkout__hint">The voucher and your exact pick-up time go here.</p>
+      </div>
+      <div>
+        <label for="co-hotel">Hotel in La Fortuna</label>
+        <input type="text" id="co-hotel" autocomplete="address-line1" placeholder="Where we collect you">
+      </div>
+      <div>
+        <label for="co-card">Card number</label>
+        <input type="text" id="co-card" inputmode="numeric" placeholder="•••• •••• •••• ••••" autocomplete="cc-number">
+      </div>
+      <div class="checkout__split">
+        <div><label for="co-exp">Expiry</label><input type="text" id="co-exp" inputmode="numeric" placeholder="MM / YY" autocomplete="cc-exp"></div>
+        <div><label for="co-cvc">CVC</label><input type="text" id="co-cvc" inputmode="numeric" placeholder="•••" autocomplete="cc-csc"></div>
+      </div>
+    </div>
+
+    <div class="checkout__foot">
+      <p class="checkout__warn"><b>Prototype only.</b> No card details are transmitted, stored or charged. The fields exist to show the step; the form is wired to nothing.</p>
+      <button class="btn btn--accent btn--block" type="button" data-pay>Pay <span data-pay-total>$132</span> and confirm</button>
+    </div>
+  </div>
+
+  <div class="done" data-done hidden>
+    <p class="done__mark" aria-hidden="true">✓</p>
+    <h2>Confirmed. The seat is yours.</h2>
+    <p data-done-line>Arenal Volcano Park Expedition.</p>
+    <p class="done__ref" data-done-ref>ET-0000</p>
+    <p>In the live site this is the WooCommerce order confirmation. <b style="color:var(--accent-ink)">Nothing was charged.</b></p>
+    <div class="checkout__foot" style="margin-top:1.5rem">
+      <button class="btn btn--ghost btn--block" type="button" data-close-checkout>Close</button>
+    </div>
+  </div>
+</dialog>
+
+<footer class="foot">
+  <div class="shell foot__grid">
+    <div>
+      <p class="foot__brand"><img src="../assets/logo.png" alt="" width="180" height="54"><span>Explore Tikizia</span></p>
+      <p style="margin-top:1rem;max-width:32ch;font-size:var(--t-sm);color:var(--ink-3)">Guided experiences across Costa Rica. Run from San Ramón de Alajuela.</p>
+    </div>
+    <div><h3>Destinations</h3><ul>
+      <li><a href="index.html#destinations">La Fortuna</a></li><li><a href="index.html#destinations">Monteverde</a></li>
+      <li><a href="index.html#destinations">Chirripó</a></li><li><a href="index.html#destinations">Manuel Antonio</a></li></ul></div>
+    <div><h3>Experiences</h3><ul>
+      <li><a href="index.html#experiences">Hiking &amp; Trekking</a></li><li><a href="index.html#experiences">Nature &amp; Wildlife</a></li>
+      <li><a href="index.html#experiences">Combos</a></li><li><a href="index.html#guides">Digital guides</a></li></ul></div>
+    <div><h3>Connect</h3><ul>
+      <li>WhatsApp <span class="pending">wired at launch</span></li>
+      <li>Email <span class="pending">wired at launch</span></li>
+      <li><a href="index.html#guides">Newsletter</a></li>
+      <li>San Ram&oacute;n de Alajuela, Costa Rica</li></ul></div>
+  </div>
+  <div class="shell foot__bar">
+    <span>© Explore Tikizia — design prototype, not a live site</span>
+    <span><a href="index.html#faq">Privacy</a> &middot; <a href="index.html#faq">Terms</a> &middot; <a href="index.html#faq">Cancellation policy</a></span>
+  </div>
+</footer>
+
+<div class="bookbar" data-bookbar>
+  <span class="bookbar__txt">Total<b data-bar-total>$132</b></span>
+  <a class="btn btn--accent" href="#book">Select date</a>
+</div>
+
+</body>
+</html>

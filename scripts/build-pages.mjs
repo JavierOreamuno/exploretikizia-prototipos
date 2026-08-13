@@ -19,7 +19,7 @@ const SRC = path.join(ROOT, 'prototype');
 const DIST = path.join(ROOT, 'dist');
 
 /** Folders inside prototype/ that are published. `_review/` is internal QA and never ships. */
-const DIRECTIONS = ['a-local-expert', 'a-light', 'b-chirripo', 'c-ladder'];
+const DIRECTIONS = ['a-local-expert', 'a-light', 'a-light-v2', 'b-chirripo', 'c-ladder'];
 const ASSET_EXTENSIONS = new Set(['.jpg', '.jpeg', '.png', '.webp', '.svg', '.woff2', '.css']);
 
 /**

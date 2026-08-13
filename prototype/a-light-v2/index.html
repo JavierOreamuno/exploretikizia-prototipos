@@ -1,0 +1,713 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="Design prototype A for Explore Tikizia — tours sold by location and experience, starting with La Fortuna and Hiking & Trekking, plus digital guides.">
+<title>A-light corregido · Explore Tikizia prototype</title>
+<link rel="icon" href="../assets/favicon.png">
+<link rel="stylesheet" href="../assets/fonts/fonts.css">
+<link rel="stylesheet" href="styles.css">
+<script src="script.js" defer></script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to main content</a>
+
+<p class="ribbon">Prototype A-light — the audited build, with all 22 findings applied. <a href="../index.html">Compare directions</a></p>
+
+<header class="nav" data-nav>
+  <div class="nav__inner">
+    <a class="nav__brand" href="#top" aria-label="Explore Tikizia — home">
+      <img src="../assets/logo.png" alt="" width="200" height="60">
+      <span>Explore Tikizia</span>
+    </a>
+    <nav class="nav__links" aria-label="Main">
+      <a href="#tours" aria-current="page">Tours</a>
+      <a href="#destinations">Destinations</a>
+      <a href="#experiences">Experiences</a>
+      <a href="#guides">Guides</a>
+      <a href="#who">About</a>
+    </nav>
+    <a class="nav__cta" href="#tours">Explore</a>
+    <button class="nav__burger" type="button" data-menu-btn aria-expanded="false" aria-controls="mobile-menu">
+      <span class="nav__burger-box" aria-hidden="true"><i></i><i></i></span>
+      Menu
+    </button>
+  </div>
+</header>
+
+<!-- C-01 · The audit found no navigation at all below 64rem. The panel leads
+     with the two axes the catalogue is sold on. -->
+<div class="menu" id="mobile-menu" data-menu hidden>
+  <div class="menu__group">
+    <p>By destination</p>
+    <a href="#tours">La Fortuna <b class="is-live">8 tours</b></a>
+    <span class="menu__soon">Monteverde <b>Phase 2</b></span>
+    <span class="menu__soon">Chirrip&oacute; <b>Phase 2</b></span>
+    <span class="menu__soon">Manuel Antonio <b>Phase 3</b></span>
+  </div>
+  <div class="menu__group">
+    <p>By experience</p>
+    <a href="#tours">Hiking &amp; Trekking <b class="is-live">Open now</b></a>
+    <span class="menu__soon">Nature &amp; Wildlife <b>12 planned</b></span>
+    <span class="menu__soon">Combos <b>1 planned</b></span>
+    <span class="menu__soon">Water &amp; Coast <b>Phase 3</b></span>
+  </div>
+  <div class="menu__group">
+    <p>More</p>
+    <a href="#guides">Digital guides <b>from $10</b></a>
+    <a href="#who">About Explore Tikizia</a>
+    <a href="#faq">Before you book</a>
+  </div>
+  <div class="menu__contact">
+    <p class="menu__wa"><svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.1 14.2c-.2.6-1.2 1.2-1.7 1.2-.5.1-1 .1-3.2-.8-2.7-1.1-4.4-3.9-4.5-4.1-.1-.2-1-1.4-1-2.6s.6-1.8.9-2.1c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.5c-.1.2-.3.3-.1.6.2.3.7 1.2 1.6 2 1.1.9 1.9 1.2 2.2 1.3.2.1.4.1.5-.1l.8-.9c.2-.2.3-.2.5-.1l2 .9c.2.1.4.2.4.3.1.2.1.7-.1 1.2Z"/></svg> WhatsApp <span class="pending">number wired at launch</span></p>
+    <p>Rodrigo replies within 2 hours, 7:00&ndash;20:00 Costa Rica time.</p>
+  </div>
+</div>
+
+<main id="main">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero" id="top">
+    <div class="hero__bg" aria-hidden="true">
+      <img src="../assets/lf-hule-lagoon.jpg" alt="" width="800" height="534" fetchpriority="high">
+    </div>
+    <div class="shell hero__inner">
+      <!-- A-04 · The headline was the single word "Experiences": no product, no
+           destination, no country. Same composition, same scale — it now answers
+           what this is and where. -->
+      <h1>Guided hikes<br>in La Fortuna</h1>
+      <p class="hero__lede">Eight departures under the Arenal volcano, booked and paid in one step. New categories open one at a time, once we have run every tour in them ourselves.</p>
+      <div class="hero__actions">
+        <a class="btn btn--lg" href="#tours">Explore tours</a>
+        <a class="btn btn--ghost btn--lg" href="#guides">Get the $10 guide</a>
+      </div>
+      <!-- The two axes the catalogue is sold on, stated in the first screen. -->
+      <ul class="hero__axes">
+        <li class="axis">Location <b>La Fortuna</b></li>
+        <li class="axis">Open now <b>Hiking &amp; Trekking</b></li>
+        <li class="axis">Prices in <b>USD</b></li>
+        <li class="axis">Confirmation <b>Instant</b></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- An editorial band sat here — "We open one kind of day at a time" — and it
+       was removed after measuring it: 383px, 21% of the distance to the first
+       product, saying what the catalogue heading below already says about the
+       two axes and the phased launch. The proof band survives because it
+       carries numbers rather than a second telling of the same idea. -->
+
+  <section class="stats">
+    <div class="stats__grid">
+      <div><dl><dt>Live now</dt><dd>8 <small>tours · 1 category</small></dd></dl></div>
+      <div><dl><dt>From</dt><dd>$66 <small>per adult</small></dd></dl></div>
+      <div><dl><dt>Confirmation</dt><dd>Instant <small>card</small></dd></dl></div>
+      <div><dl><dt>In the plan</dt><dd>24 <small>across 4 more</small></dd></dl></div>
+    </div>
+  </section>
+
+  <!-- ================= TOUR CATALOGUE =================
+       The reference's retreat card, adapted so the first two metadata rows are
+       the taxonomy the business actually sells on: location, then experience. -->
+  <section class="tours" id="tours">
+    <div class="band--tight shell">
+      <div class="head">
+        <p class="label label--accent">Catalogue</p>
+        <div class="head__main">
+          <h2 data-fill>Open now: Hiking &amp; Trekking</h2>
+          <p>Eight departures in La Fortuna, all our own. Every card carries its location and its experience type, because that is how the whole catalogue is filed — and how the next category will be too.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= A-05 · CATALOGUE FILTERS =================
+         The first version of this bar was removed after measuring it: five of
+         its ten controls did nothing, because every product shares one
+         destination and one category today. It returns with the three things
+         that made it unusable fixed.
+
+         1. Every option shows its own result count before you touch it, so the
+            control is legible without experimenting. Counts recompute against
+            the other facets, not against the whole catalogue.
+         2. Nothing is disabled. The categories that open later carry their
+            phase instead of a count, and choosing one leads somewhere: a
+            designed state that says when it opens and takes an address.
+         3. On a phone the facets collapse behind one button that carries the
+            number of active filters, rather than stacking four rows of chips
+            above the first product. -->
+    <section class="filters" aria-labelledby="filters-h">
+      <div class="filters__bar">
+        <h3 class="filters__h" id="filters-h">Show me</h3>
+        <button class="filters__toggle" type="button" data-filters-toggle
+                aria-expanded="false" aria-controls="filters-panel">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M3 6h18M7 12h10M11 18h2"/></svg>
+          <span>Filters</span>
+          <span class="filters__badge" data-badge hidden>0</span>
+        </button>
+        <p class="filters__count" data-count role="status">8 tours</p>
+      </div>
+
+      <div class="filters__panel" id="filters-panel" data-filters-panel hidden>
+        <fieldset>
+          <legend>Destination</legend>
+          <div class="filters__opts">
+            <button type="button" data-f="loc" data-v="la-fortuna" aria-pressed="false">La Fortuna <span class="c" data-c>8</span></button>
+            <button type="button" data-f="loc" data-v="monteverde" data-phase="phase 2" aria-pressed="false">Monteverde <span class="c c--soon">Phase 2</span></button>
+            <button type="button" data-f="loc" data-v="chirripo" data-phase="phase 2" aria-pressed="false">Chirrip&oacute; <span class="c c--soon">Phase 2</span></button>
+            <button type="button" data-f="loc" data-v="manuel-antonio" data-phase="phase 3" aria-pressed="false">Manuel Antonio <span class="c c--soon">Phase 3</span></button>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Experience</legend>
+          <div class="filters__opts">
+            <button type="button" data-f="exp" data-v="hiking" aria-pressed="false">Hiking &amp; Trekking <span class="c" data-c>8</span></button>
+            <button type="button" data-f="exp" data-v="nature" data-phase="phase 2" aria-pressed="false">Nature &amp; Wildlife <span class="c c--soon">Phase 2</span></button>
+            <button type="button" data-f="exp" data-v="combos" data-phase="phase 2" aria-pressed="false">Combos <span class="c c--soon">Phase 2</span></button>
+            <button type="button" data-f="exp" data-v="water" data-phase="phase 3" aria-pressed="false">Water &amp; Coast <span class="c c--soon">Phase 3</span></button>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Difficulty</legend>
+          <div class="filters__opts">
+            <button type="button" data-f="grade" data-v="1,2" aria-pressed="false">Easy <span class="c" data-c>4</span></button>
+            <button type="button" data-f="grade" data-v="3,4" aria-pressed="false">Moderate <span class="c" data-c>3</span></button>
+            <button type="button" data-f="grade" data-v="5" aria-pressed="false">Demanding <span class="c" data-c>1</span></button>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Length</legend>
+          <div class="filters__opts">
+            <button type="button" data-f="len" data-v="half" aria-pressed="false">Half day <span class="c" data-c>2</span></button>
+            <button type="button" data-f="len" data-v="full" aria-pressed="false">Full day <span class="c" data-c>6</span></button>
+          </div>
+        </fieldset>
+        <button class="filters__clear" type="button" data-clear hidden>Clear all</button>
+      </div>
+
+      <ul class="chips" data-chips aria-label="Active filters"></ul>
+    </section>
+
+    <div class="tours__empty" data-empty hidden>
+      <p class="label label--accent" data-empty-tag>Opening later</p>
+      <h3 data-empty-h>Monteverde opens in phase 2.</h3>
+      <p data-empty-p>Every category goes live only once we have run each tour in it ourselves. Leave an address and you will hear the day it opens — nothing else.</p>
+      <form class="capture" data-capture>
+        <label class="sr-only" for="notify-email">Email address</label>
+        <input type="email" id="notify-email" placeholder="you@example.com" autocomplete="email" required>
+        <button class="btn btn--accent" type="submit">Notify me</button>
+      </form>
+      <button class="filters__clear" type="button" data-clear>Back to all 8 tours</button>
+    </div>
+
+    <div class="tours__grid">
+
+      <article class="tcard" data-loc="la-fortuna" data-exp="hiking" data-grade="1" data-len="half">
+        <div class="tcard__body">
+          <h3><a href="tour.html">Arenal Volcano Park Expedition</a></h3>
+          <p class="tcard__price"><span>from</span>$66<small>USD · $45 child</small></p>
+        <p class="trating">
+          <span class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <b>5.0</b> <span>&middot; Explore Tikizia on Google</span>
+        </p>
+          <ul class="tmeta">
+            <li><b>La Fortuna</b> <span>· Arenal Volcano NP</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s7-6.4 7-11a7 7 0 1 0-14 0c0 4.6 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg></li>
+            <li><b>Hiking &amp; Trekking</b> <span>· 4 km · 120 m climb</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 19l6-9 4 5 3-4 5 8H3Z"/></svg></li>
+            <li><b>Half day</b> <span>· 08:00 departure</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></li>
+            <li><b>Easy &middot; 1 of 5</b> <span>&middot; short, and almost flat</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 20h16M7 20V9l5-5 5 5v11"/></svg></li>
+          </ul>
+          <a class="btn btn--dark btn--block" href="tour.html">See dates &amp; prices</a>
+        </div>
+        <div class="tcard__media"><img src="../assets/lafortuna-arenal-volcano.jpg" alt="Arenal Volcano rising above rainforest." loading="lazy"></div>
+      </article>
+
+      <article class="tcard" data-loc="la-fortuna" data-exp="hiking" data-grade="2" data-len="full">
+        <div class="tcard__body">
+          <h3><a href="tour.html">Río Celeste &amp; Tenorio Hike</a></h3>
+          <p class="tcard__price"><span>from</span>$122<small>USD · $85 child</small></p>
+        <p class="trating">
+          <span class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <b>5.0</b> <span>&middot; Explore Tikizia on Google</span>
+        </p>
+          <ul class="tmeta">
+            <li><b>La Fortuna</b> <span>· Tenorio Volcano NP</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s7-6.4 7-11a7 7 0 1 0-14 0c0 4.6 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg></li>
+            <li><b>Hiking &amp; Trekking</b> <span>· 6 km · 280 m climb</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 19l6-9 4 5 3-4 5 8H3Z"/></svg></li>
+            <li><b>Full day</b> <span>· 06:00 departure</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></li>
+            <li><b>Moderate &middot; 2 of 5</b> <span>&middot; steady, some stone steps</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 20h16M7 20V9l5-5 5 5v11"/></svg></li>
+          </ul>
+          <a class="btn btn--dark btn--block" href="tour.html">See dates &amp; prices</a>
+        </div>
+        <div class="tcard__media"><img src="../assets/lafortuna-rio-celeste.jpg" alt="The turquoise waterfall at Río Celeste." loading="lazy"></div>
+      </article>
+
+      <article class="tcard" data-loc="la-fortuna" data-exp="hiking" data-grade="3" data-len="full">
+        <div class="tcard__body">
+          <h3><a href="tour.html">Cloud Forest · Juan Castro Blanco</a></h3>
+          <p class="tcard__price"><span>from</span>$122<small>USD · $85 child</small></p>
+        <p class="trating">
+          <span class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <b>5.0</b> <span>&middot; Explore Tikizia on Google</span>
+        </p>
+          <ul class="tmeta">
+            <li><b>La Fortuna</b> <span>· Juan Castro Blanco NP</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s7-6.4 7-11a7 7 0 1 0-14 0c0 4.6 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg></li>
+            <li><b>Hiking &amp; Trekking</b> <span>· 8 km · 420 m climb</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 19l6-9 4 5 3-4 5 8H3Z"/></svg></li>
+            <li><b>Full day</b> <span>· 07:00 departure</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></li>
+            <li><b>Moderate &middot; 3 of 5</b> <span>&middot; long, with sustained climb</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 20h16M7 20V9l5-5 5 5v11"/></svg></li>
+          </ul>
+          <a class="btn btn--dark btn--block" href="tour.html">See dates &amp; prices</a>
+        </div>
+        <div class="tcard__media"><img src="../assets/lf-juan-castro-pozo-verde.jpg" alt="Pozo Verde inside Juan Castro Blanco National Park." loading="lazy"></div>
+      </article>
+
+      <article class="tcard" data-loc="la-fortuna" data-exp="hiking" data-grade="3" data-len="full">
+        <div class="tcard__body">
+          <h3><a href="tour.html">Hule Lagoon Crater Trekking</a></h3>
+          <p class="tcard__price"><span>from</span>$122<small>USD · $85 child</small></p>
+        <p class="trating">
+          <span class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <b>5.0</b> <span>&middot; Explore Tikizia on Google</span>
+        </p>
+          <ul class="tmeta">
+            <li><b>La Fortuna</b> <span>· Laguna de Hule</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s7-6.4 7-11a7 7 0 1 0-14 0c0 4.6 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg></li>
+            <li><b>Hiking &amp; Trekking</b> <span>· 7 km · 350 m climb</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 19l6-9 4 5 3-4 5 8H3Z"/></svg></li>
+            <li><b>Full day</b> <span>· 07:00 departure</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></li>
+            <li><b>Moderate &middot; 3 of 5</b> <span>&middot; crater rim, continuous ascent</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 20h16M7 20V9l5-5 5 5v11"/></svg></li>
+          </ul>
+          <a class="btn btn--dark btn--block" href="tour.html">See dates &amp; prices</a>
+        </div>
+        <div class="tcard__media"><img src="../assets/lf-hule-lagoon.jpg" alt="Laguna de Hule seen from the crater rim." loading="lazy"></div>
+      </article>
+
+      <article class="tcard" data-loc="la-fortuna" data-exp="hiking" data-grade="2" data-len="full">
+        <div class="tcard__body">
+          <h3><a href="tour.html">Children’s Eternal Rainforest</a></h3>
+          <p class="tcard__price"><span>from</span>$127<small>USD · $89 child</small></p>
+        <p class="trating">
+          <span class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <b>5.0</b> <span>&middot; Explore Tikizia on Google</span>
+        </p>
+          <ul class="tmeta">
+            <li><b>La Fortuna</b> <span>· Bosque Eterno de los Niños</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s7-6.4 7-11a7 7 0 1 0-14 0c0 4.6 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg></li>
+            <li><b>Hiking &amp; Trekking</b> <span>· 5 km · 180 m climb</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 19l6-9 4 5 3-4 5 8H3Z"/></svg></li>
+            <li><b>Full day</b> <span>· 07:30 departure</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></li>
+            <li><b>Easy &middot; 2 of 5</b> <span>&middot; gentle, good for families</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 20h16M7 20V9l5-5 5 5v11"/></svg></li>
+          </ul>
+          <a class="btn btn--dark btn--block" href="tour.html">See dates &amp; prices</a>
+        </div>
+        <div class="tcard__media tcard__media--todo">Photograph needed<br>Children’s Eternal Rainforest</div>
+      </article>
+
+      <article class="tcard" data-loc="la-fortuna" data-exp="hiking" data-grade="1" data-len="half">
+        <div class="tcard__body">
+          <h3><a href="tour.html">Jungle Trekking &amp; Culture</a></h3>
+          <p class="tcard__price"><span>from</span>$97<small>USD · per adult</small></p>
+        <p class="trating">
+          <span class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <b>5.0</b> <span>&middot; Explore Tikizia on Google</span>
+        </p>
+          <ul class="tmeta">
+            <li><b>La Fortuna</b> <span>· private reserve</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s7-6.4 7-11a7 7 0 1 0-14 0c0 4.6 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg></li>
+            <li><b>Hiking &amp; Trekking</b> <span>· 4 km · 90 m climb</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 19l6-9 4 5 3-4 5 8H3Z"/></svg></li>
+            <li><b>Half day</b> <span>· 08:00 departure</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></li>
+            <li><b>Easy &middot; 1 of 5</b> <span>&middot; the shortest of the eight</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 20h16M7 20V9l5-5 5 5v11"/></svg></li>
+          </ul>
+          <a class="btn btn--dark btn--block" href="tour.html">See dates &amp; prices</a>
+        </div>
+        <div class="tcard__media tcard__media--todo">Photograph needed<br>Jungle trekking &amp; culture</div>
+      </article>
+
+      <article class="tcard" data-loc="la-fortuna" data-exp="hiking" data-grade="3" data-len="full">
+        <div class="tcard__body">
+          <h3><a href="tour.html">Jungle Trekking · La Tigra</a></h3>
+          <p class="tcard__price"><span>from</span>$127<small>USD · $89 child</small></p>
+        <p class="trating">
+          <span class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <b>5.0</b> <span>&middot; Explore Tikizia on Google</span>
+        </p>
+          <ul class="tmeta">
+            <li><b>La Fortuna</b> <span>· La Tigra reserve</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s7-6.4 7-11a7 7 0 1 0-14 0c0 4.6 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg></li>
+            <li><b>Hiking &amp; Trekking</b> <span>· 9 km · 400 m climb</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 19l6-9 4 5 3-4 5 8H3Z"/></svg></li>
+            <li><b>Full day</b> <span>· 07:00 departure</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></li>
+            <li><b>Moderate &middot; 3 of 5</b> <span>&middot; 9 km, sustained climb</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 20h16M7 20V9l5-5 5 5v11"/></svg></li>
+          </ul>
+          <a class="btn btn--dark btn--block" href="tour.html">See dates &amp; prices</a>
+        </div>
+        <div class="tcard__media tcard__media--todo">Photograph needed<br>La Tigra reserve</div>
+      </article>
+
+      <article class="tcard" data-loc="la-fortuna" data-exp="hiking" data-grade="5" data-len="full">
+        <div class="tcard__body">
+          <h3><a href="tour.html">Extreme Hike · Fortuna → Monteverde</a></h3>
+          <p class="tcard__price"><span>from</span>$216<small>USD · per adult</small></p>
+        <p class="trating">
+          <span class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <b>5.0</b> <span>&middot; Explore Tikizia on Google</span>
+        </p>
+          <ul class="tmeta">
+            <li><b>La Fortuna → Monteverde</b> <span>· two destinations</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s7-6.4 7-11a7 7 0 1 0-14 0c0 4.6 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg></li>
+            <li><b>Hiking &amp; Trekking</b> <span>· 17 km · 900 m climb</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 19l6-9 4 5 3-4 5 8H3Z"/></svg></li>
+            <li><b>Full day</b> <span>· 05:30 departure</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></li>
+            <li><b>Demanding &middot; 5 of 5</b> <span>&middot; 17 km and 900 m — ask us first</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 20h16M7 20V9l5-5 5 5v11"/></svg></li>
+          </ul>
+          <a class="btn btn--dark btn--block" href="tour.html">See dates &amp; prices</a>
+        </div>
+        <div class="tcard__media tcard__media--todo">Photograph needed<br>Fortuna → Monteverde traverse</div>
+      </article>
+
+    </div>
+
+    <p class="shell" style="padding-block:1.5rem;font-size:var(--t-xs);color:var(--ink-3);max-width:80ch">
+      Prototype note: distances and departure times are placeholders pending the client's own trail
+      data. Four of the eight have no photograph on the current site — the card says so rather than
+      borrowing an image, and that list doubles as the brief for a photo session before launch.
+      The rating shown on every card is the company's Google rating, labelled as such: there are no
+      per-tour reviews yet, and eight identical five-star rows would read as decoration rather than
+      evidence. Collecting reviews per product starts at launch, and each card then carries its own.
+    </p>
+  </section>
+
+  <!-- ================= HOW BOOKING WORKS ================= -->
+  <section class="flow" id="booking">
+    <div class="flow__bg" aria-hidden="true">
+      <img src="../assets/lf-hule-mirador.jpg" alt="" loading="lazy">
+    </div>
+    <div class="flow__grid">
+      <p class="flow__lede">Every tour checks out on the site itself. Instant confirmation where the departure is ours, with the card charged only at the final step.</p>
+      <div class="flow__step"><span><b>01</b><em>Step</em></span><div><h3>Choose the tour</h3><p>Filtered by where you are and what kind of day you want.</p></div></div>
+      <div class="flow__step"><span><b>02</b><em>Step</em></span><div><h3>Pick a date</h3><p>Live availability. Sold-out days stay visible, struck through.</p></div></div>
+      <div class="flow__step"><span><b>03</b><em>Step</em></span><div><h3>Add extras</h3><p>Lunch, private guide, transport. Nothing pre-ticked.</p></div></div>
+      <div class="flow__step"><span><b>04</b><em>Step</em></span><div><h3>Secure payment</h3><p>BAC Credomatic. Voucher and pick-up time by email immediately.</p></div></div>
+    </div>
+  </section>
+
+  <!-- ================= AXIS 1 · LOCATION ================= -->
+  <section class="axes" id="destinations">
+    <div class="band--tight shell">
+      <div class="head">
+        <p class="label">Axis one</p>
+        <div class="head__main">
+          <h2 data-fill>Explore by destination</h2>
+          <p>One destination is opened at a time, in full — its trails, its guide, its own page. La Fortuna is live; the rest follow on the same template.</p>
+        </div>
+      </div>
+    </div>
+    <!-- The map. Each destination the business opens gets a pin; the live one
+         pulses and stays labelled, the planned ones name themselves on hover. -->
+    <div class="shell map">
+      <!-- Outline and pin positions are projected from real coordinates rather
+           than drawn by hand, so the silhouette is actually Costa Rica and the
+           destinations land where they belong. -->
+      <svg class="map__svg" viewBox="0 0 1000 942" role="img"
+           aria-label="Map of Costa Rica showing La Fortuna open now, with Monteverde, Chirripó and Manuel Antonio planned.">
+        <g aria-hidden="true">
+          <path class="map__fill" d="M40 84.5 L145.1 45.9 L218.2 40 L276.6 120 L408 149.7 L481 167.4 L568.6 188.2 L638.7 123 L714.7 268.2 L787.7 357.1 L822.7 404.5 L860.7 520.1 L960 529 L875.3 594.2 L849 677.2 L866.5 801.6 L881.1 902.4 L816.9 890.5 L749.7 875.7 L679.6 869.8 L618.3 816.5 L641.7 763.1 L708.8 780.9 L743.9 727.5 L647.5 683.1 L510.2 594.2 L408 534.9 L349.6 511.2 L276.6 484.5 L221.1 472.7 L189 431.2 L177.3 363 L232.8 371.9 L262 327.5 L247.4 268.2 L189 253.4 L115.9 188.2 L57.5 134.8 L40 84.5 Z"/>
+          <path class="map__land" d="M40 84.5 L145.1 45.9 L218.2 40 L276.6 120 L408 149.7 L481 167.4 L568.6 188.2 L638.7 123 L714.7 268.2 L787.7 357.1 L822.7 404.5 L860.7 520.1 L960 529 L875.3 594.2 L849 677.2 L866.5 801.6 L881.1 902.4 L816.9 890.5 L749.7 875.7 L679.6 869.8 L618.3 816.5 L641.7 763.1 L708.8 780.9 L743.9 727.5 L647.5 683.1 L510.2 594.2 L408 534.9 L349.6 511.2 L276.6 484.5 L221.1 472.7 L189 431.2 L177.3 363 L232.8 371.9 L262 327.5 L247.4 268.2 L189 253.4 L115.9 188.2 L57.5 134.8 L40 84.5 Z"/>
+        </g>
+
+        <a class="pin pin--live" href="#tours" aria-label="La Fortuna — open now, 8 tours from $66">
+          <circle class="pin__halo" cx="351.6" cy="262.9" r="8" style="transform-origin:351.6px 262.9px"/>
+          <circle class="pin__dot" cx="351.6" cy="262.9" r="8"/>
+          <circle class="pin__hit" cx="351.6" cy="262.9" r="30"/>
+          <text class="pin__label" x="374" y="258">La Fortuna</text>
+          <text class="pin__sub" x="374" y="278">8 tours · from $66</text>
+        </a>
+
+        <g class="pin" tabindex="0" role="img" aria-label="Monteverde — planned for phase two">
+          <circle class="pin__dot" cx="298.5" cy="312.6" r="6"/>
+          <circle class="pin__hit" cx="298.5" cy="312.6" r="28"/>
+          <text class="pin__label" x="200" y="345">Monteverde</text>
+          <text class="pin__sub" x="200" y="365">Phase 2</text>
+        </g>
+
+        <g class="pin" tabindex="0" role="img" aria-label="Chirripó — planned for phase two">
+          <circle class="pin__dot" cx="688.7" cy="554.5" r="6"/>
+          <circle class="pin__hit" cx="688.7" cy="554.5" r="28"/>
+          <text class="pin__label" x="712" y="550">Chirripó</text>
+          <text class="pin__sub" x="712" y="570">Phase 2</text>
+        </g>
+
+        <g class="pin" tabindex="0" role="img" aria-label="Manuel Antonio — planned for phase three">
+          <circle class="pin__dot" cx="493.6" cy="581.7" r="6"/>
+          <circle class="pin__hit" cx="493.6" cy="581.7" r="28"/>
+          <text class="pin__label" x="400" y="618">Manuel Antonio</text>
+          <text class="pin__sub" x="400" y="638">Phase 3</text>
+        </g>
+      </svg>
+    </div>
+
+    <div class="axes__grid">
+      <a class="axcard" href="#tours">
+        <span class="axcard__bg" aria-hidden="true"><img src="../assets/lafortuna-town.jpg" alt="" loading="lazy"></span>
+        <span class="axcard__tag">Live</span>
+        <span class="axcard__n">8 tours · from $66</span>
+        <h3>La Fortuna</h3>
+        <p>Arenal, Río Celeste, Juan Castro Blanco and the crater lagoons.</p>
+      </a>
+      <div class="axcard axcard--soon">
+        <span class="axcard__tag axcard__tag--soon">Phase 2</span>
+        <span class="axcard__n">Planned</span>
+        <h3>Monteverde</h3>
+        <p>Already connected by the Fortuna traverse, and sharing its transport.</p>
+      </div>
+      <div class="axcard axcard--soon">
+        <span class="axcard__tag axcard__tag--soon">Phase 2</span>
+        <span class="axcard__n">Planned</span>
+        <h3>Chirripó</h3>
+        <p>The SINAC permit nobody else handles — and an ebook already earning.</p>
+      </div>
+      <div class="axcard axcard--soon">
+        <span class="axcard__tag axcard__tag--soon">Phase 3</span>
+        <span class="axcard__n">Planned</span>
+        <h3>Manuel Antonio</h3>
+        <p>Park and coast, and the first destination on water.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= AXIS 2 · EXPERIENCE ================= -->
+  <section class="axes" id="experiences">
+    <div class="band--tight shell">
+      <div class="head">
+        <p class="label">Axis two</p>
+        <div class="head__main">
+          <h2 data-fill>Explore by experience</h2>
+          <p>The second axis. A tour lives at one flat address and appears under whichever destination and experience claim it — so opening a category never moves a URL.</p>
+        </div>
+      </div>
+    </div>
+    <div class="axes__grid">
+      <a class="axcard" href="#tours">
+        <span class="axcard__bg" aria-hidden="true"><img src="../assets/lf-juan-castro-trail.jpg" alt="" loading="lazy"></span>
+        <span class="axcard__tag">Live</span>
+        <span class="axcard__n">8 tours</span>
+        <h3>Hiking &amp; Trekking</h3>
+        <p>Where we start. Everything on foot, graded by distance and climb.</p>
+      </a>
+      <div class="axcard axcard--soon">
+        <span class="axcard__tag axcard__tag--soon">Next</span>
+        <span class="axcard__n">12 planned</span>
+        <h3>Nature &amp; Wildlife</h3>
+        <p>Sloths, Caño Negro, the float safari on Peñas Blancas.</p>
+      </div>
+      <div class="axcard axcard--soon">
+        <span class="axcard__tag axcard__tag--soon">Next</span>
+        <span class="axcard__n">1 planned</span>
+        <h3>Combos</h3>
+        <p>Multi-stop days that cross destinations — the seed of full itineraries.</p>
+      </div>
+      <div class="axcard axcard--soon">
+        <span class="axcard__tag axcard__tag--soon">Phase 3</span>
+        <span class="axcard__n">Planned</span>
+        <h3>Water &amp; Coast</h3>
+        <p>Rafting and catamaran, once Manuel Antonio opens.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= INFOPRODUCTS =================
+       The second product line, the way the current site already sells its
+       Chirripó ebook: a real product with a cover, a price and instant delivery. -->
+  <section class="guides" id="guides">
+    <div class="band--tight shell">
+      <div class="head">
+        <p class="label label--accent">Second product line</p>
+        <div class="head__main">
+          <h2 data-fill>Or go without a guide, for ten dollars.</h2>
+          <p>Digital guides sold and delivered from the site itself, not an external platform. One per destination, on the same schedule as the tours.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="guides__grid">
+      <div class="gfeature">
+        <img src="../assets/ebook-chirripo.jpg" alt="Cover of a digital guide published by Explore Tikizia." loading="lazy">
+        <div>
+          <p class="label label--accent">Best seller</p>
+          <h3>La Fortuna Self-Guided Guide</h3>
+          <p>Five of the eight trails can be walked alone. This is how: entrance fees, opening hours, where to park, which days the coaches arrive, and the order to do them in so you never drive the same road twice.</p>
+          <div class="gfeature__buy">
+            <span class="gfeature__price">$10<small>USD · instant download</small></span>
+            <a class="btn btn--accent" href="#guides">Buy the guide &middot; $10 USD</a>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <ul class="glist">
+          <li><b>Costa Rica Packing List</b> <span>· every destination</span> <span class="price">Free</span></li>
+          <li><b>Chirripó Valley Guide</b> <span>· the permit-free valley</span> <span class="price">$10</span></li>
+          <li><b>Monteverde Guide</b> <span>· cloud forest</span> <span class="soon">Phase 2</span></li>
+          <li><b>Manuel Antonio Guide</b> <span>· park and coast</span> <span class="soon">Phase 3</span></li>
+        </ul>
+        <div class="gcapture">
+          <h3>Start with the free one</h3>
+          <p>The packing list works for every destination — which is exactly why it is the one we give away.</p>
+          <form class="capture" data-capture>
+            <label class="sr-only" for="g-email">Email address</label>
+            <input type="email" id="g-email" placeholder="you@example.com" autocomplete="email" required>
+            <button class="btn btn--ghost" type="submit">Send the packing list</button>
+          </form>
+          <!-- M-07 · The capture asked for an address without saying what
+               follows. Declaring it is both the legal requirement and the thing
+               that raises the sign-up rate. -->
+          <p class="capture__terms">The list arrives immediately. After that, about one email a month when a new destination or guide opens. Unsubscribe from any of them.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= WHO ================= -->
+  <section class="who" id="who">
+    <div class="band shell who__grid">
+      <figure class="who__fig" data-reveal>
+        <img src="../assets/rodrigo-ventisqueros.jpg" alt="Rodrigo Santamaria on a trail in the Costa Rican highlands." width="800" height="600" loading="lazy">
+      </figure>
+      <div data-reveal>
+        <p class="label">Who takes you</p>
+        <blockquote style="margin-top:1.25rem">“Anyone can drive you to a trailhead. Knowing which of these eight is worth your Tuesday, given the rain last week — that is the part you are paying for.”</blockquote>
+        <ul class="who__meta">
+          <li>Rodrigo Santamaria</li>
+          <li>15+ years guiding</li>
+          <li data-pending>Certified tour guide</li>
+          <li data-pending>ICT registration</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PROOF ================= -->
+  <section class="proof">
+    <div class="band--tight shell">
+      <div class="head">
+        <p class="label">Reviews</p>
+        <div class="head__main">
+          <h2 data-fill>What people say afterwards.</h2>
+          <p>Real reviews from the current site. Collecting them per tour is the only legitimate route to stars in search results, and it starts at launch.</p>
+        </div>
+      </div>
+    </div>
+    <div class="proof__grid">
+      <figure>
+        <span class="stars" aria-label="5 out of 5">★★★★★</span>
+        <blockquote>“The service could not have been better. I recommend Explore Tikizia, and our planner, coordinator and driver, Rodrigo Santamaria, without reservation.”</blockquote>
+        <figcaption><b>Dave Faulders</b>Google review · March 2025</figcaption>
+      </figure>
+      <figure>
+        <span class="stars" aria-label="5 out of 5">★★★★★</span>
+        <blockquote>“Rodrigo was beyond amazing. Knowledgeable, patient, and he made every part of the trip feel effortless.”</blockquote>
+        <figcaption><b>Sofia Gonzales</b>Google review · February 2025</figcaption>
+      </figure>
+      <figure>
+        <span class="stars" aria-label="5 out of 5">★★★★★</span>
+        <blockquote>“From arrival to departure every event proceeded smoothly — pickups on time and knowledgeable guides throughout.”</blockquote>
+        <figcaption><b>Google Business Profile</b>Date shown per review</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ================= FAQ ================= -->
+  <section class="band shell" id="faq">
+    <div class="head" style="margin-bottom:2.5rem">
+      <p class="label">Questions</p>
+      <div class="head__main">
+        <h2 data-fill>Before you book.</h2>
+      </div>
+    </div>
+    <div class="faq__list">
+      <details>
+        <summary>Am I fit enough for these?</summary>
+        <p class="a">Five of the eight are under 8 km with less than 400 m of climb — a normal walking day. The Fortuna → Monteverde traverse is 17 km and 900 m, and we ask about your recent walking before confirming it.</p>
+      </details>
+      <details>
+        <summary>What happens if it rains?</summary>
+        <p class="a">We walk. This is rainforest and it rains most afternoons for half the year. We only cancel for conditions that make a trail unsafe — and then you choose another date or take a full refund, not a credit note.</p>
+      </details>
+      <details>
+        <summary>Do I pay now or on the day?</summary>
+        <p class="a">Now, by card, through BAC Credomatic. That is what holds the seat. Full refund up to 48 hours before departure. <span style="color:var(--accent-ink)">Final cancellation wording pending the client.</span></p>
+      </details>
+      <details>
+        <summary>How are tours organised?</summary>
+        <p class="a">On two axes: location and experience. A tour lives at one flat address and appears under whichever destination and experience claim it, so opening Monteverde or adding Nature &amp; Wildlife never moves an existing URL.</p>
+      </details>
+      <details>
+        <summary>What are the guides?</summary>
+        <p class="a">A second product line. Each destination gets one $10 digital guide, sold and delivered here. The packing list is free and works everywhere, which is why it is the one we give away.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- ================= FINAL ================= -->
+  <section class="final band">
+    <div class="final__bg" aria-hidden="true"><img src="../assets/lf-hule-lagoon.jpg" alt="" loading="lazy"></div>
+    <div class="shell">
+      <h2>Pick the day. We know the trail.</h2>
+      <p>Eight tours bookable in La Fortuna today, with four more categories measured and queued behind them.</p>
+      <div class="hero__actions">
+        <a class="btn btn--lg" href="#tours">Explore tours</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="shell foot__grid">
+    <div>
+      <p class="foot__brand"><img src="../assets/logo.png" alt="" width="180" height="54"><span>Explore Tikizia</span></p>
+      <p style="margin-top:1rem;max-width:32ch;font-size:var(--t-sm);color:var(--ink-3)">Guided experiences across Costa Rica. Run from San Ramón de Alajuela.</p>
+    </div>
+    <div><h3>Destinations</h3><ul>
+      <li><a href="#destinations">La Fortuna</a></li><li><a href="#destinations">Monteverde</a></li>
+      <li><a href="#destinations">Chirripó</a></li><li><a href="#destinations">Manuel Antonio</a></li></ul></div>
+    <div><h3>Experiences</h3><ul>
+      <li><a href="#experiences">Hiking &amp; Trekking</a></li><li><a href="#experiences">Nature &amp; Wildlife</a></li>
+      <li><a href="#experiences">Combos</a></li><li><a href="#guides">Digital guides</a></li></ul></div>
+    <div><h3>Connect</h3><ul>
+      <li>WhatsApp <span class="pending">wired at launch</span></li>
+      <li>Email <span class="pending">wired at launch</span></li>
+      <li><a href="#guides">Newsletter</a></li>
+      <li>San Ram&oacute;n de Alajuela, Costa Rica</li></ul></div>
+  </div>
+  <div class="shell foot__bar">
+    <span>© Explore Tikizia — design prototype, not a live site</span>
+    <span><a href="#faq">Privacy</a> &middot; <a href="#faq">Terms</a> &middot; <a href="#faq">Cancellation policy</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
